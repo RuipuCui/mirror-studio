@@ -3,40 +3,40 @@ import { Check, X, Zap, Clock, Users, RefreshCw, ShieldAlert } from 'lucide-reac
 
 const comparison = [
   {
-    icon: Clock,
-    traditional: 'PRD → 排期 → 多角色对齐',
-    studio: '生成多套方案 → 选择最优 → 极速构建',
+    icon: Users,
+    traditional: '核心成本：沟通、对齐、协作',
+    studio: '核心能力：AI-native 个体闭环',
     highlight: true
   },
   {
-    icon: Zap,
-    traditional: '周/月级交付周期',
-    studio: '24–72 小时交付可用产品',
+    icon: Clock,
+    traditional: '节奏：周 / 月',
+    studio: '节奏：天 / 小时',
+    highlight: true
+  },
+  {
+    icon: ShieldAlert,
+    traditional: '风险：方向错了，但发现太晚',
+    studio: '风险：错得快、改得快、止损快',
     highlight: true
   },
   {
     icon: RefreshCw,
-    traditional: '迭代周期长，风险后置',
-    studio: '天/小时级迭代，错得快改得快',
+    traditional: '追求：功能完整、代码规范、流程完美',
+    studio: '追求：验证速度、系统可运行性、迭代能力',
     highlight: false
   },
   {
-    icon: Users,
-    traditional: '核心成本：沟通、对齐、协作',
-    studio: '核心能力：AI-native 个体闭环',
-    highlight: false
-  },
-  {
-    icon: ShieldAlert,
-    traditional: '依赖组织分工',
-    studio: '依赖人+AI 网络',
+    icon: Zap,
+    traditional: '目标：一次性做完，一开始就完美',
+    studio: '目标：能不能跑、能不能用、能不能快速验证',
     highlight: false
   }
 ];
 
 export function Differentiation() {
   return (
-    <section id="differentiation" className="relative min-h-screen flex flex-col justify-center py-20 px-6 bg-black border-t border-white/5 overflow-hidden">
+    <section id="differentiation" className="relative flex flex-col justify-center py-24 px-6 bg-black border-t border-white/5 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
       

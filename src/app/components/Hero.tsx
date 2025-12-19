@@ -70,28 +70,48 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
 
 
       {/* Main content */}
-      <div className="relative z-10 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={!showIntro ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <h1 className="mb-6">
-            <span className="block text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-slate-300 mb-6">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            AI-Native System Engine
+          </div>
+
+          <h1 className="mb-8">
+            <span className="block text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
               Mirror Studio
+            </span>
+            <span className="block text-2xl md:text-3xl font-light text-slate-400 mt-4">
+              AI-native 的产品与系统实现引擎
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
-            AI-native 产品与系统实现引擎：把“已经被验证的想法”，在极短时间内变成“真实可运行的系统”
+          <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-xl">
+            专门把“已经被验证的想法”，在极短时间内变成“真实可运行的系统”。
           </p>
+
+          <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
+            <span className="px-3 py-1 border border-white/10 rounded-md">Not Idea Factory</span>
+            <span className="px-3 py-1 border border-white/10 rounded-md">Not Outsourcing</span>
+            <span className="px-3 py-1 border border-white/10 rounded-md">Not Traditional Studio</span>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
               onClick={() => scrollTo('capabilities')}
-              className="px-6 py-3 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+              className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-slate-200 transition-all duration-300"
             >
               查看能力
+            </button>
+            <button 
+              onClick={() => scrollTo('philosophy')}
+              className="px-8 py-4 rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+            >
+              了解理念
             </button>
           </div>
         </motion.div>
@@ -122,8 +142,8 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
         {showIntro && (
           <motion.div 
             className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
-            exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
-            transition={{ duration: 1.0 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <div className="relative">
               <motion.div

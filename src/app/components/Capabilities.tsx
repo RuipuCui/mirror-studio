@@ -23,24 +23,24 @@ const techStack = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative min-h-screen flex flex-col justify-center py-20 px-6 bg-black border-t border-white/5 overflow-hidden">
+    <section id="capabilities" className="relative flex flex-col justify-center py-24 px-6 bg-black border-t border-white/5 overflow-hidden">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-left mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
               核心能力
             </span>
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl">
             全栈交付 + AI 集成，构建下一代智能应用
           </p>
         </motion.div>

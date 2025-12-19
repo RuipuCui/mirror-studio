@@ -38,7 +38,7 @@ const MovingIcon = ({ icon: Icon, delay }: { icon: any, delay: number }) => (
 
 export function Team() {
   return (
-    <section id="team" className="relative min-h-screen flex flex-col justify-center py-20 px-6 bg-black border-t border-white/5">
+    <section id="team" className="relative flex flex-col justify-center py-24 px-6 bg-black border-t border-white/5">
       <div className="max-w-[1400px] mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,9 +86,11 @@ export function Team() {
               <div className="text-sm font-bold mb-4 px-3 py-1 rounded-full inline-block border bg-white/10 border-white/20 text-white">
                 0 到 1 (MVP 验证)
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
-                将想法转化为最小可行性产品 (MVP)，快速验证核心价值，解决“做不做”的问题。
-              </p>
+              <div className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors space-y-2 text-left pl-4 border-l border-white/10">
+                <p>• 收集真实问题与探索方向</p>
+                <p>• 快速做 MVP 验证</p>
+                <p>• 判断「值不值得做」</p>
+              </div>
             </div>
           </motion.div>
 
@@ -101,24 +103,31 @@ export function Team() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full lg:w-[400px] group relative p-8 rounded-2xl bg-black border border-white/10 hover:border-white/30 transition-colors duration-300 text-center"
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.2,
+              scale: { duration: 0.3, delay: 0 }
+            }}
+            className="w-full lg:w-[400px] group relative p-8 rounded-2xl bg-white text-black border border-white/10 text-center shadow-[0_0_50px_rgba(255,255,255,0.1)]"
           >
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-            <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-slate-900 border border-white/10 mb-6 group-hover:scale-110 group-hover:border-white/30 transition-all duration-300 shadow-2xl">
-              <Building2 className="w-10 h-10 text-slate-400 group-hover:text-white transition-colors" />
+            <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-black text-white mb-6 shadow-xl">
+              <Building2 className="w-10 h-10" />
             </div>
             <div className="relative">
-              <h3 className="text-2xl font-bold mb-2 text-white">MirrorStudio</h3>
-              <div className="text-sm font-bold mb-4 px-3 py-1 rounded-full inline-block border bg-white/10 border-white/20 text-white">
+              <h3 className="text-2xl font-bold mb-2">MirrorStudio</h3>
+              <div className="text-sm font-bold mb-4 px-3 py-1 rounded-full inline-block bg-black text-white">
                 1 到 100 (系统交付)
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
-                将已验证的 MVP 转化为成熟的生产级系统，解决“如何规模化与落地”的问题。
-              </p>
+              <div className="text-slate-600 text-sm leading-relaxed space-y-2 text-left pl-4 border-l border-black/10">
+                <p>• 接手已经被验证的方向</p>
+                <p>• 用 AI 变成网站/系统/工具</p>
+                <p>• 快速上线、快速迭代</p>
+              </div>
             </div>
           </motion.div>
+
 
           {/* Path 3: Studio -> Product */}
           <div className="hidden lg:block w-24 shrink-0">

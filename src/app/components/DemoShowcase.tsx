@@ -21,7 +21,7 @@ const demos = [
 
 export function DemoShowcase() {
   return (
-    <section id="demo-showcase" className="relative min-h-screen flex flex-col justify-center py-20 px-6 bg-black border-t border-white/5 overflow-hidden">
+    <section id="demo-showcase" className="relative flex flex-col justify-center py-24 px-6 bg-black border-t border-white/5 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.03),transparent_50%)]" />
       

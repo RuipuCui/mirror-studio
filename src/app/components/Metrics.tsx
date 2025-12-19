@@ -59,7 +59,7 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
 
 export function Metrics() {
   return (
-    <section id="metrics" className="relative min-h-screen flex flex-col justify-center py-20 px-6 bg-black border-t border-white/5 overflow-hidden">
+    <section id="metrics" className="relative flex flex-col justify-center py-24 px-6 bg-black border-t border-white/5 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-slate-800/20 rounded-full blur-[100px] pointer-events-none" />
 
