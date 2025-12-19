@@ -1,84 +1,87 @@
 import { motion } from 'motion/react';
-import { FileText, Sparkles, Zap, Rocket } from 'lucide-react';
+import { FileText, Sparkles, Zap, Rocket, ArrowRight, GitBranch, GitMerge } from 'lucide-react';
 
 const steps = [
   {
     icon: Sparkles,
-    title: '生成整体架构',
+    title: 'Generate',
+    subtitle: '生成架构',
     description: 'AI 快速生成 5–10 套方案 (UI + 架构)，不再依赖单一设计稿。',
   },
   {
-    icon: Zap,
-    title: '选择最优方案',
+    icon: GitBranch,
+    title: 'Select',
+    subtitle: '选择最优',
     description: '从多个版本中快速筛选，找到最符合直觉的实现路径。',
   },
   {
-    icon: FileText,
-    title: '人工精修与连接',
+    icon: GitMerge,
+    title: 'Refine',
+    subtitle: '人工精修',
     description: '连接后端、数据库与 AI 模块，进行细节打磨与逻辑完善。',
   },
   {
     icon: Rocket,
-    title: '高频迭代上线',
+    title: 'Deploy',
+    subtitle: '高频上线',
     description: '一天多个版本，哪个行放大，哪个不行直接丢。',
   },
 ];
 
 export function HowWeBuild() {
   return (
-    <section id="how-we-build" className="relative flex flex-col justify-center py-24 px-6 bg-black border-t border-white/5">
-      <div className="max-w-5xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-24"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">AI-Native 开发方式</h2>
-          <p className="text-gray-400 text-lg">核心不是“写代码快”，而是“生成 → 选择 → 微调 → 上线”</p>
-        </motion.div>
-
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-800/50 -translate-x-1/2">
+    <section id="how-we-build" className="relative py-32 px-6 bg-black border-t border-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          {/* Sticky Header - Left Side */}
+          <div className="lg:sticky lg:top-32">
             <motion.div
-              initial={{ height: '0%' }}
-              whileInView={{ height: '100%' }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-50"
-            />
+            >
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+                AI-Native<br />Pipeline
+              </h2>
+              <p className="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
+                核心不是“写代码快”，而是“生成 → 选择 → 微调 → 上线”的全新工作流。
+              </p>
+              
+              <div className="mt-12 hidden lg:block">
+                <div className="w-px h-32 bg-gradient-to-b from-white/20 to-transparent" />
+              </div>
+            </motion.div>
           </div>
 
-          <div className="space-y-12 md:space-y-24">
+          {/* Steps - Right Side */}
+          <div className="relative space-y-12">
+            {/* Vertical Line */}
+            <div className="absolute left-8 top-8 bottom-8 w-px bg-white/10 hidden md:block" />
+
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
+                transition={{ delay: index * 0.1 }}
+                className="relative flex gap-8 group"
               >
-                {/* Content Side */}
-                <div className={`flex-1 w-full md:w-auto pl-12 md:pl-0 ${
-                  index % 2 === 0 ? 'md:text-left' : 'md:text-right'
-                }`}>
-                  <div className="text-xs font-mono text-slate-500 mb-2 uppercase tracking-wider">步骤 {index + 1}</div>
-                  <h3 className="text-2xl font-bold mb-3 text-white">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{step.description}</p>
+                {/* Number/Icon */}
+                <div className="relative z-10 shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors duration-500">
+                    <step.icon className="w-6 h-6 text-slate-400 group-hover:text-white transition-colors" />
+                  </div>
                 </div>
 
-                {/* Center Icon */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-black border border-white/20 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(0,0,0,1)]">
-                  <step.icon className="w-5 h-5 text-white" />
+                {/* Content */}
+                <div className="pt-2">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <h3 className="text-2xl font-bold text-white">{step.title}</h3>
+                    <span className="text-sm font-mono text-slate-500 uppercase tracking-wider">{step.subtitle}</span>
+                  </div>
+                  <p className="text-gray-400 leading-relaxed max-w-md">{step.description}</p>
                 </div>
-
-                {/* Empty Side for Balance */}
-                <div className="hidden md:block flex-1" />
               </motion.div>
             ))}
           </div>

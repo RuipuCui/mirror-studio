@@ -15,9 +15,7 @@ const techStack = [
       { icon: Smartphone, label: "Mobile", sub: "Responsive / PWA" },
       { icon: Database, label: "Backend", sub: "Supabase / Postgres" },
       { icon: Server, label: "Infra", sub: "Vercel / Edge" }
-    ],
-    gradient: "from-blue-500/10 via-indigo-500/10 to-violet-500/10",
-    border: "group-hover:border-blue-500/30"
+    ]
   },
   {
     category: "Intelligence",
@@ -28,9 +26,7 @@ const techStack = [
       { icon: Search, label: "RAG", sub: "Vector DB / Embeddings" },
       { icon: Wand2, label: "GenUI", sub: "Generative Interface" },
       { icon: Cpu, label: "Agents", sub: "LangChain / AutoGPT" }
-    ],
-    gradient: "from-emerald-500/10 via-teal-500/10 to-cyan-500/10",
-    border: "group-hover:border-emerald-500/30"
+    ]
   }
 ];
 
@@ -44,11 +40,9 @@ const modules = [
 export function Capabilities() {
   return (
     <section id="capabilities" className="relative py-32 px-6 bg-black overflow-hidden border-t border-white/5">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        {/* Header - Left Aligned */}
+        <div className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +58,7 @@ export function Capabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50"
+            className="text-4xl md:text-6xl font-bold mb-6 text-white"
           >
             全栈技术能力
           </motion.h2>
@@ -73,7 +67,7 @@ export function Capabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-gray-400 max-w-2xl"
           >
             从底层架构到顶层交互，我们提供完整的技术积木，
             <br className="hidden md:block" />
@@ -81,6 +75,7 @@ export function Capabilities() {
           </motion.p>
         </div>
 
+        {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {techStack.map((stack, index) => (
             <motion.div
@@ -89,10 +84,8 @@ export function Capabilities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className={`group relative overflow-hidden rounded-3xl bg-slate-900/50 border border-white/10 ${stack.border} transition-colors duration-500`}
+              className="group relative overflow-hidden rounded-3xl bg-slate-900/20 border border-white/10 hover:border-white/20 transition-colors duration-500"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${stack.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-              
               <div className="relative z-10 p-8 md:p-10">
                 <div className="flex items-center justify-between mb-8">
                   <div>
