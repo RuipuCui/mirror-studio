@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Users, Network, Sparkles } from 'lucide-react';
+import { Users, Network, Sparkles, Zap, Layers } from 'lucide-react';
 
 export function Philosophy() {
   return (
@@ -12,90 +12,159 @@ export function Philosophy() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-left mb-16 max-w-3xl"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
-              存在的根本原因
+              生产范式的变革
             </span>
           </h2>
-          <div className="space-y-6 text-xl md:text-2xl text-gray-400 font-light leading-relaxed">
-            <p>
-              在 AI 之前，做系统必须靠“组织”。PRD、设计稿、前后端拆分、项目管理……组织本身成了生产的必要条件。
-            </p>
-            <p className="text-white font-normal">
-              但 AI 改变了一件事：生产的最小单位，从“团队”变成了“人”。
-            </p>
-            <p className="text-lg text-slate-500 border-l-2 border-white/20 pl-4">
-              当一个人 + AI 就能完成设计、开发、部署的全流程，问题就变成了：<br/>
-              <span className="text-slate-300">谁来把「想法 → 系统」这件事，做得快、稳、可复制？</span>
-            </p>
-          </div>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            AI 让生产的最小单位从“团队”回归到“人”
+          </p>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.3
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+          {/* Traditional Model */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative group p-8 rounded-3xl bg-white/5 border border-white/10 overflow-hidden min-h-[400px] flex flex-col"
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+            
+            <div className="relative z-10 mb-auto">
+              <div className="flex items-center gap-3 mb-4 opacity-50">
+                <Layers className="w-6 h-6" />
+                <span className="text-sm font-mono uppercase tracking-wider">The Old Way</span>
+              </div>
+              <h3 className="text-3xl font-bold text-slate-300 mb-2">Organization</h3>
+              <p className="text-slate-500">依赖分工、流程与管理</p>
+            </div>
+
+            {/* Visual: Pyramid / Hierarchy */}
+            <div className="relative z-10 flex-1 flex items-center justify-center py-8">
+              <div className="relative w-48 h-48 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500">
+                 {/* Abstract Hierarchy Nodes */}
+                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-400 rounded-full" />
+                 
+                 <div className="absolute top-12 left-1/3 w-4 h-4 bg-slate-500 rounded-full" />
+                 <div className="absolute top-12 right-1/3 w-4 h-4 bg-slate-500 rounded-full" />
+                 
+                 <div className="absolute top-24 left-1/4 w-4 h-4 bg-slate-600 rounded-full" />
+                 <div className="absolute top-24 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full" />
+                 <div className="absolute top-24 right-1/4 w-4 h-4 bg-slate-600 rounded-full" />
+
+                 {/* Connecting Lines */}
+                 <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-slate-600" strokeWidth="1">
+                    <line x1="50%" y1="8" x2="33%" y2="56" />
+                    <line x1="50%" y1="8" x2="67%" y2="56" />
+                    <line x1="33%" y1="56" x2="25%" y2="104" />
+                    <line x1="33%" y1="56" x2="50%" y2="104" />
+                    <line x1="67%" y1="56" x2="50%" y2="104" />
+                    <line x1="67%" y1="56" x2="75%" y2="104" />
+                 </svg>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* New Model */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative group p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-black border border-white/20 overflow-hidden min-h-[400px] flex flex-col"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative z-10 mb-auto">
+              <div className="flex items-center gap-3 mb-4 text-white">
+                <Sparkles className="w-6 h-6" />
+                <span className="text-sm font-mono uppercase tracking-wider">The New Way</span>
+              </div>
+              <h3 className="text-3xl font-bold text-white mb-2">Individual + AI</h3>
+              <p className="text-slate-400">个体闭环，极速交付</p>
+            </div>
+
+            {/* Visual: Central Core */}
+            <div className="relative z-10 flex-1 flex items-center justify-center py-8">
+              <div className="relative w-48 h-48">
+                {/* Core */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-[0_0_50px_rgba(255,255,255,0.4)] flex items-center justify-center z-20">
+                  <Zap className="w-8 h-8 text-black fill-black" />
+                </div>
+
+                {/* Orbit 1 */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border border-white/10"
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-slate-400 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+                </motion.div>
+
+                {/* Orbit 2 */}
+                <motion.div 
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-4 rounded-full border border-white/10"
+                >
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-slate-500 rounded-full" />
+                </motion.div>
+
+                {/* Connecting Beams */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+                   <motion.div 
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute inset-0 bg-white/5 rounded-full blur-xl"
+                   />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Cards - Simplified */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               icon: Network,
               title: "最小商业单元",
-              desc: "在这里，人不是螺丝钉，而是闭环单元。每个人都要学会从问题出发，到系统交付，对结果负责。"
+              desc: "人不是螺丝钉，而是闭环单元。"
             },
             {
               icon: Users,
               title: "超级个体联盟",
-              desc: "我们不是一家传统公司，而是一个由超级个体组成的联盟。我们共享知识、工具和最佳实践。"
+              desc: "共享知识、工具和最佳实践的网络。"
             },
             {
               icon: Sparkles,
               title: "AI Native",
-              desc: "我们不只是使用 AI，我们是 AI 原生。我们的工作流、工具链和思维方式，都是基于 AI 重构的。"
+              desc: "工作流、工具链基于 AI 重构。"
             }
           ].map((item, index) => (
             <motion.div
               key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1]
-                  }
-                }
-              }}
-              className="group relative p-8 rounded-2xl bg-black border border-white/10 hover:border-white/30 transition-colors duration-500"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-6 rounded-2xl bg-black border border-white/10 hover:border-white/30 transition-colors"
             >
-              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-              <div className="relative z-10">
-                <div className="w-20 h-20 rounded-2xl bg-slate-900 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <item.icon className="w-10 h-10 text-white" />
-                </div>
-                <h4 className="text-2xl font-bold mb-4 text-white">{item.title}</h4>
-                <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
-                  {item.desc}
-                </p>
-              </div>
+                <item.icon className="w-8 h-8 text-white mb-4" />
+                <h4 className="text-lg font-bold text-white mb-2">{item.title}</h4>
+                <p className="text-sm text-gray-400">{item.desc}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
