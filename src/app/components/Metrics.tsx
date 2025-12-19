@@ -98,7 +98,12 @@ export function Metrics() {
                     <metric.icon className="w-5 h-5" />
                   </div>
                   <div className="flex items-center gap-1 text-xs font-mono text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">
-                    <Activity className="w-3 h-3" />
+                    <motion.div
+                      animate={{ opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Activity className="w-3 h-3" />
+                    </motion.div>
                     {metric.trend}
                   </div>
                 </div>

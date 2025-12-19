@@ -60,11 +60,11 @@ export function WhatWeDo() {
               <span className="text-sm uppercase tracking-widest">Services</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              从想法到<br/>
+              从 MVP 到<br/>
               <span className="text-white">真实系统</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-8">
-              我们不只是写代码，而是提供全栈式的技术合伙人服务。三大核心能力，确保你的产品既快又稳。
+              Mirror Lab 负责将想法变成 MVP，我们负责将 MVP 转化为成熟的商业产品。三大核心能力，确保你的系统既快又稳。
             </p>
             
             <div className="hidden lg:block p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">

@@ -55,8 +55,19 @@ export function HowWeBuild() {
 
           {/* Steps - Right Side */}
           <div className="relative space-y-12">
-            {/* Vertical Line */}
-            <div className="absolute left-8 top-8 bottom-8 w-px bg-white/10 hidden md:block" />
+            {/* Vertical Line with Moving Beam */}
+            <div className="absolute left-8 top-8 bottom-8 w-px bg-white/10 hidden md:block overflow-hidden">
+              <motion.div
+                animate={{ top: ["-20%", "120%"] }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "linear",
+                  repeatDelay: 1
+                }}
+                className="absolute left-0 w-full h-40 bg-gradient-to-b from-transparent via-white to-transparent opacity-50"
+              />
+            </div>
 
             {steps.map((step, index) => (
               <motion.div

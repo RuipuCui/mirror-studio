@@ -102,7 +102,17 @@ export function Capabilities() {
                 <div className="grid grid-cols-2 gap-4">
                   {stack.items.map((item, i) => (
                     <div key={i} className="group/item flex flex-col p-4 rounded-xl bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-300">
-                      <item.icon className="w-6 h-6 text-slate-400 group-hover/item:text-white mb-3 transition-colors" />
+                      <motion.div
+                        animate={{ y: [0, -2, 0] }}
+                        transition={{ 
+                          duration: 3, 
+                          repeat: Infinity, 
+                          ease: "easeInOut",
+                          delay: i * 0.2 
+                        }}
+                      >
+                        <item.icon className="w-6 h-6 text-slate-400 group-hover/item:text-white mb-3 transition-colors" />
+                      </motion.div>
                       <div className="font-medium text-slate-200">{item.label}</div>
                       <div className="text-xs text-slate-500 font-mono mt-1">{item.sub}</div>
                     </div>

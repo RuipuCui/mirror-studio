@@ -52,7 +52,12 @@ export function Differentiation() {
                 为什么选择 Mirror Studio 而不是传统外包？
               </p>
               
-              <div className="hidden lg:block p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="hidden lg:block p-6 rounded-2xl bg-white/5 border border-white/10 relative overflow-hidden">
+                <motion.div
+                  animate={{ left: ["-100%", "200%"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+                  className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12"
+                />
                 <div className="text-sm font-mono text-slate-400 mb-4">EFFICIENCY GAIN</div>
                 <div className="text-5xl font-bold text-white mb-2">10x</div>
                 <div className="text-sm text-slate-500">Faster Iteration Cycles</div>
@@ -87,7 +92,12 @@ export function Differentiation() {
                 <div className="relative">
                   <div className="text-white font-bold text-lg mb-1">{row.studio.text}</div>
                   <div className="text-xs text-emerald-500/70 font-mono flex items-center gap-1">
-                    <Zap className="w-3 h-3" />
+                    <motion.div
+                      animate={{ opacity: [0.4, 1, 0.4] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Zap className="w-3 h-3" />
+                    </motion.div>
                     {row.studio.sub}
                   </div>
                   
