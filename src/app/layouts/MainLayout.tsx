@@ -14,11 +14,13 @@ export function MainLayout({ children, currentPath, onNavigate, language, onTogg
   const isMirrorStudio = currentPath === '/mirror-studio' || currentPath.startsWith('/mirror-studio/');
   const isMirrorResearch = currentPath === '/mirror-research' || currentPath.startsWith('/mirror-research/');
   const isMirrorLab = currentPath === '/mirror-lab' || currentPath.startsWith('/mirror-lab/');
+  const isMirrorAcademy = currentPath === '/mirror-academy' || currentPath.startsWith('/mirror-academy/');
 
-  let activeTab: 'home' | 'research' | 'studio' | 'lab' = 'home';
+  let activeTab: 'home' | 'research' | 'studio' | 'lab' | 'academy' = 'home';
   if (isMirrorResearch) activeTab = 'research';
   if (isMirrorStudio) activeTab = 'studio';
   if (isMirrorLab) activeTab = 'lab';
+  if (isMirrorAcademy) activeTab = 'academy';
 
   return (
     <div className="min-h-screen">
