@@ -31,7 +31,13 @@ export default function App() {
 
   return (
     <MainLayout currentPath={path} onNavigate={handleNavigate}>
-      {isMirrorResearch ? <MirrorResearchPage /> : isMirrorStudio ? <MirrorStudioPage /> : <HomePage />}
+      {isMirrorResearch ? (
+        <MirrorResearchPage onNavigate={handleNavigate} />
+      ) : isMirrorStudio ? (
+        <MirrorStudioPage onNavigate={handleNavigate} />
+      ) : (
+        <HomePage onNavigate={handleNavigate} />
+      )}
     </MainLayout>
   );
 }

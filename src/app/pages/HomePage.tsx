@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type MouseEvent } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowRight, Users, User, Cpu, TrendingUp, Zap, X, Check } from "lucide-react";
 import { Slide, SlideHeading, SlideSubheading } from "@/app/components/whitemirrorai/Slide";
@@ -476,7 +476,7 @@ function SolutionSection({ language }: { language: Language }) {
   );
 }
 
-function EcosystemSection({ language }: { language: Language }) {
+function EcosystemSection({ language, onNavigate }: { language: Language; onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   const t = copy[language];
   return (
     <Slide className="bg-black text-white" showBackground>
@@ -492,13 +492,21 @@ function EcosystemSection({ language }: { language: Language }) {
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 w-full auto-rows-[240px]">
           {ecosystemUnits.map((unit, index) => {
             const content = unit[language];
+            const isClickable = unit.id === "Research" || unit.id === "Studio";
+            
             return (
               <motion.div
                 key={unit.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={(e) => {
+                  if (unit.id === "Research") onNavigate(e, "/mirror-research");
+                  if (unit.id === "Studio") onNavigate(e, "/mirror-studio");
+                }}
                 className={`relative group overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 p-8 flex flex-col justify-between hover:border-white/50 transition-colors duration-500 ${
+                  isClickable ? "cursor-pointer" : ""
+                } ${
                   index === 0 ? "md:col-span-6 lg:col-span-8 bg-gradient-to-br from-zinc-900/50 to-black" :
                   index === 1 ? "md:col-span-6 lg:col-span-4" :
                   "md:col-span-6 lg:col-span-4"
@@ -1000,19 +1008,19 @@ function ContactSection({ language }: { language: Language }) {
   );
 }
 
-export function HomePage() {
+export function HomePage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   const [language, setLanguage] = useState<Language>("zh");
   const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
   return (
     <main className="relative h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden">
-      <Logo language={language} onToggleLanguage={toggleLanguage} />
+      <Logo language={language} onToggleLanguage={toggleLanguage} onNavigate={onNavigate} />
       <AmbientSound />
       <HeroSection language={language} />
       <ManifestoSection language={language} />
       <ProblemSection language={language} />
       <SolutionSection language={language} />
-      <EcosystemSection language={language} />
+      <EcosystemSection language={language} onNavigate={onNavigate} />
       <TransformationSection language={language} />
       <PhilosophySection language={language} />
       <ProductPeopleSection language={language} />

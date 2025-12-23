@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type MouseEvent } from 'react';
 import { Logo } from '../components/whitemirrorai/ui/Logo';
 import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
 import { ResearchHero } from '../components/research/ResearchHero';
@@ -10,7 +10,7 @@ import { ResearchFuture } from '../components/research/ResearchFuture';
 import { ResearchProgressBar } from '../components/research/ResearchProgressBar';
 import type { Language } from '../types/whitemirrorai';
 
-export function MirrorResearchPage() {
+export function MirrorResearchPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   const [language, setLanguage] = useState<Language>("zh");
   const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
@@ -22,7 +22,7 @@ export function MirrorResearchPage() {
           We'll need to handle that. For now, let's focus on the page content. 
       */}
       <div className="mix-blend-difference z-50 relative">
-         <Logo language={language} onToggleLanguage={toggleLanguage} />
+         <Logo language={language} onToggleLanguage={toggleLanguage} onNavigate={onNavigate} />
       </div>
       
       <AmbientSound />
