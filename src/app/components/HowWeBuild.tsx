@@ -30,7 +30,7 @@ const steps = [
 
 export function HowWeBuild() {
   return (
-    <section id="how-we-build" className="relative py-32 px-6 bg-black border-t border-white/5 overflow-hidden">
+    <section id="how-we-build" className="relative py-32 px-6 bg-white border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Sticky Header - Left Side */}
@@ -40,15 +40,15 @@ export function HowWeBuild() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
                 AI-Native<br />Pipeline
               </h2>
-              <p className="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed">
+              <p className="text-slate-600 text-lg md:text-xl max-w-md leading-relaxed">
                 核心不是“写代码快”，而是“生成 → 选择 → 微调 → 上线”的全新工作流。
               </p>
               
               <div className="mt-12 hidden lg:block">
-                <div className="w-px h-32 bg-gradient-to-b from-white/20 to-transparent" />
+                <div className="w-px h-32 bg-gradient-to-b from-black/20 to-transparent" />
               </div>
             </motion.div>
           </div>
@@ -56,7 +56,7 @@ export function HowWeBuild() {
           {/* Steps - Right Side */}
           <div className="relative space-y-12">
             {/* Vertical Line with Moving Beam */}
-            <div className="absolute left-8 top-8 bottom-8 w-px bg-white/10 hidden md:block overflow-hidden">
+            <div className="absolute left-8 top-8 bottom-8 w-px bg-black/10 hidden md:block overflow-hidden">
               <motion.div
                 animate={{ top: ["-20%", "120%"] }}
                 transition={{ 
@@ -65,7 +65,7 @@ export function HowWeBuild() {
                   ease: "linear",
                   repeatDelay: 1
                 }}
-                className="absolute left-0 w-full h-40 bg-gradient-to-b from-transparent via-white to-transparent opacity-50"
+                className="absolute left-0 w-full h-40 bg-gradient-to-b from-transparent via-black to-transparent opacity-20"
               />
             </div>
 
@@ -80,18 +80,18 @@ export function HowWeBuild() {
               >
                 {/* Number/Icon */}
                 <div className="relative z-10 shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors duration-500">
-                    <step.icon className="w-6 h-6 text-slate-400 group-hover:text-white transition-colors" />
+                  <div className="w-16 h-16 rounded-2xl bg-white border border-black/10 flex items-center justify-center group-hover:border-black/20 transition-colors duration-500 shadow-sm">
+                    <step.icon className="w-6 h-6 text-slate-500 group-hover:text-black transition-colors" />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="pt-2">
                   <div className="flex items-baseline gap-3 mb-2">
-                    <h3 className="text-2xl font-bold text-white">{step.title}</h3>
-                    <span className="text-sm font-mono text-slate-500 uppercase tracking-wider">{step.subtitle}</span>
+                    <h3 className="text-2xl font-bold text-black">{step.title}</h3>
+                    <span className="text-sm font-mono text-slate-400 uppercase tracking-wider">{step.subtitle}</span>
                   </div>
-                  <p className="text-gray-400 leading-relaxed max-w-md">{step.description}</p>
+                  <p className="text-slate-600 leading-relaxed max-w-md">{step.description}</p>
                 </div>
               </motion.div>
             ))}

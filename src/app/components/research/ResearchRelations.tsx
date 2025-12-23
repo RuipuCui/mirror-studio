@@ -1,6 +1,33 @@
 import { motion } from 'motion/react';
 import { ArrowRight, RefreshCw } from 'lucide-react';
 
+const FlowArrow = () => (
+  <div className="relative flex items-center justify-center py-4 lg:py-0 lg:px-4">
+    {/* Desktop Line */}
+    <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-black/10" />
+    {/* Mobile Line */}
+    <div className="lg:hidden absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px h-full bg-black/10" />
+
+    {/* Moving Dot - Desktop */}
+    <motion.div
+      className="hidden lg:block absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-black rounded-full z-10"
+      animate={{ left: ["0%", "100%"], opacity: [0, 1, 0] }}
+      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+    />
+    
+    {/* Moving Dot - Mobile */}
+    <motion.div
+      className="lg:hidden absolute left-1/2 -translate-x-1/2 w-2 h-2 bg-black rounded-full z-10"
+      animate={{ top: ["0%", "100%"], opacity: [0, 1, 0] }}
+      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+    />
+
+    <div className="relative z-20 bg-white p-2 rounded-full border border-black/5">
+      <ArrowRight className="text-black/40 w-4 h-4 rotate-90 lg:rotate-0" />
+    </div>
+  </div>
+);
+
 export function ResearchRelations() {
   return (
     <section className="py-32 px-6 bg-white border-t border-black/5">
@@ -29,9 +56,9 @@ export function ResearchRelations() {
                 <span className="text-black font-bold">Research</span>
                 <span className="text-black/60 text-sm">定方向</span>
               </div>
-              <div className="flex justify-center">
-                <ArrowRight className="text-black/20 rotate-90 lg:rotate-0" />
-              </div>
+              
+              <FlowArrow />
+
               <div className="flex items-center justify-between p-5 rounded-xl bg-black text-white">
                 <span className="font-bold">Labs</span>
                 <span className="text-white/70 text-sm">选方向 + MVP</span>
@@ -56,9 +83,9 @@ export function ResearchRelations() {
                 <span className="text-black font-bold">Research</span>
                 <span className="text-black/60 text-sm">做不做</span>
               </div>
-              <div className="flex justify-center">
-                <ArrowRight className="text-black/20 rotate-90 lg:rotate-0" />
-              </div>
+              
+              <FlowArrow />
+
               <div className="flex items-center justify-between p-5 rounded-xl bg-black text-white">
                 <span className="font-bold">Studio</span>
                 <span className="text-white/70 text-sm">怎么做最快</span>
@@ -80,13 +107,26 @@ export function ResearchRelations() {
             <h3 className="text-2xl font-bold text-black mb-8">vs LearningOS</h3>
             <div className="relative py-6">
               <div className="absolute inset-0 flex items-center justify-center">
-                <RefreshCw className="w-40 h-40 text-black/[0.03]" />
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  <RefreshCw className="w-40 h-40 text-black/[0.03]" />
+                </motion.div>
               </div>
               <div className="relative z-10 space-y-6 text-center">
-                <div className="text-black font-bold bg-white/80 backdrop-blur inline-block px-4 py-1 rounded-full shadow-sm">Research 提出假设</div>
-                <ArrowRight className="w-4 h-4 mx-auto text-black/20 rotate-90" />
-                <div className="text-black font-bold bg-white/80 backdrop-blur inline-block px-4 py-1 rounded-full shadow-sm">LearningOS 验证</div>
-                <ArrowRight className="w-4 h-4 mx-auto text-black/20 rotate-90" />
+                <div className="text-black font-bold bg-white/80 backdrop-blur inline-block px-4 py-1 rounded-full shadow-sm border border-black/5">Research 提出假设</div>
+                <div className="flex justify-center">
+                  <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                    <ArrowRight className="w-4 h-4 text-black/40 rotate-90" />
+                  </motion.div>
+                </div>
+                <div className="text-black font-bold bg-white/80 backdrop-blur inline-block px-4 py-1 rounded-full shadow-sm border border-black/5">LearningOS 验证</div>
+                <div className="flex justify-center">
+                  <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}>
+                    <ArrowRight className="w-4 h-4 text-black/40 rotate-90" />
+                  </motion.div>
+                </div>
                 <div className="text-black/50 text-sm">数据反哺 Research</div>
               </div>
             </div>

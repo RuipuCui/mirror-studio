@@ -48,6 +48,13 @@ export function ResearchOutputs() {
             viewport={{ once: true }}
             className="p-12 rounded-[2rem] bg-black text-white relative overflow-hidden"
           >
+            {/* Scanning Line Animation */}
+            <motion.div
+              className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              animate={{ top: ["0%", "100%"] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            />
+
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             
             <div className="relative z-10">
@@ -57,10 +64,17 @@ export function ResearchOutputs() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {donts.map((item, index) => (
-                  <div key={index} className="flex items-start gap-4 text-white/80">
+                  <motion.div 
+                    key={index} 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + (index * 0.1) }}
+                    className="flex items-start gap-4 text-white/80"
+                  >
                     <span className="text-white font-bold text-xl leading-none mt-1">✕</span>
                     <span className="font-light text-lg">{item}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <div className="mt-12 pt-12 border-t border-white/10 text-center">
@@ -93,12 +107,17 @@ export function ResearchOutputs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
                 className="p-10 rounded-3xl bg-white border border-black/5 hover:border-black/20 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 group"
               >
                 <div className="flex items-start gap-6">
-                  <div className="p-4 rounded-2xl bg-black/5 text-black group-hover:bg-black group-hover:text-white transition-colors duration-500">
+                  <motion.div 
+                    className="p-4 rounded-2xl bg-black/5 text-black group-hover:bg-black group-hover:text-white transition-colors duration-500"
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
+                  >
                     <item.icon className="w-8 h-8" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="text-2xl font-bold text-black mb-3">{item.title}</h3>
                     <p className="text-black/60 mb-6 font-light leading-relaxed">{item.desc}</p>

@@ -68,15 +68,20 @@ export function ResearchFocus() {
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
               className="group relative p-8 md:p-12 rounded-[2rem] bg-white border border-black/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] transition-all duration-700"
             >
               <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:items-start">
                 <div className="shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-black text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <area.icon className="w-8 h-8" />
-                  </div>
+                                <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center mb-6 relative">
+                <motion.div
+                  className="absolute -inset-2 border border-black/10 rounded-3xl"
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <area.icon className="w-8 h-8 relative z-10" />
+              </div>
                 </div>
 
                 <div className="flex-1">
@@ -89,10 +94,17 @@ export function ResearchFocus() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                     {area.points.map((point, i) => (
-                      <div key={i} className="flex items-center gap-4 text-black/60 group-hover:text-black transition-colors">
+                      <motion.div 
+                        key={i} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + (i * 0.1) }}
+                        className="flex items-center gap-4 text-black/60 group-hover:text-black transition-colors"
+                      >
                         <div className="w-1.5 h-1.5 rounded-full bg-black/20 group-hover:bg-black transition-colors" />
                         <span className="font-light">{point}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 

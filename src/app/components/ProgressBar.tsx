@@ -43,7 +43,7 @@ export function ProgressBar() {
     <div className="fixed top-0 right-8 bottom-0 z-50 hidden md:flex flex-col justify-center pointer-events-auto">
       <div className="relative h-[60vh] w-px">
         {/* The Line */}
-        <div className="absolute inset-0 bg-slate-800/50 w-px" />
+        <div className="absolute inset-0 bg-slate-200 w-px" />
 
         {/* Dots */}
         {sections.map((section, index) => {
@@ -61,14 +61,14 @@ export function ProgressBar() {
               <motion.div
                 animate={{
                   scale: isActive ? 1.5 : 1,
-                  backgroundColor: isActive ? '#ffffff' : '#475569',
+                  backgroundColor: isActive ? '#000000' : '#cbd5e1',
                 }}
                 className="w-2 h-2 rounded-full transition-colors duration-300"
               />
               
               {/* Label */}
               <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                <span className="text-xs text-slate-400 font-medium">{section.label}</span>
+                <span className="text-xs text-slate-500 font-medium">{section.label}</span>
               </div>
             </div>
           );

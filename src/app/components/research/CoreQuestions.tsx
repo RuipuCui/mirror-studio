@@ -36,25 +36,42 @@ export function CoreQuestions() {
           <p className="text-black/50 text-lg font-light">在 AI 时代，系统性地回答三个问题</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5 border border-black/5 overflow-hidden rounded-3xl">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5 border border-black/5 overflow-hidden rounded-3xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+        >
           {questions.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+              }}
               className="p-12 bg-white hover:bg-black/5 transition-colors duration-500 group flex flex-col items-center text-center"
             >
-              <div className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 bg-white shadow-sm">
+              <motion.div 
+                className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center mb-8 bg-white shadow-sm"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <item.icon className="w-6 h-6 text-black" />
-              </div>
+              </motion.div>
               <h3 className="text-2xl font-bold text-black mb-3">{item.question}</h3>
               <p className="text-xs font-mono text-black/40 uppercase tracking-widest mb-6">{item.sub}</p>
               <p className="text-black/60 leading-relaxed font-light">{item.desc}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

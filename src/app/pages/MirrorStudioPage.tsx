@@ -19,10 +19,10 @@ export function MirrorStudioPage() {
   const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
   return (
-    <main className={`relative h-screen w-full overflow-y-scroll scroll-smooth bg-black [&::-webkit-scrollbar]:hidden ${showIntro ? 'overflow-hidden' : ''}`}>
+    <main className={`relative h-screen w-full overflow-y-scroll scroll-smooth bg-white [&::-webkit-scrollbar]:hidden ${showIntro ? 'overflow-hidden' : ''}`}>
       <Logo language={language} onToggleLanguage={toggleLanguage} />
       <AmbientSound />
-      <MouseSpotlight />
+      {/* <MouseSpotlight /> - Removed for light theme */}
       {!showIntro && <ProgressBar />}
       <Hero showIntro={showIntro} setShowIntro={setShowIntro} />
       <Team />
@@ -33,7 +33,7 @@ export function MirrorStudioPage() {
       <Capabilities />
       <Differentiation />
 
-      <footer className="py-12 text-center text-slate-600 text-sm border-t border-white/5">
+      <footer className="py-12 text-center text-slate-400 text-sm border-t border-black/5">
         <p>© 2024 MirrorStudio. All rights reserved.</p>
       </footer>
     </main>

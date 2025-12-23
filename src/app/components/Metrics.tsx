@@ -56,30 +56,30 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
 
   return (
     <span ref={ref} className="tabular-nums tracking-tight">
-      {displayValue}<span className="text-lg md:text-2xl ml-1 text-slate-500 font-normal">{suffix}</span>
+      {displayValue}<span className="text-lg md:text-2xl ml-1 text-slate-400 font-normal">{suffix}</span>
     </span>
   );
 }
 
 export function Metrics() {
   return (
-    <section id="metrics" className="relative py-20 px-6 bg-black border-y border-white/5 overflow-hidden">
+    <section id="metrics" className="relative py-20 px-6 bg-white border-y border-black/5 overflow-hidden">
       {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Live Indicator */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-mono uppercase tracking-wider">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             System Metrics
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10 rounded-2xl overflow-hidden">
           {metrics.map((metric, index) => (
             <motion.div
               key={index}
@@ -87,17 +87,17 @@ export function Metrics() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative group bg-black p-8 md:p-10 hover:bg-slate-900/40 transition-colors duration-500"
+              className="relative group bg-white p-8 md:p-10 hover:bg-slate-50 transition-colors duration-500"
             >
               {/* Hover Glow */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative flex flex-col h-full justify-between">
                 <div className="flex items-start justify-between mb-8">
-                  <div className="p-2 rounded-lg bg-white/5 text-slate-400 group-hover:text-white transition-colors">
+                  <div className="p-2 rounded-lg bg-slate-100 text-slate-500 group-hover:text-black transition-colors">
                     <metric.icon className="w-5 h-5" />
                   </div>
-                  <div className="flex items-center gap-1 text-xs font-mono text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">
+                  <div className="flex items-center gap-1 text-xs font-mono text-emerald-600 bg-emerald-500/10 px-2 py-1 rounded">
                     <motion.div
                       animate={{ opacity: [0.5, 1, 0.5] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -109,11 +109,11 @@ export function Metrics() {
                 </div>
 
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-black mb-2">
                     <Counter value={metric.value} suffix={metric.suffix} />
                   </div>
-                  <div className="text-sm font-medium text-slate-200 uppercase tracking-wider mb-1">{metric.label}</div>
-                  <div className="text-xs text-slate-500 font-mono">{metric.sub}</div>
+                  <div className="text-sm font-medium text-slate-700 uppercase tracking-wider mb-1">{metric.label}</div>
+                  <div className="text-xs text-slate-400 font-mono">{metric.sub}</div>
                 </div>
               </div>
             </motion.div>

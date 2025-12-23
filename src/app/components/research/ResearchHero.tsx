@@ -12,6 +12,24 @@ export function ResearchHero() {
         <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg_at_50%_50%,_#ffffff_0deg,_#e0e0e0_180deg,_#ffffff_360deg)] animate-[spin_20s_linear_infinite]" />
       </div>
       
+      {/* Orbiting Rings */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-black/5 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/10 rounded-full blur-[1px]" />
+        </motion.div>
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-black/5 rounded-full"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        >
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/10 rounded-full blur-[1px]" />
+        </motion.div>
+      </div>
+      
       <div className="absolute inset-0 bg-white/80 backdrop-blur-3xl" />
 
       <motion.div 
@@ -20,10 +38,14 @@ export function ResearchHero() {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 text-center max-w-5xl mx-auto"
       >
-        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-black/5 bg-black/[0.02] backdrop-blur-sm text-xs md:text-sm text-black/60 mb-12 tracking-widest uppercase">
+        <motion.div 
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-black/5 bg-black/[0.02] backdrop-blur-sm text-xs md:text-sm text-black/60 mb-12 tracking-widest uppercase"
+        >
           <span className="w-1.5 h-1.5 rounded-full bg-black" />
           Cognitive Engine
-        </div>
+        </motion.div>
 
         <h1 className="text-7xl md:text-9xl font-bold text-black tracking-tighter mb-8 leading-[0.9]">
           Mirror<br/>

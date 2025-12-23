@@ -39,7 +39,7 @@ const modules = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative py-32 px-6 bg-black overflow-hidden border-t border-white/5">
+    <section id="capabilities" className="relative py-32 px-6 bg-white overflow-hidden border-t border-black/5">
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header - Left Aligned */}
         <div className="mb-20">
@@ -47,7 +47,7 @@ export function Capabilities() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-400 mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-sm text-slate-600 mb-6"
           >
             <Box className="w-4 h-4" />
             <span>Tech Stack & Modules</span>
@@ -58,7 +58,7 @@ export function Capabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-bold mb-6 text-black"
           >
             全栈技术能力
           </motion.h2>
@@ -67,7 +67,7 @@ export function Capabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-400 max-w-2xl"
+            className="text-xl text-slate-600 max-w-2xl"
           >
             从底层架构到顶层交互，我们提供完整的技术积木，
             <br className="hidden md:block" />
@@ -84,24 +84,24 @@ export function Capabilities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="group relative overflow-hidden rounded-3xl bg-slate-900/20 border border-white/10 hover:border-white/20 transition-colors duration-500"
+              className="group relative overflow-hidden rounded-3xl bg-slate-50 border border-black/10 hover:border-black/20 transition-colors duration-500"
             >
               <div className="relative z-10 p-8 md:p-10">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <div className="text-sm font-mono text-slate-500 uppercase tracking-wider mb-2">{stack.category}</div>
-                    <h3 className="text-3xl font-bold text-white">{stack.title}</h3>
+                    <div className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-2">{stack.category}</div>
+                    <h3 className="text-3xl font-bold text-black">{stack.title}</h3>
                   </div>
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                    {index === 0 ? <Layers className="w-6 h-6 text-white" /> : <Brain className="w-6 h-6 text-white" />}
+                  <div className="p-3 rounded-xl bg-white border border-black/10 group-hover:bg-slate-100 transition-colors">
+                    {index === 0 ? <Layers className="w-6 h-6 text-black" /> : <Brain className="w-6 h-6 text-black" />}
                   </div>
                 </div>
                 
-                <p className="text-gray-400 mb-10">{stack.description}</p>
+                <p className="text-slate-600 mb-10">{stack.description}</p>
 
                 <div className="grid grid-cols-2 gap-4">
                   {stack.items.map((item, i) => (
-                    <div key={i} className="group/item flex flex-col p-4 rounded-xl bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <div key={i} className="group/item flex flex-col p-4 rounded-xl bg-white border border-black/5 hover:border-black/20 transition-all duration-300 shadow-sm">
                       <motion.div
                         animate={{ y: [0, -2, 0] }}
                         transition={{ 
@@ -111,10 +111,10 @@ export function Capabilities() {
                           delay: i * 0.2 
                         }}
                       >
-                        <item.icon className="w-6 h-6 text-slate-400 group-hover/item:text-white mb-3 transition-colors" />
+                        <item.icon className="w-6 h-6 text-slate-500 group-hover/item:text-black mb-3 transition-colors" />
                       </motion.div>
-                      <div className="font-medium text-slate-200">{item.label}</div>
-                      <div className="text-xs text-slate-500 font-mono mt-1">{item.sub}</div>
+                      <div className="font-medium text-slate-700">{item.label}</div>
+                      <div className="text-xs text-slate-400 font-mono mt-1">{item.sub}</div>
                     </div>
                   ))}
                 </div>
@@ -132,7 +132,7 @@ export function Capabilities() {
           className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {modules.map((mod, i) => (
-            <div key={i} className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300">
+            <div key={i} className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-slate-50 border border-black/5 text-slate-500 hover:text-black hover:bg-slate-100 transition-all duration-300">
               <mod.icon className="w-5 h-5" />
               <span className="font-medium">{mod.label}</span>
             </div>
