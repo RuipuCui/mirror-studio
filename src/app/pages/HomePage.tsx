@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowRight, Users, User, Cpu, TrendingUp, Zap, X, Check } from "lucide-react";
 import { Slide, SlideHeading, SlideSubheading } from "@/app/components/whitemirrorai/Slide";
 import { AmbientSound } from "@/app/components/whitemirrorai/ui/AmbientSound";
+import { HomeProgressBar } from "@/app/components/home/HomeProgressBar";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/app/types/whitemirrorai";
 
@@ -235,7 +236,7 @@ function HeroSection({ language }: { language: Language }) {
   const t = copy[language];
 
   return (
-    <Slide className="bg-black text-white relative" showBackground>
+    <Slide id="hero" className="bg-black text-white relative" showBackground>
       <div ref={containerRef} className="relative z-10 flex flex-col justify-center h-full items-center text-center">
         <motion.div style={{ opacity, scale, y }} className="relative z-20">
           <motion.div
@@ -291,7 +292,7 @@ function HeroSection({ language }: { language: Language }) {
 function ManifestoSection({ language }: { language: Language }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="manifesto" className="bg-black text-white" showBackground>
       <div className="flex flex-col items-start justify-center h-full max-w-6xl relative z-10">
         <motion.div
           initial={{ width: 0 }}
@@ -321,7 +322,7 @@ function ProblemSection({ language }: { language: Language }) {
   const t = copy[language];
   const breakLines = (text: string) => text.split(/[，,;]\s*/).filter(Boolean);
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="problem" className="bg-black text-white" showBackground>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full max-w-7xl mx-auto">
         <div className="order-2 lg:order-1">
           <SlideHeading>{t.problem.heading}</SlideHeading>
@@ -414,7 +415,7 @@ function ProblemSection({ language }: { language: Language }) {
 function SolutionSection({ language }: { language: Language }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="solution" className="bg-black text-white" showBackground>
       <div className="mb-16 relative z-10">
         <SlideHeading>{t.solution.heading}</SlideHeading>
         <SlideSubheading className="text-zinc-400">{t.solution.subheading}</SlideSubheading>
@@ -478,7 +479,7 @@ function SolutionSection({ language }: { language: Language }) {
 function EcosystemSection({ language, onNavigate }: { language: Language; onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="ecosystem" className="bg-black text-white" showBackground>
       <div className="relative w-full h-full max-w-7xl mx-auto flex flex-col justify-center z-10">
         <div className="mb-12 md:mb-16 relative pl-6 border-l-2 border-white/20">
           <SlideHeading className="text-6xl md:text-8xl">{t.ecosystem.heading}</SlideHeading>
@@ -574,7 +575,7 @@ function EcosystemSection({ language, onNavigate }: { language: Language; onNavi
 function TransformationSection({ language }: { language: Language }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="transformation" className="bg-black text-white" showBackground>
       <div className="w-full">
         <SlideHeading className="text-center mb-16 text-4xl md:text-6xl">{t.transformation.heading}</SlideHeading>
 
@@ -650,7 +651,7 @@ function TransformationSection({ language }: { language: Language }) {
 function PhilosophySection({ language }: { language: Language }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="philosophy" className="bg-black text-white" showBackground>
       <div className="max-w-5xl text-center relative z-10">
         <SlideHeading className="text-4xl md:text-6xl lg:text-7xl leading-tight">
           {t.philosophy.headingTop}
@@ -671,7 +672,7 @@ function ProductPeopleSection({ language }: { language: Language }) {
   const transformCopy = copy[language].transformation;
 
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="product-people" className="bg-black text-white" showBackground>
       <div className="w-full max-w-7xl relative z-10">
         <SlideHeading className="text-center mb-24">{t.productPeople.heading}</SlideHeading>
 
@@ -808,7 +809,7 @@ function EfficiencySection({ language }: { language: Language }) {
   const t = copy[language];
 
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="efficiency" className="bg-black text-white" showBackground>
       <div className="w-full h-full flex flex-col justify-center max-w-6xl mx-auto">
         <div className="mb-12 md:mb-20">
           <SlideHeading>{t.efficiency.heading}</SlideHeading>
@@ -936,7 +937,7 @@ function EfficiencySection({ language }: { language: Language }) {
 function BusinessModelSection({ language }: { language: Language }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="business-model" className="bg-black text-white" showBackground>
       <div className="w-full max-w-7xl relative z-10">
         <SlideHeading className="mb-20">{t.business.heading}</SlideHeading>
 
@@ -969,7 +970,7 @@ function BusinessModelSection({ language }: { language: Language }) {
 function ContactSection({ language }: { language: Language }) {
   const t = copy[language];
   return (
-    <Slide className="bg-black text-white" showBackground>
+    <Slide id="contact" className="bg-black text-white" showBackground>
       <div className="w-full max-w-7xl relative z-10">
         <SlideHeading className="mb-8">{t.contact.heading}</SlideHeading>
         <SlideSubheading className="mb-16 text-zinc-500">{t.contact.subheading}</SlideSubheading>
@@ -1023,11 +1024,7 @@ export function HomePage({ onNavigate, language }: { onNavigate: (event: MouseEv
       <BusinessModelSection language={language} />
       <ContactSection language={language} />
 
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50 pointer-events-none mix-blend-difference">
-        {Array.from({ length: 11 }).map((_, i) => (
-          <div key={i} className="w-1 h-1 bg-white rounded-full opacity-50" />
-        ))}
-      </div>
+      <HomeProgressBar />
     </main>
   );
 }
