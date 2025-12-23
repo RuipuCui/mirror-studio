@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 const sections = [
   { id: 'hero', label: 'Home' },
-  { id: 'core-questions', label: 'Core' },
-  { id: 'focus', label: 'Focus' },
-  { id: 'outputs', label: 'Outputs' },
+  { id: 'mission', label: 'Mission' },
+  { id: 'experiments', label: 'Experiments' },
+  { id: 'process', label: 'Process' },
   { id: 'relations', label: 'Relations' },
-  { id: 'future', label: 'Future' },
+  { id: 'philosophy', label: 'Philosophy' },
 ];
 
-export function ResearchProgressBar() {
+export function LabProgressBar() {
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {

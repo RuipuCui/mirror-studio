@@ -38,7 +38,7 @@ const MovingIcon = ({ icon: Icon, delay }: { icon: any, delay: number }) => (
 
 export function Team() {
   return (
-    <section id="team" className="relative flex flex-col justify-center py-24 px-6 bg-white border-t border-black/5">
+    <section id="team" className="relative flex flex-col justify-center py-24 px-6 bg-transparent border-t border-black/5">
       <div className="max-w-[1400px] mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

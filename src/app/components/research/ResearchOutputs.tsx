@@ -37,55 +37,35 @@ const outputs = [
 
 export function ResearchOutputs() {
   return (
-    <section className="py-32 px-6 bg-white border-t border-black/5">
+    <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
         
-        {/* What We Don't Do */}
-        <div className="mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-12 rounded-[2rem] bg-black text-white relative overflow-hidden"
-          >
-            {/* Scanning Line Animation */}
-            <motion.div
-              className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              animate={{ top: ["0%", "100%"] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            />
-
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-12 flex items-center gap-4">
-                <span className="w-2 h-8 bg-white" />
-                明确「不做什么」
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {donts.map((item, index) => (
-                  <motion.div 
-                    key={index} 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 + (index * 0.1) }}
-                    className="flex items-start gap-4 text-white/80"
-                  >
-                    <span className="text-white font-bold text-xl leading-none mt-1">✕</span>
-                    <span className="font-light text-lg">{item}</span>
-                  </motion.div>
-                ))}
+        {/* What We Don't Do - Compact Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-20 p-8 rounded-2xl bg-black text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div className="relative z-10 shrink-0">
+            <h3 className="text-2xl font-bold flex items-center gap-3">
+              <span className="w-1.5 h-6 bg-white" />
+              明确「不做什么」
+            </h3>
+          </div>
+          
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 w-full md:w-auto">
+            {donts.map((item, index) => (
+              <div key={index} className="flex items-center gap-3 text-white/80 text-sm">
+                <span className="text-white/40 font-bold">✕</span>
+                <span>{item}</span>
               </div>
-              <div className="mt-12 pt-12 border-t border-white/10 text-center">
-                <p className="text-white/60 text-lg">
-                  它的存在标准只有一个：<br className="md:hidden"/>
-                  <span className="text-white font-medium border-b border-white/30 pb-1">研究结论，是否能让后续团队少走弯路？</span>
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            ))}
+          </div>
+          
+          {/* Background Effect */}
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-[shimmer_3s_infinite]" />
+        </motion.div>
 
         {/* Core Outputs */}
         <div>
@@ -93,44 +73,43 @@ export function ResearchOutputs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">核心产出</h2>
-            <p className="text-black/50 text-xl font-light">不是 PPT，而是 “可被使用的判断”</p>
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-2 tracking-tight">核心产出</h2>
+              <p className="text-black/50 text-lg font-light">不是 PPT，而是 “可被使用的判断”</p>
+            </div>
+            <div className="h-px flex-1 bg-black/5 mx-8 hidden md:block translate-y-[-1rem]" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {outputs.map((item, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {outputs.map((output, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="p-10 rounded-3xl bg-white border border-black/5 hover:border-black/20 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 group"
+                className="group p-8 rounded-2xl bg-white border border-black/5 hover:border-black/20 transition-all duration-300 hover:shadow-lg flex gap-6"
               >
-                <div className="flex items-start gap-6">
-                  <motion.div 
-                    className="p-4 rounded-2xl bg-black/5 text-black group-hover:bg-black group-hover:text-white transition-colors duration-500"
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
-                  >
-                    <item.icon className="w-8 h-8" />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-black mb-3">{item.title}</h3>
-                    <p className="text-black/60 mb-6 font-light leading-relaxed">{item.desc}</p>
-                    <div className="inline-block px-3 py-1 rounded-md bg-black/5 text-xs font-mono text-black/50 uppercase tracking-wider">
-                      Target: {item.target}
-                    </div>
+                <div className="shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors duration-300">
+                    <output.icon className="w-6 h-6" />
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">{output.title}</h3>
+                  <p className="text-black/60 text-sm mb-4 leading-relaxed">{output.desc}</p>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-black/5 text-xs font-medium text-black/60">
+                    <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
+                    Target: {output.target}
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

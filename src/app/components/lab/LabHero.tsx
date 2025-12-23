@@ -3,42 +3,28 @@ import { ArrowDown } from 'lucide-react';
 
 const logo = new URL('../../../assets/logo.png', import.meta.url).href;
 
-export function ResearchHero() {
+export function LabHero() {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Background effects (Matched to Studio Hero) */}
+      {/* Background effects */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      {/* Floating orbs */}
+      {/* Floating orbs - Green/Blue tint for "Experiment/Lab" feel? Or keep neutral? Keeping neutral for consistency. */}
       <motion.div
-        className="absolute top-20 right-20 w-96 h-96 bg-black/5 rounded-full blur-[100px]"
+        className="absolute top-20 left-1/2 w-96 h-96 bg-black/5 rounded-full blur-[100px]"
         animate={{
           y: [0, 50, 0],
           scale: [1, 1.2, 1],
           opacity: [0.1, 0.2, 0.1],
         }}
         transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 left-20 w-72 h-72 bg-black/5 rounded-full blur-[80px]"
-        animate={{
-          y: [0, -30, 0],
-          scale: [1, 1.1, 1],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{
           duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
+          ease: "easeInOut"
         }}
       />
 
@@ -51,39 +37,44 @@ export function ResearchHero() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-xs md:text-sm text-slate-600 mb-6">
             <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-            Cognitive Engine
+            Validation Engine
           </div>
 
           <h1 className="mb-8">
             <span className="block text-5xl md:text-7xl font-bold text-black tracking-tight leading-tight">
-              Mirror Research
+              Mirror Lab
             </span>
-            <span className="block text-2xl md:text-3xl font-light text-slate-500 mt-4">
-              WhiteMirror 的认知引擎
-            </span>
+            <motion.span 
+              className="block text-2xl md:text-3xl font-light text-slate-500 mt-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+            >
+              想法—验证—孵化引擎
+            </motion.span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
-            "Where we turn vague questions into validated directions."
+            Mirror Lab 不负责成功，它负责“尽快知道什么不值得继续做”。
             <br />
-            <span className="text-sm mt-2 block opacity-60">它解决的不是“做什么”，而是“值不值得做”</span>
+            <span className="text-sm mt-2 block opacity-60">The "Idea-Validation-Incubation" Engine.</span>
           </p>
 
-          {/* Spacer to match Studio Hero alignment (compensating for missing tags) */}
+          {/* Spacer for alignment */}
           <div className="h-[32px] mb-10" aria-hidden="true" />
 
           <div className="flex flex-col sm:flex-row gap-4">
              <button 
-              onClick={() => scrollTo('core-questions')}
+              onClick={() => scrollTo('mission')}
               className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
             >
-              核心命题
+              了解机制
             </button>
             <button 
-              onClick={() => scrollTo('outputs')}
+              onClick={() => scrollTo('process')}
               className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
             >
-              研究成果
+              孵化流程
             </button>
           </div>
         </motion.div>
@@ -101,8 +92,7 @@ export function ResearchHero() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div className="absolute inset-0 bg-white/10 blur-3xl rounded-full scale-150" />
-                {/* Using brightness-0 to make it black on white background */}
-                <img src={logo} alt="Mirror Research" className="relative h-64 md:h-80 drop-shadow-[0_0_35px_rgba(0,0,0,0.1)] brightness-0 object-contain" />
+                <img src={logo} alt="Mirror Lab" className="relative h-64 md:h-80 drop-shadow-[0_0_35px_rgba(0,0,0,0.1)] brightness-0 object-contain" />
               </motion.div>
             </motion.div>
         </div>

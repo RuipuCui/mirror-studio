@@ -30,13 +30,13 @@ const FlowArrow = () => (
 
 export function ResearchRelations() {
   return (
-    <section className="py-32 px-6 bg-white border-t border-black/5">
+    <section className="py-20 px-6 relative border-t border-black/5">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">协同关系</h2>
           <p className="text-black/50 text-xl font-light">Research 如何驱动整个生态</p>

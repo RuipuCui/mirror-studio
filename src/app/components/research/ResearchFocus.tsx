@@ -42,16 +42,13 @@ const areas = [
 
 export function ResearchFocus() {
   return (
-    <section className="py-32 px-6 bg-white relative overflow-hidden">
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:40px_40px]" />
-      
+    <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/10 pb-12"
+          className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/10 pb-8"
         >
           <div>
             <h2 className="text-4xl md:text-6xl font-bold text-black mb-4 tracking-tighter">研究范畴</h2>
@@ -62,58 +59,40 @@ export function ResearchFocus() {
           </div>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {areas.map((area, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group relative p-8 md:p-12 rounded-[2rem] bg-white border border-black/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] transition-all duration-700"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative p-8 rounded-3xl bg-white border border-black/5 hover:border-black/20 transition-all duration-500 hover:shadow-2xl flex flex-col"
             >
-              <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:items-start">
-                <div className="shrink-0">
-                                <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center mb-6 relative">
-                <motion.div
-                  className="absolute -inset-2 border border-black/10 rounded-3xl"
-                  animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <area.icon className="w-8 h-8 relative z-10" />
+              <div className="mb-8 flex items-center justify-between">
+                <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center relative overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <area.icon className="w-7 h-7 relative z-10" />
+                </div>
+                <span className="text-xs font-mono text-black/30 uppercase tracking-widest">{area.subtitle}</span>
               </div>
-                </div>
 
-                <div className="flex-1">
-                  <div className="flex flex-col md:flex-row md:items-baseline gap-4 mb-6">
-                    <h3 className="text-3xl font-bold text-black tracking-tight">{area.title}</h3>
-                    <span className="text-sm font-mono text-black/40 uppercase tracking-widest border-l border-black/10 pl-4">{area.subtitle}</span>
-                  </div>
-                  
-                  <p className="text-black/70 text-xl mb-10 font-light leading-relaxed max-w-3xl">{area.desc}</p>
+              <h3 className="text-2xl font-bold text-black tracking-tight mb-4 group-hover:text-black/80 transition-colors">{area.title}</h3>
+              
+              <p className="text-black/60 text-base mb-8 font-light leading-relaxed flex-grow">{area.desc}</p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                    {area.points.map((point, i) => (
-                      <motion.div 
-                        key={i} 
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.5 + (i * 0.1) }}
-                        className="flex items-center gap-4 text-black/60 group-hover:text-black transition-colors"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-black/20 group-hover:bg-black transition-colors" />
-                        <span className="font-light">{point}</span>
-                      </motion.div>
-                    ))}
+              <div className="space-y-3 mb-8">
+                {area.points.map((point, i) => (
+                  <div key={i} className="flex items-start gap-3 text-sm text-black/70">
+                    <span className="w-1.5 h-1.5 rounded-full bg-black/20 mt-1.5 shrink-0 group-hover:bg-black transition-colors" />
+                    <span>{point}</span>
                   </div>
+                ))}
+              </div>
 
-                  <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium shadow-lg shadow-black/20">
-                    <span className="opacity-50">OUTPUT</span>
-                    <span className="w-px h-3 bg-white/20 mx-1" />
-                    <span>{area.output}</span>
-                  </div>
-                </div>
+              <div className="pt-6 border-t border-black/5 mt-auto">
+                <p className="text-xs font-bold text-black/40 uppercase tracking-wider mb-2">Output</p>
+                <p className="text-sm font-medium text-black">{area.output}</p>
               </div>
             </motion.div>
           ))}

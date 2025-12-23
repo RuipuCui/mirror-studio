@@ -1,4 +1,3 @@
-import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 const sections = [
@@ -53,23 +52,30 @@ export function ProgressBar() {
           return (
             <div
               key={section.id}
-              className="absolute left-1/2 -translate-x-1/2 group cursor-pointer"
+              className="absolute left-1/2 -translate-x-1/2 flex items-center group"
               style={{ top }}
-              onClick={() => scrollTo(section.id)}
             >
-              {/* Dot */}
-              <motion.div
-                animate={{
-                  scale: isActive ? 1.5 : 1,
-                  backgroundColor: isActive ? '#000000' : '#cbd5e1',
-                }}
-                className="w-2 h-2 rounded-full transition-colors duration-300"
-              />
-              
               {/* Label */}
-              <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                <span className="text-xs text-slate-500 font-medium">{section.label}</span>
+              <div 
+                className={`absolute right-6 px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 whitespace-nowrap
+                  ${isActive 
+                    ? 'opacity-100 translate-x-0 bg-black text-white' 
+                    : 'opacity-0 translate-x-2 text-slate-400 group-hover:opacity-100 group-hover:translate-x-0'
+                  }`}
+              >
+                {section.label}
               </div>
+
+              {/* Dot */}
+              <button
+                onClick={() => scrollTo(section.id)}
+                className={`relative w-3 h-3 rounded-full transition-all duration-500 border-2 
+                  ${isActive 
+                    ? 'bg-black border-black scale-125' 
+                    : 'bg-white border-slate-300 hover:border-black hover:scale-110'
+                  }`}
+                aria-label={`Scroll to ${section.label}`}
+              />
             </div>
           );
         })}

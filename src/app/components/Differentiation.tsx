@@ -34,7 +34,7 @@ const comparison = [
 
 export function Differentiation() {
   return (
-    <section id="differentiation" className="relative py-32 px-6 bg-white border-t border-black/5 overflow-hidden">
+    <section id="differentiation" className="relative py-32 px-6 bg-transparent border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           {/* Header - Left Side */}

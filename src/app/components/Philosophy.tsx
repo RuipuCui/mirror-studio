@@ -3,7 +3,7 @@ import { Users, Network, Sparkles, Zap, Layers } from 'lucide-react';
 
 export function Philosophy() {
   return (
-    <section id="philosophy" className="relative flex flex-col justify-center py-24 px-6 bg-white border-t border-black/5 overflow-hidden">
+    <section id="philosophy" className="relative flex flex-col justify-center py-24 px-6 bg-transparent border-t border-black/5 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-64 w-[800px] h-[800px] bg-slate-100 rounded-full blur-[120px]" />

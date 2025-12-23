@@ -21,11 +21,9 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-white">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-white">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:24px_24px]" />
-      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:64px_64px]" />
 
       {/* Intro Overlay Background */}
       <AnimatePresence>

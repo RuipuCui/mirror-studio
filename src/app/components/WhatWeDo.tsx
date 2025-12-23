@@ -45,7 +45,7 @@ const capabilities = [
 
 export function WhatWeDo() {
   return (
-    <section id="what-we-do" className="relative flex flex-col justify-center py-24 px-6 bg-white border-t border-black/5">
+    <section id="what-we-do" className="relative flex flex-col justify-center py-24 px-6 bg-transparent border-t border-black/5">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         {/* Left Side - Sticky Header */}
         <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">

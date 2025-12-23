@@ -3,7 +3,7 @@ import { TrendingUp, Target, AlertTriangle, Zap } from 'lucide-react';
 
 export function ResearchFuture() {
   return (
-    <section className="py-32 px-6 bg-white">
+    <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           

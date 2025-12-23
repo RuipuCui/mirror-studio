@@ -24,20 +24,20 @@ const questions = [
 
 export function CoreQuestions() {
   return (
-    <section className="py-32 px-6 bg-white">
+    <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">核心定位</h2>
           <p className="text-black/50 text-lg font-light">在 AI 时代，系统性地回答三个问题</p>
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5 border border-black/5 overflow-hidden rounded-3xl"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -57,16 +57,19 @@ export function CoreQuestions() {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
-              className="p-12 bg-white hover:bg-black/5 transition-colors duration-500 group flex flex-col items-center text-center"
+              className="group relative p-8 rounded-2xl bg-white border border-black/5 hover:border-black/20 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
             >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
               <motion.div 
-                className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center mb-8 bg-white shadow-sm"
+                className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center mb-8 bg-white shadow-sm group-hover:bg-black group-hover:text-white transition-colors duration-500"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <item.icon className="w-6 h-6 text-black" />
+                <item.icon className="w-6 h-6" />
               </motion.div>
-              <h3 className="text-2xl font-bold text-black mb-3">{item.question}</h3>
+              
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-black/80 transition-colors">{item.question}</h3>
               <p className="text-xs font-mono text-black/40 uppercase tracking-widest mb-6">{item.sub}</p>
               <p className="text-black/60 leading-relaxed font-light">{item.desc}</p>
             </motion.div>

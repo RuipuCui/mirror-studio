@@ -63,9 +63,8 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
 
 export function Metrics() {
   return (
-    <section id="metrics" className="relative py-20 px-6 bg-white border-y border-black/5 overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <section id="metrics" className="relative py-20 px-6 bg-transparent border-y border-black/5 overflow-hidden">
+      {/* Background Grid Removed */}
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Live Indicator */}

@@ -13,10 +13,12 @@ type MainLayoutProps = {
 export function MainLayout({ children, currentPath, onNavigate, language, onToggleLanguage }: MainLayoutProps) {
   const isMirrorStudio = currentPath === '/mirror-studio' || currentPath.startsWith('/mirror-studio/');
   const isMirrorResearch = currentPath === '/mirror-research' || currentPath.startsWith('/mirror-research/');
+  const isMirrorLab = currentPath === '/mirror-lab' || currentPath.startsWith('/mirror-lab/');
 
-  let activeTab: 'home' | 'research' | 'studio' = 'home';
+  let activeTab: 'home' | 'research' | 'studio' | 'lab' = 'home';
   if (isMirrorResearch) activeTab = 'research';
   if (isMirrorStudio) activeTab = 'studio';
+  if (isMirrorLab) activeTab = 'lab';
 
   return (
     <div className="min-h-screen">

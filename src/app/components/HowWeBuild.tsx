@@ -30,7 +30,7 @@ const steps = [
 
 export function HowWeBuild() {
   return (
-    <section id="how-we-build" className="relative py-32 px-6 bg-white border-t border-black/5 overflow-hidden">
+    <section id="how-we-build" className="relative py-32 px-6 bg-transparent border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Sticky Header - Left Side */}

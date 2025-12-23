@@ -39,7 +39,7 @@ const modules = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative py-32 px-6 bg-white overflow-hidden border-t border-black/5">
+    <section id="capabilities" className="relative py-32 px-6 bg-transparent overflow-hidden border-t border-black/5">
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header - Left Aligned */}
         <div className="mb-20">
