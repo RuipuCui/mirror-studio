@@ -5,6 +5,7 @@ import { MirrorStudioPage } from './pages/MirrorStudioPage';
 import { MirrorResearchPage } from './pages/MirrorResearchPage';
 import { MirrorLabPage } from './pages/MirrorLabPage';
 import { MirrorAcademyPage } from './pages/MirrorAcademyPage';
+import { MirrorPostPage } from './pages/MirrorPostPage';
 import type { Language } from './types/whitemirrorai';
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
   const isMirrorResearch = path === '/mirror-research' || path.startsWith('/mirror-research/');
   const isMirrorLab = path === '/mirror-lab' || path.startsWith('/mirror-lab/');
   const isMirrorAcademy = path === '/mirror-academy' || path.startsWith('/mirror-academy/');
+  const isMirrorPost = path === '/mirror-post' || path.startsWith('/mirror-post/');
 
   const handleNavigate = (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
@@ -47,6 +49,8 @@ export default function App() {
         <MirrorLabPage onNavigate={handleNavigate} />
       ) : isMirrorAcademy ? (
         <MirrorAcademyPage onNavigate={handleNavigate} />
+      ) : isMirrorPost ? (
+        <MirrorPostPage onNavigate={handleNavigate} />
       ) : (
         <HomePage onNavigate={handleNavigate} language={language} />
       )}

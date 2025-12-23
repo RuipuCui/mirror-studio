@@ -8,7 +8,7 @@ interface LogoProps {
   language: Language;
   onToggleLanguage: () => void;
   onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void;
-  activeTab?: 'home' | 'research' | 'studio' | 'lab' | 'academy';
+  activeTab?: 'home' | 'research' | 'studio' | 'lab' | 'academy' | 'post';
 }
 
 export function Logo({ language, onToggleLanguage, onNavigate, activeTab = 'home' }: LogoProps) {
@@ -51,6 +51,7 @@ export function Logo({ language, onToggleLanguage, onNavigate, activeTab = 'home
     { id: 'lab', label: 'Lab', path: '/mirror-lab' },
     { id: 'studio', label: 'Studio', path: '/mirror-studio' },
     { id: 'academy', label: 'Academy', path: '/mirror-academy' },
+    { id: 'post', label: 'Post', path: '/mirror-post' },
   ];
 
   const isHome = activeTab === 'home';
