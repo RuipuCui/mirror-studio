@@ -70,7 +70,7 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
 
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={!showIntro ? { opacity: 1, y: 0 } : {}}
@@ -117,7 +117,7 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
         </motion.div>
 
         {/* Right side - Logo visual */}
-        <div className="hidden lg:flex items-center justify-center min-h-[400px]">
+        <div className="hidden lg:flex items-center justify-end min-h-[400px] pr-12">
           {!showIntro && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -130,7 +130,7 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div className="absolute inset-0 bg-white/10 blur-3xl rounded-full scale-150" />
-                <img src={logo} alt="Mirror Studio" className="relative h-64 md:h-80 drop-shadow-[0_0_35px_rgba(255,255,255,0.4)] brightness-0 invert object-contain" />
+                <img src={logo} alt="Mirror Studio" className="relative h-64 md:h-80 drop-shadow-[0_0_35px_rgba(0,0,0,0.1)] brightness-0 object-contain" />
               </motion.div>
             </motion.div>
           )}

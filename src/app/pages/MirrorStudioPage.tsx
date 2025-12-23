@@ -9,18 +9,13 @@ import { Capabilities } from '../components/Capabilities';
 import { Differentiation } from '../components/Differentiation';
 import { ProgressBar } from '../components/ProgressBar';
 import { MouseSpotlight } from '../components/ui/MouseSpotlight';
-import { Logo } from '../components/whitemirrorai/ui/Logo';
 import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
-import type { Language } from '../types/whitemirrorai';
 
 export function MirrorStudioPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   const [showIntro, setShowIntro] = useState(true);
-  const [language, setLanguage] = useState<Language>("zh");
-  const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
   return (
     <main className={`relative h-screen w-full overflow-y-scroll scroll-smooth bg-white [&::-webkit-scrollbar]:hidden ${showIntro ? 'overflow-hidden' : ''}`}>
-      <Logo language={language} onToggleLanguage={toggleLanguage} onNavigate={onNavigate} />
       <AmbientSound />
       {/* <MouseSpotlight /> - Removed for light theme */}
       {!showIntro && <ProgressBar />}

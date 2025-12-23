@@ -3,9 +3,13 @@ import { MainLayout } from './layouts/MainLayout';
 import { HomePage } from './pages/HomePage';
 import { MirrorStudioPage } from './pages/MirrorStudioPage';
 import { MirrorResearchPage } from './pages/MirrorResearchPage';
+import type { Language } from './types/whitemirrorai';
 
 export default function App() {
   const [path, setPath] = useState(() => window.location.pathname);
+  const [language, setLanguage] = useState<Language>("zh");
+
+  const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
   useEffect(() => {
     const handlePopState = () => setPath(window.location.pathname);
@@ -16,7 +20,7 @@ export default function App() {
   const isMirrorStudio = path === '/mirror-studio' || path.startsWith('/mirror-studio/');
   const isMirrorResearch = path === '/mirror-research' || path.startsWith('/mirror-research/');
 
-  const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, to: string) => {
+  const handleNavigate = (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
       return;
     }
@@ -30,13 +34,13 @@ export default function App() {
   };
 
   return (
-    <MainLayout currentPath={path} onNavigate={handleNavigate}>
+    <MainLayout currentPath={path} onNavigate={handleNavigate} language={language} onToggleLanguage={toggleLanguage}>
       {isMirrorResearch ? (
         <MirrorResearchPage onNavigate={handleNavigate} />
       ) : isMirrorStudio ? (
         <MirrorStudioPage onNavigate={handleNavigate} />
       ) : (
-        <HomePage onNavigate={handleNavigate} />
+        <HomePage onNavigate={handleNavigate} language={language} />
       )}
     </MainLayout>
   );

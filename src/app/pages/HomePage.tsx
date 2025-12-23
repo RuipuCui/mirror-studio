@@ -2,7 +2,6 @@ import { useRef, useState, type MouseEvent } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowRight, Users, User, Cpu, TrendingUp, Zap, X, Check } from "lucide-react";
 import { Slide, SlideHeading, SlideSubheading } from "@/app/components/whitemirrorai/Slide";
-import { Logo } from "@/app/components/whitemirrorai/ui/Logo";
 import { AmbientSound } from "@/app/components/whitemirrorai/ui/AmbientSound";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/app/types/whitemirrorai";
@@ -1008,13 +1007,9 @@ function ContactSection({ language }: { language: Language }) {
   );
 }
 
-export function HomePage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
-  const [language, setLanguage] = useState<Language>("zh");
-  const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
-
+export function HomePage({ onNavigate, language }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void, language: Language }) {
   return (
     <main className="relative h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden">
-      <Logo language={language} onToggleLanguage={toggleLanguage} onNavigate={onNavigate} />
       <AmbientSound />
       <HeroSection language={language} />
       <ManifestoSection language={language} />
