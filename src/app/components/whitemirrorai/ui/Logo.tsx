@@ -2,7 +2,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 import { useCallback, useEffect, type KeyboardEvent } from "react";
 
 import logoImg from "@/assets/d8ccf2882154af147033fb89190f48a94362c766.png";
-import type { Language } from "../../types";
+import type { Language } from "@/app/types/whitemirrorai";
 
 interface LogoProps {
   language: Language;

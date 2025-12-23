@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowRight, Users, User, Cpu, TrendingUp, Zap, X, Check } from "lucide-react";
-import { Slide, SlideHeading, SlideSubheading } from "./components/Slide";
-import { Logo } from "./components/ui/Logo";
-import { AmbientSound } from "./components/ui/AmbientSound";
+import { Slide, SlideHeading, SlideSubheading } from "@/app/components/whitemirrorai/Slide";
+import { Logo } from "@/app/components/whitemirrorai/ui/Logo";
+import { AmbientSound } from "@/app/components/whitemirrorai/ui/AmbientSound";
 import { cn } from "@/lib/utils";
-import type { Language } from "./types";
+import type { Language } from "@/app/types/whitemirrorai";
 
 const solutionSteps = [
   {
@@ -1000,7 +1000,7 @@ function ContactSection({ language }: { language: Language }) {
   );
 }
 
-export function LandingPage() {
+export function HomePage() {
   const [language, setLanguage] = useState<Language>("zh");
   const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
