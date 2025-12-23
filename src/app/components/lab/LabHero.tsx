@@ -1,9 +1,12 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
 
 const logo = new URL('../../../assets/logo.png', import.meta.url).href;
 
 export function LabHero() {
+  const { scrollY } = useScroll();
+  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -69,20 +72,42 @@ export function LabHero() {
         </motion.div>
 
         {/* Right side - Logo visual */}
-        <div className="hidden lg:flex items-center justify-end min-h-[400px] pr-12">
+        <div className="hidden lg:flex items-center justify-center min-h-[600px] relative perspective-[1000px]">
             <motion.div
+              style={{ y: y2, rotateX: 5, rotateY: -5 }}
+              className="relative z-10"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-              className="relative"
             >
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div className="absolute inset-0 bg-white/10 blur-3xl rounded-full scale-150" />
-                <img src={logo} alt="Mirror Lab" className="relative h-64 md:h-80 drop-shadow-[0_0_35px_rgba(0,0,0,0.1)] brightness-0 object-contain" />
-              </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent blur-[100px] rounded-full scale-150" />
+              <motion.img 
+                src={logo} 
+                alt="Mirror Lab" 
+                className="relative w-[400px] h-[400px] object-contain drop-shadow-2xl brightness-0"
+                animate={{ 
+                  y: [0, -15, 0],
+                  rotate: [0, 2, 0]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              />
+              
+              {/* Orbiting Elements */}
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="absolute top-1/2 left-1/2 w-[500px] h-[500px] border border-black/5 rounded-full"
+                  style={{ x: '-50%', y: '-50%' }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20 + i * 5, repeat: Infinity, ease: "linear", delay: i * 2 }}
+                >
+                  <div className="absolute top-0 left-1/2 w-3 h-3 bg-black rounded-full -translate-x-1/2 -translate-y-1/2 shadow-lg" />
+                </motion.div>
+              ))}
             </motion.div>
         </div>
       </div>
