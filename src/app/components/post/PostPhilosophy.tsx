@@ -1,45 +1,78 @@
-import { motion } from 'motion/react';
-import { Quote, CheckCircle2 } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { Quote, CheckCircle2, Sparkles } from 'lucide-react';
+import { useRef } from 'react';
 
 export function PostPhilosophy() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
   return (
-    <section className="py-24 px-6 relative bg-transparent border-t border-black/5">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+    <section ref={containerRef} className="py-32 px-6 relative bg-black text-white overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:16px_16px]" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           
-          {/* Requirements */}
-          <div>
-            <h2 className="text-4xl font-bold text-black mb-8">对人的要求</h2>
-            <p className="text-slate-600 mb-8">为什么 MirrorPost 不是谁都能做？</p>
+          {/* Requirements List */}
+          <div className="order-2 lg:order-1">
+            <div className="flex items-center gap-3 mb-8">
+              <Sparkles className="w-5 h-5 text-yellow-400" />
+              <h2 className="text-sm font-mono uppercase tracking-widest text-white/60">Talent Requirements</h2>
+            </div>
+            <h3 className="text-4xl font-bold mb-10">为什么 MirrorPost 不是谁都能做？</h3>
             
-            <div className="space-y-4">
+            <div className="space-y-6">
               {[
-                "能理解技术 / 教育 / 产品，而不只是写字",
-                "能听懂创始团队在想什么",
-                "能把复杂东西讲清楚而不降级",
-                "有长期耐心，不急着要爆款"
+                { text: "能理解技术 / 教育 / 产品，而不只是写字", sub: "Deep Understanding" },
+                { text: "能听懂创始团队在想什么", sub: "Strategic Alignment" },
+                { text: "能把复杂东西讲清楚而不降级", sub: "Clarity without Simplification" },
+                { text: "有长期耐心，不急着要爆款", sub: "Long-term Mindset" }
               ].map((req, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-black shrink-0" />
-                  <span className="text-slate-700 font-medium">{req}</span>
-                </div>
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="mt-1 w-6 h-6 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-medium text-white/90">{req.text}</p>
+                    <p className="text-xs font-mono text-white/40 uppercase tracking-wider mt-1">{req.sub}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Quote */}
-          <div className="relative">
-            <div className="absolute -top-10 -left-10 text-black/5">
-              <Quote size={120} />
-            </div>
-            <blockquote className="relative text-2xl md:text-3xl font-light leading-relaxed text-black/80 italic z-10">
-              "MirrorPost 不负责制造声量，<br/>
-              它负责让 WhiteMirror 的真实价值，<br/>
-              被世界正确看见。"
-            </blockquote>
-            <div className="mt-6 flex items-center gap-4 relative z-10">
-              <div className="w-12 h-1 bg-black" />
-              <span className="text-sm font-bold uppercase tracking-widest text-black/40">Mirror Post Manifesto</span>
+          {/* Manifesto Quote */}
+          <div className="order-1 lg:order-2 relative">
+            <motion.div style={{ y, opacity }} className="absolute -top-20 -right-20 text-white/5 pointer-events-none select-none">
+              <Quote size={300} />
+            </motion.div>
+            
+            <div className="relative z-10">
+              <blockquote className="text-3xl md:text-5xl font-serif leading-tight text-white/90">
+                <span className="text-white/40">"</span>
+                MirrorPost 不负责制造声量，<br/>
+                它负责让 <span className="text-white border-b-2 border-white">WhiteMirror 的真实价值</span>，<br/>
+                被世界正确看见。
+                <span className="text-white/40">"</span>
+              </blockquote>
+              
+              <div className="mt-12 flex items-center gap-4">
+                <div className="h-px w-12 bg-white/30" />
+                <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/50">Manifesto</span>
+              </div>
             </div>
           </div>
 
