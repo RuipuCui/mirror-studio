@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from 'react';
 import { MainLayout } from './layouts/MainLayout';
 import { HomePage } from './pages/HomePage';
 import { MirrorStudioPage } from './pages/MirrorStudioPage';
+import { MirrorResearchPage } from './pages/MirrorResearchPage';
 
 export default function App() {
   const [path, setPath] = useState(() => window.location.pathname);
@@ -13,6 +14,7 @@ export default function App() {
   }, []);
 
   const isMirrorStudio = path === '/mirror-studio' || path.startsWith('/mirror-studio/');
+  const isMirrorResearch = path === '/mirror-research' || path.startsWith('/mirror-research/');
 
   const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, to: string) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
@@ -29,7 +31,7 @@ export default function App() {
 
   return (
     <MainLayout currentPath={path} onNavigate={handleNavigate}>
-      {isMirrorStudio ? <MirrorStudioPage /> : <HomePage />}
+      {isMirrorResearch ? <MirrorResearchPage /> : isMirrorStudio ? <MirrorStudioPage /> : <HomePage />}
     </MainLayout>
   );
 }

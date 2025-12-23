@@ -9,12 +9,19 @@ import { Capabilities } from '../components/Capabilities';
 import { Differentiation } from '../components/Differentiation';
 import { ProgressBar } from '../components/ProgressBar';
 import { MouseSpotlight } from '../components/ui/MouseSpotlight';
+import { Logo } from '../components/whitemirrorai/ui/Logo';
+import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
+import type { Language } from '../types/whitemirrorai';
 
 export function MirrorStudioPage() {
   const [showIntro, setShowIntro] = useState(true);
+  const [language, setLanguage] = useState<Language>("zh");
+  const toggleLanguage = () => setLanguage((prev) => (prev === "zh" ? "en" : "zh"));
 
   return (
-    <div className={`min-h-screen bg-black text-white ${showIntro ? 'overflow-hidden h-screen' : ''}`}>
+    <main className={`relative h-screen w-full overflow-y-scroll scroll-smooth bg-black [&::-webkit-scrollbar]:hidden ${showIntro ? 'overflow-hidden' : ''}`}>
+      <Logo language={language} onToggleLanguage={toggleLanguage} />
+      <AmbientSound />
       <MouseSpotlight />
       {!showIntro && <ProgressBar />}
       <Hero showIntro={showIntro} setShowIntro={setShowIntro} />
@@ -29,6 +36,6 @@ export function MirrorStudioPage() {
       <footer className="py-12 text-center text-slate-600 text-sm border-t border-white/5">
         <p>© 2024 MirrorStudio. All rights reserved.</p>
       </footer>
-    </div>
+    </main>
   );
 }

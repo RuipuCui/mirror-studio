@@ -12,7 +12,7 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 2500);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [setShowIntro]);
 
@@ -109,7 +109,7 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
             </button>
             <button 
               onClick={() => scrollTo('philosophy')}
-              className="px-8 py-4 rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+              className="px-8 py-4 rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 text-white"
             >
               了解理念
             </button>

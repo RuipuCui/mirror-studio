@@ -59,7 +59,7 @@ export function WhatWeDo() {
               <span className="w-8 h-[1px] bg-slate-400"></span>
               <span className="text-sm uppercase tracking-widest">Services</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-slate-100">
               从 MVP 到<br/>
               <span className="text-white">真实系统</span>
             </h2>
