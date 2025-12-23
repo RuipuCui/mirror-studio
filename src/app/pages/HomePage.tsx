@@ -1,4 +1,4 @@
-import { useRef, useState, type MouseEvent } from "react";
+import { useRef, useState, useEffect, type MouseEvent } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowRight, Users, User, Cpu, TrendingUp, Zap, X, Check } from "lucide-react";
 import { Slide, SlideHeading, SlideSubheading } from "@/app/components/whitemirrorai/Slide";
@@ -1009,8 +1009,31 @@ function ContactSection({ language }: { language: Language }) {
 }
 
 export function HomePage({ onNavigate, language }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void, language: Language }) {
+  const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const savedPosition = sessionStorage.getItem("homePageScrollPosition");
+    if (savedPosition && mainRef.current) {
+      requestAnimationFrame(() => {
+        if (mainRef.current) {
+          mainRef.current.scrollTop = parseInt(savedPosition, 10);
+        }
+      });
+    }
+  }, []);
+
+  const handleScroll = () => {
+    if (mainRef.current) {
+      sessionStorage.setItem("homePageScrollPosition", mainRef.current.scrollTop.toString());
+    }
+  };
+
   return (
-    <main className="relative h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden">
+    <main 
+      ref={mainRef}
+      onScroll={handleScroll}
+      className="relative h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden"
+    >
       <AmbientSound />
       <HeroSection language={language} />
       <ManifestoSection language={language} />
