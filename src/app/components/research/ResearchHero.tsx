@@ -10,36 +10,14 @@ export function ResearchHero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Background effects (Matched to Studio Hero) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       {/* Floating orbs */}
       <motion.div
-        className="absolute top-20 right-20 w-96 h-96 bg-black/5 rounded-full blur-[100px]"
-        animate={{
-          y: [0, 50, 0],
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 left-20 w-72 h-72 bg-black/5 rounded-full blur-[80px]"
-        animate={{
-          y: [0, -30, 0],
-          scale: [1, 1.1, 1],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
-        }}
+        className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-black/5 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
       />
 
       {/* Main content */}
@@ -49,28 +27,30 @@ export function ResearchHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-xs md:text-sm text-slate-600 mb-6">
-            <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-            Cognitive Engine
+          <div className="flex items-center gap-3 mb-8">
+            <div className="px-3 py-1 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-mono uppercase tracking-wider flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+              </span>
+              Cognitive Engine
+            </div>
           </div>
 
-          <h1 className="mb-8">
-            <span className="block text-5xl md:text-7xl font-bold text-black tracking-tight leading-tight">
-              Mirror Research
-            </span>
-            <span className="block text-2xl md:text-3xl font-light text-slate-500 mt-4">
-              WhiteMirror 的认知引擎
-            </span>
+          <h1 className="text-6xl md:text-8xl font-bold text-black tracking-tight mb-8">
+            Mirror Research
           </h1>
-
-          <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
-            "Where we turn vague questions into validated directions."
-            <br />
-            <span className="text-sm mt-2 block opacity-60">它解决的不是“做什么”，而是“值不值得做”</span>
+          
+          <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-8">
+            WhiteMirror 的认知引擎<br/>
+            <span className="text-black font-medium">它解决的不是“做什么”，而是“值不值得做”</span>
           </p>
 
-          {/* Spacer to match Studio Hero alignment (compensating for missing tags) */}
-          <div className="h-[32px] mb-10" aria-hidden="true" />
+          <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Academic Papers</span>
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Vague Ideas</span>
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Just Reports</span>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
              <button 

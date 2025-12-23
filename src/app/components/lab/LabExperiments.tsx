@@ -46,7 +46,7 @@ export function LabExperiments() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-600 text-xs font-mono uppercase tracking-wider mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-mono uppercase tracking-wider mb-4"
             >
               <Sparkles className="w-3 h-3" />
               Active Experiments
@@ -68,17 +68,17 @@ export function LabExperiments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/5 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/5 transition-all duration-300"
+              className="group relative p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/5 hover:border-black/20 hover:shadow-lg hover:shadow-black/5 transition-all duration-300"
             >
-              <div className="absolute top-6 right-6 text-xs font-mono text-slate-400 group-hover:text-purple-500 transition-colors">
+              <div className="absolute top-6 right-6 text-xs font-mono text-slate-400 group-hover:text-black transition-colors">
                 {exp.id}
               </div>
               
-              <div className="w-12 h-12 rounded-xl bg-purple-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <exp.icon className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 rounded-xl bg-black/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <exp.icon className="w-6 h-6 text-black" />
               </div>
 
-              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-purple-700 transition-colors">{exp.title}</h3>
+              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-black transition-colors">{exp.title}</h3>
               <p className="text-sm text-slate-600 mb-4 line-clamp-2">{exp.desc}</p>
 
               <div className="flex flex-wrap gap-2 mt-auto">

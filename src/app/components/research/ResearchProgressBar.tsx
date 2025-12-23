@@ -56,11 +56,9 @@ export function ResearchProgressBar() {
             >
               {/* Label */}
               <div 
-                className={`absolute right-6 px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 whitespace-nowrap
-                  ${isActive 
-                    ? 'opacity-100 translate-x-0 bg-black text-white' 
-                    : 'opacity-0 translate-x-2 text-slate-400 group-hover:opacity-100 group-hover:translate-x-0'
-                  }`}
+                className={`absolute right-6 text-xs font-medium tracking-wider uppercase transition-all duration-300 origin-right ${
+                  isActive ? 'opacity-100 translate-x-0 text-black' : 'opacity-0 translate-x-2 text-slate-400 group-hover:opacity-100 group-hover:translate-x-0'
+                }`}
               >
                 {section.label}
               </div>
@@ -68,13 +66,14 @@ export function ResearchProgressBar() {
               {/* Dot */}
               <button
                 onClick={() => scrollTo(section.id)}
-                className={`relative w-3 h-3 rounded-full transition-all duration-500 border-2 
-                  ${isActive 
-                    ? 'bg-black border-black scale-125' 
-                    : 'bg-white border-slate-300 hover:border-black hover:scale-110'
-                  }`}
-                aria-label={`Scroll to ${section.label}`}
-              />
+                className={`relative w-2 h-2 rounded-full transition-all duration-500 ${
+                  isActive ? 'bg-black scale-150' : 'bg-slate-300 hover:bg-slate-500 hover:scale-125'
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute inset-0 rounded-full bg-black animate-ping opacity-50" />
+                )}
+              </button>
             </div>
           );
         })}

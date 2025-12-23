@@ -11,21 +11,13 @@ export function LabHero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      {/* Floating orbs - Green/Blue tint for "Experiment/Lab" feel? Or keep neutral? Keeping neutral for consistency. */}
+      {/* Floating orbs */}
       <motion.div
-        className="absolute top-20 left-1/2 w-96 h-96 bg-black/5 rounded-full blur-[100px]"
-        animate={{
-          y: [0, 50, 0],
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-black/5 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
       />
 
       {/* Main content */}
@@ -35,33 +27,30 @@ export function LabHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-xs md:text-sm text-slate-600 mb-6">
-            <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-            Validation Engine
+          <div className="flex items-center gap-3 mb-8">
+            <div className="px-3 py-1 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-mono uppercase tracking-wider flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+              </span>
+              Validation Engine
+            </div>
           </div>
 
-          <h1 className="mb-8">
-            <span className="block text-5xl md:text-7xl font-bold text-black tracking-tight leading-tight">
-              Mirror Lab
-            </span>
-            <motion.span 
-              className="block text-2xl md:text-3xl font-light text-slate-500 mt-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 1 }}
-            >
-              想法—验证—孵化引擎
-            </motion.span>
+          <h1 className="text-6xl md:text-8xl font-bold text-black tracking-tight mb-8">
+            Mirror Lab
           </h1>
-
-          <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
-            Mirror Lab 不负责成功，它负责“尽快知道什么不值得继续做”。
-            <br />
-            <span className="text-sm mt-2 block opacity-60">The "Idea-Validation-Incubation" Engine.</span>
+          
+          <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-8">
+            想法—验证—孵化引擎<br/>
+            <span className="text-black font-medium">Mirror Lab 不负责成功，它负责“尽快知道什么不值得继续做”。</span>
           </p>
 
-          {/* Spacer for alignment */}
-          <div className="h-[32px] mb-10" aria-hidden="true" />
+          <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Success Guarantee</span>
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Just Demos</span>
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Slow Research</span>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
              <button 

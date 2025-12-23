@@ -25,24 +25,30 @@ export function AcademyHero() {
             Mirror Academy
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-12">
+          <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-8">
             不是“课程平台”，而是 WhiteMirror 的<br/>
             <span className="text-black font-medium">「人才生成与能力放大系统」</span>
           </p>
 
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-slate-600 text-sm">
-              <Cpu className="w-4 h-4" />
-              <span>AI-Native</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-slate-600 text-sm">
-              <Hammer className="w-4 h-4" />
-              <span>Production First</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-slate-600 text-sm">
-              <GraduationCap className="w-4 h-4" />
-              <span>Verifiable Output</span>
-            </div>
+          <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Course Platform</span>
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Just Videos</span>
+            <span className="px-3 py-1 border border-black/10 rounded-md">Not Theory Only</span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button 
+              onClick={() => document.getElementById('structure')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
+            >
+              探索体系
+            </button>
+            <button 
+              onClick={() => document.getElementById('manifesto')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
+            >
+              阅读宣言
+            </button>
           </div>
         </motion.div>
       </div>

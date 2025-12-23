@@ -35,10 +35,10 @@ export function LabMission() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-3xl blur-2xl" />
+            <div className="absolute inset-0 bg-slate-100 rounded-3xl blur-2xl" />
             <div className="relative bg-white/80 backdrop-blur-sm p-8 rounded-3xl border border-black/5 shadow-sm">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Zap className="w-6 h-6 text-yellow-500 fill-yellow-500" />
+                <Zap className="w-6 h-6 text-black fill-black" />
                 Mirror Lab 的解法
               </h3>
               <div className="space-y-6">

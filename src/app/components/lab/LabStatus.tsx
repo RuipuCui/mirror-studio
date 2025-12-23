@@ -73,7 +73,7 @@ export function LabStatus() {
           viewport={{ once: true }}
           className="order-1 lg:order-2"
         >
-          <div className="flex items-center gap-2 text-purple-600 mb-6">
+          <div className="flex items-center gap-2 text-slate-600 mb-6">
             <Terminal className="w-5 h-5" />
             <span className="font-mono text-xs uppercase tracking-wider">System Status</span>
           </div>
@@ -86,7 +86,7 @@ export function LabStatus() {
             <div className="p-4 rounded-xl bg-white border border-black/5">
               <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Active Sprints</div>
               <div className="text-2xl font-bold text-black flex items-center gap-2">
-                3 <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                3 <span className="flex h-2 w-2 rounded-full bg-black animate-pulse" />
               </div>
             </div>
             <div className="p-4 rounded-xl bg-white border border-black/5">
