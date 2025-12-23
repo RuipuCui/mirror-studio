@@ -5,6 +5,7 @@ import { LabProcess } from '../components/lab/LabProcess';
 import { LabRelations } from '../components/lab/LabRelations';
 import { LabPhilosophy } from '../components/lab/LabPhilosophy';
 import { LabExperiments } from '../components/lab/LabExperiments';
+import { LabMetrics } from '../components/lab/LabMetrics';
 import { LabProgressBar } from '../components/lab/LabProgressBar';
 import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
 import { PageBackground } from '../components/PageBackground';
@@ -19,6 +20,9 @@ export function MirrorLabPage({ onNavigate }: { onNavigate: (event: MouseEvent<H
       <div className="relative z-10">
         <div id="hero">
           <LabHero />
+        </div>
+        <div id="metrics">
+          <LabMetrics />
         </div>
         <div id="mission">
           <LabMission />

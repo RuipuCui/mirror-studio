@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
-import { TrendingUp, Target, AlertTriangle, Zap } from 'lucide-react';
+import { TrendingUp, Target, AlertTriangle, Zap, Atom } from 'lucide-react';
 
 export function ResearchFuture() {
   return (
-    <section className="py-20 px-6 relative">
+    <section className="py-20 px-6 relative bg-transparent border-t border-black/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -14,125 +14,77 @@ export function ResearchFuture() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 tracking-tight">Why Research Matters?</h2>
-            <div className="p-8 rounded-[2rem] bg-black text-white relative overflow-hidden">
+            <div className="p-8 rounded-[2rem] bg-black text-white relative overflow-hidden group">
               {/* Background Animation */}
               <motion.div 
                 className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"
                 animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 4, repeat: Infinity }}
               />
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-6">Without Research</h3>
-                <div className="space-y-4 mb-12">
-                  <div className="flex items-center justify-between text-white/70">
-                    <span>试错成本</span>
-                    <motion.div 
-                      className="flex items-center gap-2 text-red-400"
-                      animate={{ opacity: [0.5, 1, 0.5] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <TrendingUp className="w-4 h-4" /> High
-                    </motion.div>
-                  </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-red-500" 
-                      initial={{ width: "80%" }}
-                      animate={{ width: ["80%", "85%", "80%"] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  </div>
-                  
-                  <div className="flex items-center justify-between text-white/70 mt-6">
-                    <span>方向偏差风险</span>
-                    <motion.div 
-                      className="flex items-center gap-2 text-red-400"
-                      animate={{ opacity: [0.5, 1, 0.5] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                    >
-                      <AlertTriangle className="w-4 h-4" /> Critical
-                    </motion.div>
-                  </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-red-500" 
-                      initial={{ width: "90%" }}
-                      animate={{ width: ["90%", "95%", "90%"] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    />
-                  </div>
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
+                  <Atom className="w-6 h-6 text-white" />
                 </div>
+                <h3 className="text-2xl font-bold mb-4">The "Brain" of the Studio</h3>
+                <p className="text-white/70 leading-relaxed mb-8">
+                  Without research, we are just coding blindly. Research provides the "map" for the entire ecosystem.
+                </p>
 
-                <h3 className="text-2xl font-bold mb-6">With Research</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between text-white/70">
-                    <span>决策信心</span>
-                    <motion.div 
-                      className="flex items-center gap-2 text-green-400"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <Zap className="w-4 h-4" /> High
-                    </motion.div>
+                {/* Orbit Animation */}
+                <div className="relative h-48 flex items-center justify-center">
+                  {/* Core */}
+                  <div className="absolute w-12 h-12 bg-white rounded-full shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center z-20">
+                    <Zap className="w-6 h-6 text-black fill-black" />
                   </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-green-500" 
-                      initial={{ width: "95%" }}
-                      animate={{ width: ["95%", "100%", "95%"] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  </div>
+
+                  {/* Orbit 1 */}
+                  <motion.div 
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    className="absolute w-32 h-32 rounded-full border border-white/20"
+                  >
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+                  </motion.div>
+
+                  {/* Orbit 2 */}
+                  <motion.div 
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                    className="absolute w-48 h-48 rounded-full border border-white/10"
+                  >
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+                  </motion.div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Future Evolution */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="text-center lg:text-left">
-              <div className="relative inline-block">
-                <motion.div
-                  className="absolute inset-0 bg-black/5 rounded-full"
-                  animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <Target className="w-16 h-16 mx-auto lg:mx-0 mb-6 text-black relative z-10" />
-              </div>
-              <h3 className="text-3xl font-bold text-black mb-4">Future Evolution</h3>
-              <p className="text-black/60 text-lg font-light">
-                Research 本身也在进化，从单纯的“信息收集”向“智能决策辅助”转变。
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                { title: "AI-Driven", desc: "利用 LLM 自动化处理海量信息" },
-                { title: "Real-time", desc: "从静态报告转向实时情报流" },
-                { title: "Actionable", desc: "直接生成可执行的策略建议" },
-                { title: "Integrated", desc: "深度嵌入业务工作流" }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5 }}
-                  className="p-6 rounded-2xl bg-black/[0.02] border border-black/5 hover:bg-black/[0.04] transition-colors relative overflow-hidden group"
-                >
-                  <motion.div
-                    className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-black/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                  />
-                  <h4 className="font-bold text-black mb-2">{item.title}</h4>
-                  <p className="text-sm text-black/60">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
+          {/* Future Goals */}
+          <div className="space-y-6">
+            {[
+              { title: "Predicting Trends", desc: "Identifying what's next before it becomes mainstream.", icon: TrendingUp },
+              { title: "Defining Standards", desc: "Setting the technical bar for all Studio projects.", icon: Target },
+              { title: "Risk Mitigation", desc: "Testing dangerous ideas so Studio doesn't have to.", icon: AlertTriangle }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-black/5 hover:border-black/20 transition-all duration-300 hover:shadow-md group"
+              >
+                <div className="mt-1 w-10 h-10 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                  <item.icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-black mb-1">{item.title}</h3>
+                  <p className="text-slate-600 text-sm">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

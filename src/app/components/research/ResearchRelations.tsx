@@ -8,19 +8,23 @@ const FlowArrow = () => (
     {/* Mobile Line */}
     <div className="lg:hidden absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px h-full bg-black/10" />
 
-    {/* Moving Dot - Desktop */}
+    {/* Moving Icon - Desktop */}
     <motion.div
-      className="hidden lg:block absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-black rounded-full z-10"
+      className="hidden lg:flex absolute top-1/2 -translate-y-1/2 items-center justify-center w-6 h-6 bg-white rounded-full border border-black/10 shadow-sm z-10"
       animate={{ left: ["0%", "100%"], opacity: [0, 1, 0] }}
       transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-    />
+    >
+      <ArrowRight className="w-3 h-3 text-black" />
+    </motion.div>
     
-    {/* Moving Dot - Mobile */}
+    {/* Moving Icon - Mobile */}
     <motion.div
-      className="lg:hidden absolute left-1/2 -translate-x-1/2 w-2 h-2 bg-black rounded-full z-10"
+      className="lg:flex hidden absolute left-1/2 -translate-x-1/2 items-center justify-center w-6 h-6 bg-white rounded-full border border-black/10 shadow-sm z-10"
       animate={{ top: ["0%", "100%"], opacity: [0, 1, 0] }}
       transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-    />
+    >
+      <ArrowRight className="w-3 h-3 text-black rotate-90" />
+    </motion.div>
 
     <div className="relative z-20 bg-white p-2 rounded-full border border-black/5">
       <ArrowRight className="text-black/40 w-4 h-4 rotate-90 lg:rotate-0" />

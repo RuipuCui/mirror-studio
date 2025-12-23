@@ -6,6 +6,7 @@ import { ResearchFocus } from '../components/research/ResearchFocus';
 import { ResearchOutputs } from '../components/research/ResearchOutputs';
 import { ResearchRelations } from '../components/research/ResearchRelations';
 import { ResearchFuture } from '../components/research/ResearchFuture';
+import { ResearchMetrics } from '../components/research/ResearchMetrics';
 import { ResearchProgressBar } from '../components/research/ResearchProgressBar';
 import { PageBackground } from '../components/PageBackground';
 
@@ -17,9 +18,12 @@ export function MirrorResearchPage({ onNavigate }: { onNavigate: (event: MouseEv
       <ResearchProgressBar />
       <PageBackground />
       
-      <div className="relative z-10 flex flex-col gap-0"> {/* Removed gap to reduce space */}
+      <div className="relative z-10 flex flex-col gap-0">
         <div id="hero">
           <ResearchHero />
+        </div>
+        <div id="metrics">
+          <ResearchMetrics />
         </div>
         <div id="core-questions">
           <CoreQuestions />

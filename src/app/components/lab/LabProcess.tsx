@@ -30,7 +30,7 @@ const steps = [
 
 export function LabProcess() {
   return (
-    <section className="py-24 px-6 relative bg-transparent border-t border-black/5">
+    <section className="py-24 px-6 relative bg-transparent border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">核心职责</h2>
@@ -40,6 +40,25 @@ export function LabProcess() {
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connecting Line (Desktop) */}
           <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+
+          {/* Moving Icons Animation */}
+          <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+             <motion.div
+                className="absolute top-12 left-[16%] z-20 flex items-center justify-center w-6 h-6 bg-white rounded-full border border-black/10 shadow-sm text-black"
+                animate={{ x: ["0%", "200%"], opacity: [0, 1, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              >
+                <ArrowRight className="w-3 h-3" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute top-12 left-[50%] z-20 flex items-center justify-center w-6 h-6 bg-white rounded-full border border-black/10 shadow-sm text-black"
+                animate={{ x: ["0%", "200%"], opacity: [0, 1, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }}
+              >
+                <ArrowRight className="w-3 h-3" />
+              </motion.div>
+          </div>
 
           {steps.map((step, i) => (
             <motion.div

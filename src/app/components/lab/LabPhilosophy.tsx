@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Quote } from 'lucide-react';
+import { Quote, Atom, Zap } from 'lucide-react';
 
 export function LabPhilosophy() {
   return (
@@ -39,13 +39,31 @@ export function LabPhilosophy() {
           </div>
 
           <div className="relative">
+            {/* Orbit Animation Background */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-10 pointer-events-none">
+               <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-black"
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full" />
+                </motion.div>
+                <motion.div 
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border border-black"
+                >
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-6 h-6 bg-black rounded-full" />
+                </motion.div>
+            </div>
+
             <div className="absolute -top-10 -left-10 text-black/5">
               <Quote size={120} />
             </div>
-            <blockquote className="relative text-2xl md:text-3xl font-light leading-relaxed text-black/80 italic">
+            <blockquote className="relative text-2xl md:text-3xl font-light leading-relaxed text-black/80 italic z-10">
               "Mirror Lab 不是为了产出产品，而是为了让 WhiteMirror 永远不会被错误方向拖死。"
             </blockquote>
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex items-center gap-4 relative z-10">
               <div className="w-12 h-1 bg-black" />
               <span className="text-sm font-bold uppercase tracking-widest text-black/40">Lab Manifesto</span>
             </div>
