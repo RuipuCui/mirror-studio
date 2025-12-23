@@ -6,7 +6,7 @@ import { ResearchFocus } from '../components/research/ResearchFocus';
 import { ResearchOutputs } from '../components/research/ResearchOutputs';
 import { ResearchRelations } from '../components/research/ResearchRelations';
 import { ResearchFuture } from '../components/research/ResearchFuture';
-import { ResearchMetrics } from '../components/research/ResearchMetrics';
+import { ResearchRadar } from '../components/research/ResearchRadar';
 import { ResearchProgressBar } from '../components/research/ResearchProgressBar';
 import { PageBackground } from '../components/PageBackground';
 
@@ -22,8 +22,8 @@ export function MirrorResearchPage({ onNavigate }: { onNavigate: (event: MouseEv
         <div id="hero">
           <ResearchHero />
         </div>
-        <div id="metrics">
-          <ResearchMetrics />
+        <div id="radar">
+          <ResearchRadar />
         </div>
         <div id="core-questions">
           <CoreQuestions />
