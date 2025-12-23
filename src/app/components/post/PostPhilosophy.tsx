@@ -13,7 +13,7 @@ export function PostPhilosophy() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="py-32 px-6 relative bg-white text-black overflow-hidden">
+    <section ref={containerRef} className="py-32 px-6 relative bg-white text-black overflow-hidden min-h-[60vh] flex flex-col justify-center">
       {/* Background Texture */}
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#00000033_1px,transparent_1px)] [background-size:16px_16px]" />
       

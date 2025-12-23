@@ -66,7 +66,7 @@ export function PostModules() {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[500px]">
+        <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[380px]">
           {modules.map((mod) => {
             const isActive = activeId === mod.id;
             return (
@@ -79,12 +79,12 @@ export function PostModules() {
                   isActive ? 'lg:flex-[3] bg-black text-white' : 'lg:flex-[1] bg-white hover:bg-slate-50'
                 }`}
               >
-                <div className="p-8 h-full flex flex-col justify-between relative z-10">
+                <div className="p-6 h-full flex flex-col justify-between relative z-10">
                   <div className="flex justify-between items-start">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors ${
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                       isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-black'
                     }`}>
-                      <mod.icon className="w-6 h-6" />
+                      <mod.icon className="w-5 h-5" />
                     </div>
                     <span className={`text-xs font-mono uppercase tracking-wider ${
                       isActive ? 'text-white/60' : 'text-slate-400'
@@ -93,8 +93,8 @@ export function PostModules() {
                     </span>
                   </div>
 
-                  <div className="space-y-4">
-                    <h3 className={`text-2xl font-bold whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
+                  <div className="space-y-3">
+                    <h3 className={`text-xl font-bold whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
                       {mod.title}
                     </h3>
                     

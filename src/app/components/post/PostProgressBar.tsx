@@ -20,7 +20,7 @@ export function PostProgressBar() {
           }
         });
       },
-      { rootMargin: '-20% 0px -70% 0px' }
+      { rootMargin: '-20% 0px -50% 0px' }
     );
 
     sections.forEach(({ id }) => {
@@ -36,7 +36,7 @@ export function PostProgressBar() {
   };
 
   return (
-    <div className="fixed top-0 right-8 bottom-0 z-50 hidden md:flex flex-col justify-center pointer-events-auto">
+    <div className="fixed top-0 right-8 bottom-0 z-50 hidden md:flex flex-col justify-center pointer-events-none">
       <div className="relative h-[60vh] w-px">
         {/* The Line */}
         <div className="absolute inset-0 bg-slate-200 w-px" />
@@ -49,7 +49,8 @@ export function PostProgressBar() {
           return (
             <div
               key={section.id}
-              className="absolute left-1/2 -translate-x-1/2 flex items-center group"
+              onClick={() => scrollTo(section.id)}
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center group cursor-pointer pointer-events-auto py-2"
               style={{ top }}
             >
               {/* Label */}
@@ -62,16 +63,15 @@ export function PostProgressBar() {
               </div>
 
               {/* Dot */}
-              <button
-                onClick={() => scrollTo(section.id)}
+              <div
                 className={`relative w-2 h-2 rounded-full transition-all duration-500 ${
-                  isActive ? 'bg-black scale-150' : 'bg-slate-300 hover:bg-slate-500 hover:scale-125'
+                  isActive ? 'bg-black scale-150' : 'bg-slate-300 group-hover:bg-slate-500 group-hover:scale-125'
                 }`}
               >
                 {isActive && (
                   <span className="absolute inset-0 rounded-full bg-black animate-ping opacity-50" />
                 )}
-              </button>
+              </div>
             </div>
           );
         })}

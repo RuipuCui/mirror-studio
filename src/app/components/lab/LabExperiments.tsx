@@ -53,11 +53,6 @@ export function LabExperiments() {
             </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">正在进行的实验</h2>
           </div>
-          <div className="hidden md:block">
-            <a href="#" className="group inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-black transition-colors">
-              查看归档 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
