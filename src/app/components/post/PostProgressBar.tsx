@@ -20,7 +20,7 @@ export function PostProgressBar() {
           }
         });
       },
-      { rootMargin: '-20% 0px -50% 0px' }
+      { rootMargin: '-40% 0px -50% 0px' }
     );
 
     sections.forEach(({ id }) => {

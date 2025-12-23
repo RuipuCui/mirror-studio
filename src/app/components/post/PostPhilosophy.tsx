@@ -13,7 +13,7 @@ export function PostPhilosophy() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="py-32 px-6 relative bg-white text-black overflow-hidden min-h-[60vh] flex flex-col justify-center">
+    <section ref={containerRef} className="py-32 px-6 relative bg-transparent text-black overflow-hidden min-h-[80vh] flex flex-col justify-center">
       {/* Background Texture */}
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#00000033_1px,transparent_1px)] [background-size:16px_16px]" />
       
@@ -23,7 +23,6 @@ export function PostPhilosophy() {
           {/* Requirements List */}
           <div className="order-2 lg:order-1">
             <div className="flex items-center gap-3 mb-8">
-              <Sparkles className="w-5 h-5 text-yellow-500" />
               <h2 className="text-sm font-mono uppercase tracking-widest text-black/60">Talent Requirements</h2>
             </div>
             <h3 className="text-4xl font-bold mb-10">为什么 MirrorPost 不是谁都能做？</h3>
