@@ -19,25 +19,25 @@ export function MirrorResearchPage({ onNavigate }: { onNavigate: (event: MouseEv
       <PageBackground />
       
       <div className="relative z-10 flex flex-col gap-0">
-        <div id="hero">
+        <div id="hero" className="scroll-mt-24">
           <ResearchHero />
         </div>
-        <div id="radar">
+        <div id="radar" className="scroll-mt-24">
           <ResearchRadar />
         </div>
-        <div id="core-questions">
+        <div id="core-questions" className="scroll-mt-24">
           <CoreQuestions />
         </div>
-        <div id="focus">
+        <div id="focus" className="scroll-mt-24">
           <ResearchFocus />
         </div>
-        <div id="outputs">
+        <div id="outputs" className="scroll-mt-24">
           <ResearchOutputs />
         </div>
-        <div id="relations">
+        <div id="relations" className="scroll-mt-24">
           <ResearchRelations />
         </div>
-        <div id="future">
+        <div id="future" className="scroll-mt-24">
           <ResearchFuture />
         </div>
       </div>

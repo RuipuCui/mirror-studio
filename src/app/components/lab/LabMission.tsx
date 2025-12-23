@@ -18,11 +18,11 @@ export function LabMission() {
             </p>
             
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-red-50/50 border border-red-100">
-                <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-1" />
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-black/5 border border-black/10">
+                <AlertTriangle className="w-5 h-5 text-black shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-red-900 text-sm">传统困境</h4>
-                  <p className="text-red-700/80 text-sm mt-1">想法死在 PPT 里，或者死在漫长的资源协调中。</p>
+                  <h4 className="font-bold text-black text-sm">传统困境</h4>
+                  <p className="text-slate-600 text-sm mt-1">想法死在 PPT 里，或者死在漫长的资源协调中。</p>
                 </div>
               </div>
             </div>

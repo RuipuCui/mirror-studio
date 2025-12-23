@@ -18,25 +18,25 @@ export function MirrorLabPage({ onNavigate }: { onNavigate: (event: MouseEvent<H
       <PageBackground />
       
       <div className="relative z-10">
-        <div id="hero">
+        <div id="hero" className="scroll-mt-24">
           <LabHero />
         </div>
-        <div id="status">
+        <div id="status" className="scroll-mt-24">
           <LabStatus />
         </div>
-        <div id="mission">
+        <div id="mission" className="scroll-mt-24">
           <LabMission />
         </div>
-        <div id="experiments">
+        <div id="experiments" className="scroll-mt-24">
           <LabExperiments />
         </div>
-        <div id="process">
+        <div id="process" className="scroll-mt-24">
           <LabProcess />
         </div>
-        <div id="relations">
+        <div id="relations" className="scroll-mt-24">
           <LabRelations />
         </div>
-        <div id="philosophy">
+        <div id="philosophy" className="scroll-mt-24">
           <LabPhilosophy />
         </div>
       </div>

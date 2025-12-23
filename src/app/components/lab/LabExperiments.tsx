@@ -4,34 +4,34 @@ import { FlaskConical, Bot, Code2, Cpu, Sparkles, ArrowRight } from 'lucide-reac
 const experiments = [
   {
     id: "EXP-001",
-    title: "Generative UI Engine",
-    status: "Prototype",
+    title: "生成式 UI 引擎",
+    status: "原型",
     tech: ["React", "GPT-4", "Tailwind"],
-    desc: "Can we generate production-ready UI components from a single prompt?",
+    desc: "能否通过单个提示词生成生产级 UI 组件？",
     icon: Code2
   },
   {
     id: "EXP-002",
-    title: "Autonomous Research Agent",
-    status: "Testing",
+    title: "自主研究 Agent",
+    status: "测试中",
     tech: ["LangChain", "Pinecone"],
-    desc: "An agent that reads papers and summarizes key findings automatically.",
+    desc: "自动阅读论文并总结关键发现的智能体。",
     icon: Bot
   },
   {
     id: "EXP-003",
-    title: "Voice-to-Code Interface",
-    status: "Concept",
+    title: "语音转代码接口",
+    status: "概念",
     tech: ["Whisper", "Codex"],
-    desc: "Coding without a keyboard. Pure voice control for rapid prototyping.",
+    desc: "无需键盘编程。纯语音控制实现快速原型开发。",
     icon: Cpu
   },
   {
     id: "EXP-004",
-    title: "Dynamic Knowledge Graph",
-    status: "Live",
+    title: "动态知识图谱",
+    status: "已上线",
     tech: ["Neo4j", "LLM"],
-    desc: "Visualizing the connections between thousands of research papers.",
+    desc: "可视化数千篇研究论文之间的关联。",
     icon: FlaskConical
   }
 ];
@@ -49,13 +49,13 @@ export function LabExperiments() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-mono uppercase tracking-wider mb-4"
             >
               <Sparkles className="w-3 h-3" />
-              Active Experiments
+              进行中的实验
             </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">正在进行的实验</h2>
           </div>
           <div className="hidden md:block">
             <a href="#" className="group inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-black transition-colors">
-              View Archive <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              查看归档 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>

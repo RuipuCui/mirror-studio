@@ -47,10 +47,10 @@ export function Logo({ language, onToggleLanguage, onNavigate, activeTab = 'home
   };
 
   const navItems = [
-    { id: 'research', label: 'Research', path: '/mirror-research' },
+    { id: 'academy', label: 'Academy', path: '/mirror-academy' },
     { id: 'lab', label: 'Lab', path: '/mirror-lab' },
     { id: 'studio', label: 'Studio', path: '/mirror-studio' },
-    { id: 'academy', label: 'Academy', path: '/mirror-academy' },
+    { id: 'research', label: 'Research', path: '/mirror-research' },
     { id: 'post', label: 'Post', path: '/mirror-post' },
   ];
 

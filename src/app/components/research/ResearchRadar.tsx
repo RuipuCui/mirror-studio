@@ -2,15 +2,15 @@ import { motion } from 'motion/react';
 import { Radio, Activity, Wifi } from 'lucide-react';
 
 const signals = [
-  { id: 1, label: "Agentic Patterns", status: "Detected", angle: 45, delay: 0 },
-  { id: 2, label: "Multimodal UX", status: "Tracking", angle: 120, delay: 1 },
-  { id: 3, label: "Spatial Computing", status: "Analyzing", angle: 200, delay: 2 },
-  { id: 4, label: "Generative UI", status: "Locked", angle: 300, delay: 3 },
+  { id: 1, label: "Agentic 模式", status: "已检测", angle: 45, delay: 0 },
+  { id: 2, label: "多模态交互", status: "追踪中", angle: 120, delay: 1 },
+  { id: 3, label: "空间计算", status: "分析中", angle: 200, delay: 2 },
+  { id: 4, label: "生成式 UI", status: "已锁定", angle: 300, delay: 3 },
 ];
 
 export function ResearchRadar() {
   return (
-    <section className="py-24 px-6 relative border-y border-black/5 overflow-hidden bg-slate-50/50">
+    <section className="py-24 px-6 relative border-y border-black/5 overflow-hidden bg-transparent">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Text Content */}
@@ -21,12 +21,12 @@ export function ResearchRadar() {
         >
           <div className="flex items-center gap-2 text-blue-600 mb-6">
             <Activity className="w-5 h-5 animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-wider">Live Signal Detection</span>
+            <span className="font-mono text-xs uppercase tracking-wider">实时信号监测</span>
           </div>
-          <h2 className="text-4xl font-bold text-black mb-6">Scanning the Horizon</h2>
+          <h2 className="text-4xl font-bold text-black mb-6">扫描前沿</h2>
           <p className="text-slate-600 text-lg leading-relaxed mb-8">
-            We don't just read papers; we actively scan for emerging patterns. 
-            Our research engine is constantly tuned to the faint signals that precede major industry shifts.
+            我们不只是阅读论文，我们主动扫描涌现的模式。<br/>
+            我们的研究引擎时刻调整频率，捕捉那些预示行业巨变的微弱信号。
           </p>
           
           <div className="space-y-4">

@@ -16,19 +16,19 @@ export function MirrorPostPage({ onNavigate }: { onNavigate: (event: MouseEvent<
       <PageBackground />
       
       <div className="relative z-10">
-        <div id="hero">
+        <div id="hero" className="scroll-mt-24">
           <PostHero />
         </div>
-        <div id="role">
+        <div id="role" className="scroll-mt-24">
           <PostRole />
         </div>
-        <div id="core">
+        <div id="core" className="scroll-mt-24">
           <PostCore />
         </div>
-        <div id="modules">
+        <div id="modules" className="scroll-mt-24">
           <PostModules />
         </div>
-        <div id="philosophy">
+        <div id="philosophy" className="scroll-mt-24">
           <PostPhilosophy />
         </div>
       </div>

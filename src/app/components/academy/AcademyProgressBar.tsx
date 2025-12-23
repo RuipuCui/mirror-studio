@@ -21,7 +21,7 @@ export function AcademyProgressBar() {
           }
         });
       },
-      { threshold: 0.5 }
+      { rootMargin: '-20% 0px -70% 0px' }
     );
 
     sections.forEach(({ id }) => {

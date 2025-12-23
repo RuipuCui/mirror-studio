@@ -17,22 +17,22 @@ export function MirrorAcademyPage({ onNavigate }: { onNavigate: (event: MouseEve
       <PageBackground />
       
       <div className="relative z-10 flex flex-col gap-0">
-        <div id="hero">
+        <div id="hero" className="scroll-mt-24">
           <AcademyHero />
         </div>
-        <div id="manifesto">
+        <div id="manifesto" className="scroll-mt-24">
           <AcademyManifesto />
         </div>
-        <div id="principles">
+        <div id="principles" className="scroll-mt-24">
           <AcademyPrinciples />
         </div>
-        <div id="structure">
+        <div id="structure" className="scroll-mt-24">
           <AcademyStructure />
         </div>
-        <div id="journey">
+        <div id="journey" className="scroll-mt-24">
           <AcademyJourney />
         </div>
-        <div id="role">
+        <div id="role" className="scroll-mt-24">
           <AcademyRole />
         </div>
       </div>

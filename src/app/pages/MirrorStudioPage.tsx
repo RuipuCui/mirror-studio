@@ -23,14 +23,30 @@ export function MirrorStudioPage({ onNavigate }: { onNavigate: (event: MouseEven
       <PageBackground />
       
       <div className="relative z-10">
-        <Hero showIntro={showIntro} setShowIntro={setShowIntro} />
-        <Team />
-        <Philosophy />
-        <WhatWeDo />
-        <Metrics />
-        <HowWeBuild />
-        <Capabilities />
-        <Differentiation />
+        <div id="hero" className="scroll-mt-24">
+          <Hero showIntro={showIntro} setShowIntro={setShowIntro} />
+        </div>
+        <div id="team" className="scroll-mt-24">
+          <Team />
+        </div>
+        <div id="philosophy" className="scroll-mt-24">
+          <Philosophy />
+        </div>
+        <div id="what-we-do" className="scroll-mt-24">
+          <WhatWeDo />
+        </div>
+        <div id="metrics" className="scroll-mt-24">
+          <Metrics />
+        </div>
+        <div id="how-we-build" className="scroll-mt-24">
+          <HowWeBuild />
+        </div>
+        <div id="capabilities" className="scroll-mt-24">
+          <Capabilities />
+        </div>
+        <div id="differentiation" className="scroll-mt-24">
+          <Differentiation />
+        </div>
       </div>
 
       <footer className="relative z-10 py-12 text-center text-slate-400 text-sm border-t border-black/5 bg-white/80 backdrop-blur-sm">

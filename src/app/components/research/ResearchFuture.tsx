@@ -13,7 +13,7 @@ export function ResearchFuture() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 tracking-tight">Why Research Matters?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 tracking-tight">研究的意义</h2>
             <div className="p-8 rounded-[2rem] bg-black text-white relative overflow-hidden group">
               {/* Background Animation */}
               <motion.div 
@@ -26,9 +26,9 @@ export function ResearchFuture() {
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
                   <Atom className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">The "Brain" of the Studio</h3>
+                <h3 className="text-2xl font-bold mb-4">Studio 的“大脑”</h3>
                 <p className="text-white/70 leading-relaxed mb-8">
-                  Without research, we are just coding blindly. Research provides the "map" for the entire ecosystem.
+                  没有研究，我们只是在盲目编码。Research 为整个生态系统提供了“地图”。
                 </p>
 
                 {/* Orbit Animation */}
@@ -63,9 +63,9 @@ export function ResearchFuture() {
           {/* Future Goals */}
           <div className="space-y-6">
             {[
-              { title: "Predicting Trends", desc: "Identifying what's next before it becomes mainstream.", icon: TrendingUp },
-              { title: "Defining Standards", desc: "Setting the technical bar for all Studio projects.", icon: Target },
-              { title: "Risk Mitigation", desc: "Testing dangerous ideas so Studio doesn't have to.", icon: AlertTriangle }
+              { title: "预测趋势", desc: "在成为主流之前识别下一个风口。", icon: TrendingUp },
+              { title: "定义标准", desc: "为所有 Studio 项目设定技术标杆。", icon: Target },
+              { title: "风险规避", desc: "测试危险的想法，让 Studio 免于试错成本。", icon: AlertTriangle }
             ].map((item, i) => (
               <motion.div
                 key={i}

@@ -5,19 +5,19 @@ const questions = [
   {
     icon: HelpCircle,
     question: "这个问题真实吗？",
-    sub: "Is this problem real?",
+    sub: "真伪辨别",
     desc: "不仅仅是“痛点”，而是结构性的阻碍。"
   },
   {
     icon: Scale,
     question: "值得被解决吗？",
-    sub: "Is it worth solving?",
+    sub: "价值评估",
     desc: "评估投入产出比与战略价值。"
   },
   {
     icon: GitMerge,
     question: "哪条路径最有性价比？",
-    sub: "Most cost-effective path?",
+    sub: "路径优选",
     desc: "在多种技术方案中找到最优解。"
   }
 ];

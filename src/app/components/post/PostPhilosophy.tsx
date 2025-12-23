@@ -13,9 +13,9 @@ export function PostPhilosophy() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="py-32 px-6 relative bg-black text-white overflow-hidden">
+    <section ref={containerRef} className="py-32 px-6 relative bg-white text-black overflow-hidden">
       {/* Background Texture */}
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:16px_16px]" />
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#00000033_1px,transparent_1px)] [background-size:16px_16px]" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -23,8 +23,8 @@ export function PostPhilosophy() {
           {/* Requirements List */}
           <div className="order-2 lg:order-1">
             <div className="flex items-center gap-3 mb-8">
-              <Sparkles className="w-5 h-5 text-yellow-400" />
-              <h2 className="text-sm font-mono uppercase tracking-widest text-white/60">Talent Requirements</h2>
+              <Sparkles className="w-5 h-5 text-yellow-500" />
+              <h2 className="text-sm font-mono uppercase tracking-widest text-black/60">Talent Requirements</h2>
             </div>
             <h3 className="text-4xl font-bold mb-10">为什么 MirrorPost 不是谁都能做？</h3>
             
@@ -42,12 +42,12 @@ export function PostPhilosophy() {
                   transition={{ delay: i * 0.1 }}
                   className="flex items-start gap-4 group"
                 >
-                  <div className="mt-1 w-6 h-6 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                  <div className="mt-1 w-6 h-6 rounded-full border border-black/20 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-lg font-medium text-white/90">{req.text}</p>
-                    <p className="text-xs font-mono text-white/40 uppercase tracking-wider mt-1">{req.sub}</p>
+                    <p className="text-lg font-medium text-black/90">{req.text}</p>
+                    <p className="text-xs font-mono text-black/40 uppercase tracking-wider mt-1">{req.sub}</p>
                   </div>
                 </motion.div>
               ))}
@@ -56,22 +56,22 @@ export function PostPhilosophy() {
 
           {/* Manifesto Quote */}
           <div className="order-1 lg:order-2 relative">
-            <motion.div style={{ y, opacity }} className="absolute -top-20 -right-20 text-white/5 pointer-events-none select-none">
+            <motion.div style={{ y, opacity }} className="absolute -top-20 -right-20 text-black/5 pointer-events-none select-none">
               <Quote size={300} />
             </motion.div>
             
             <div className="relative z-10">
-              <blockquote className="text-3xl md:text-5xl font-serif leading-tight text-white/90">
-                <span className="text-white/40">"</span>
+              <blockquote className="text-3xl md:text-5xl font-serif leading-tight text-black/90">
+                <span className="text-black/40">"</span>
                 MirrorPost 不负责制造声量，<br/>
-                它负责让 <span className="text-white border-b-2 border-white">WhiteMirror 的真实价值</span>，<br/>
+                它负责让 <span className="text-black border-b-2 border-black">WhiteMirror 的真实价值</span>，<br/>
                 被世界正确看见。
-                <span className="text-white/40">"</span>
+                <span className="text-black/40">"</span>
               </blockquote>
               
               <div className="mt-12 flex items-center gap-4">
-                <div className="h-px w-12 bg-white/30" />
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/50">Manifesto</span>
+                <div className="h-px w-12 bg-black/30" />
+                <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/50">Manifesto</span>
               </div>
             </div>
           </div>
