@@ -29,7 +29,7 @@ export function Slide({ children, className, id, showBackground = true }: SlideP
       id={id}
       ref={ref}
       className={cn(
-        "h-screen w-full snap-start flex items-center justify-center overflow-hidden relative bg-black text-white",
+        "min-h-screen w-full md:h-screen md:snap-start flex items-center justify-center relative bg-black text-white py-20 md:py-0 overflow-hidden",
         className
       )}
     >
@@ -37,7 +37,7 @@ export function Slide({ children, className, id, showBackground = true }: SlideP
       
       <motion.div 
         style={{ y }}
-        className="container mx-auto px-6 md:px-12 pt-24 md:pt-32 max-w-7xl h-full flex flex-col justify-center relative z-10"
+        className="container mx-auto px-6 md:px-12 pt-10 md:pt-32 max-w-7xl h-full flex flex-col justify-center relative z-10"
       >
         {children}
       </motion.div>

@@ -850,7 +850,7 @@ function EfficiencySection({ language }: { language: Language }) {
             })}
           </div>
 
-          <div className="md:col-span-8 relative h-[500px] perspective-1000">
+          <div className="md:col-span-8 relative h-auto md:h-[500px] perspective-1000">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -863,14 +863,14 @@ function EfficiencySection({ language }: { language: Language }) {
                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-zinc-800/20 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="grid grid-cols-2 gap-12 h-full relative z-10">
-                  <div className="flex flex-col justify-between border-r border-white/5 pr-8 opacity-60 transition-opacity group-hover:opacity-40">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 h-full relative z-10">
+                  <div className="flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 pb-8 md:pb-0 md:pr-8 opacity-60 transition-opacity group-hover:opacity-40">
                     <div className="flex items-center gap-2 text-zinc-500 mb-8">
                       <X className="w-4 h-4" />
                       <span className="text-xs uppercase tracking-[0.2em]">{t.efficiency.traditionalLabel}</span>
                     </div>
 
-                    <div className="space-y-12 font-mono text-sm text-zinc-400">
+                    <div className="space-y-8 md:space-y-12 font-mono text-sm text-zinc-400">
                       <div>
                         <label className="block text-[10px] uppercase text-zinc-600 mb-2">{t.efficiency.time}</label>
                         <div className="text-xl line-through decoration-zinc-600">{efficiencyCases[activeTab][language].traditional.time}</div>
@@ -885,18 +885,18 @@ function EfficiencySection({ language }: { language: Language }) {
                       </div>
                     </div>
 
-                    <div className="mt-auto pt-8 border-t border-white/5 text-zinc-600 text-xs font-mono">
+                    <div className="mt-8 md:mt-auto pt-8 border-t border-white/5 text-zinc-600 text-xs font-mono">
                       {language === "zh" ? "状态" : "STATUS"}: {efficiencyCases[activeTab][language].traditional.status}
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-between pl-4">
+                  <div className="flex flex-col justify-between md:pl-4">
                     <div className="flex items-center gap-2 text-white mb-8">
                       <Check className="w-4 h-4" />
                       <span className="text-xs uppercase tracking-[0.2em] font-bold">{t.efficiency.aiLabel}</span>
                     </div>
 
-                    <div className="space-y-12">
+                    <div className="space-y-8 md:space-y-12">
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                         <label className="block text-[10px] uppercase text-zinc-500 mb-2">{t.efficiency.time}</label>
                         <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter shadow-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
@@ -915,14 +915,14 @@ function EfficiencySection({ language }: { language: Language }) {
                       </motion.div>
                     </div>
 
-                    <div className="mt-auto pt-8 border-t border-white/20 text-white text-xs font-mono flex items-center gap-2">
+                    <div className="mt-8 md:mt-auto pt-8 border-t border-white/20 text-white text-xs font-mono flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                       {language === "zh" ? "状态" : "STATUS"}: {efficiencyCases[activeTab][language].native.status}
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 bg-black border border-zinc-800 rounded-full z-20">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 bg-black border border-zinc-800 rounded-full z-20 hidden md:block">
                   <ArrowRight className="w-4 h-4 text-zinc-500" />
                 </div>
               </motion.div>
@@ -1032,7 +1032,7 @@ export function HomePage({ onNavigate, language }: { onNavigate: (event: MouseEv
     <main 
       ref={mainRef}
       onScroll={handleScroll}
-      className="relative h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden"
+      className="relative h-screen w-full overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden"
     >
       <AmbientSound />
       <HeroSection language={language} />
