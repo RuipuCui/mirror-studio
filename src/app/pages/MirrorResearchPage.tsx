@@ -1,5 +1,4 @@
 import { useState, type MouseEvent } from 'react';
-import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
 import { ResearchHero } from '../components/research/ResearchHero';
 import { CoreQuestions } from '../components/research/CoreQuestions';
 import { ResearchFocus } from '../components/research/ResearchFocus';
@@ -14,7 +13,6 @@ export function MirrorResearchPage({ onNavigate }: { onNavigate: (event: MouseEv
 
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent text-black selection:bg-black selection:text-white [&::-webkit-scrollbar]:hidden">
-      <AmbientSound />
       <ResearchProgressBar />
       <PageBackground />
       

@@ -7,13 +7,11 @@ import { LabPhilosophy } from '../components/lab/LabPhilosophy';
 import { LabExperiments } from '../components/lab/LabExperiments';
 import { LabStatus } from '../components/lab/LabStatus';
 import { LabProgressBar } from '../components/lab/LabProgressBar';
-import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
 import { PageBackground } from '../components/PageBackground';
 
 export function MirrorLabPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent [&::-webkit-scrollbar]:hidden">
-      <AmbientSound />
       <LabProgressBar />
       <PageBackground />
       
@@ -42,7 +40,7 @@ export function MirrorLabPage({ onNavigate }: { onNavigate: (event: MouseEvent<H
       </div>
 
       <footer className="relative z-10 py-12 text-center text-slate-400 text-sm border-t border-black/5 bg-white/80 backdrop-blur-sm">
-        <p>© 2024 Mirror Lab. All rights reserved.</p>
+        <p>© 2025 Mirror Lab. All rights reserved.</p>
       </footer>
     </main>
   );

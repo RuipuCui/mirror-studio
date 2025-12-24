@@ -1,5 +1,4 @@
 import { useState, type MouseEvent } from 'react';
-import { AmbientSound } from '../components/whitemirrorai/ui/AmbientSound';
 import { PageBackground } from '../components/PageBackground';
 import { AcademyHero } from '../components/academy/AcademyHero';
 import { AcademyManifesto } from '../components/academy/AcademyManifesto';
@@ -12,7 +11,6 @@ import { AcademyProgressBar } from '../components/academy/AcademyProgressBar';
 export function MirrorAcademyPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent text-black selection:bg-orange-500 selection:text-white [&::-webkit-scrollbar]:hidden">
-      <AmbientSound />
       <AcademyProgressBar />
       <PageBackground />
       

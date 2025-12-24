@@ -2,7 +2,6 @@ import { useRef, useState, useEffect, type MouseEvent } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowRight, Users, User, Cpu, TrendingUp, Zap, X, Check } from "lucide-react";
 import { Slide, SlideHeading, SlideSubheading } from "@/app/components/whitemirrorai/Slide";
-import { AmbientSound } from "@/app/components/whitemirrorai/ui/AmbientSound";
 import { HomeProgressBar } from "@/app/components/home/HomeProgressBar";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/app/types/whitemirrorai";
@@ -1034,7 +1033,6 @@ export function HomePage({ onNavigate, language }: { onNavigate: (event: MouseEv
       onScroll={handleScroll}
       className="relative h-screen w-full overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden"
     >
-      <AmbientSound />
       <HeroSection language={language} />
       <ManifestoSection language={language} />
       <ProblemSection language={language} />
