@@ -1,38 +1,88 @@
 import { motion } from 'motion/react';
 import { Check, X, Zap, Clock, Users, RefreshCw, ShieldAlert, ArrowRight } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const comparison = [
-  {
-    icon: Users,
-    label: "核心模式",
-    traditional: { text: '多人协作 / 沟通损耗', sub: 'High Friction' },
-    studio: { text: 'AI-Native 个体闭环', sub: 'Zero Latency' },
-    highlight: true
+const content = {
+  zh: {
+    title: "本质区别",
+    subtitle: "为什么选择 Mirror Studio 而不是传统外包？",
+    efficiencyLabel: "EFFICIENCY GAIN",
+    efficiencyValue: "10x",
+    efficiencyNote: "Faster Iteration Cycles",
+    columns: { traditional: "Traditional", studio: "Mirror Studio" },
+    comparison: [
+      {
+        icon: Users,
+        label: "核心模式",
+        traditional: { text: '多人协作 / 沟通损耗', sub: 'High Friction' },
+        studio: { text: 'AI-Native 个体闭环', sub: 'Zero Latency' },
+        highlight: true
+      },
+      {
+        icon: Clock,
+        label: "迭代节奏",
+        traditional: { text: '周 / 月级发布', sub: 'Slow Feedback' },
+        studio: { text: '天 / 小时级发布', sub: 'Real-time' },
+        highlight: true
+      },
+      {
+        icon: ShieldAlert,
+        label: "风险控制",
+        traditional: { text: '发现晚 / 掉头难', sub: 'High Risk' },
+        studio: { text: '极速试错 / 快速止损', sub: 'Agile' },
+        highlight: true
+      },
+      {
+        icon: Zap,
+        label: "交付目标",
+        traditional: { text: '完美代码 / 流程合规', sub: 'Process Driven' },
+        studio: { text: '验证假设 / 解决问题', sub: 'Outcome Driven' },
+        highlight: false
+      }
+    ]
   },
-  {
-    icon: Clock,
-    label: "迭代节奏",
-    traditional: { text: '周 / 月级发布', sub: 'Slow Feedback' },
-    studio: { text: '天 / 小时级发布', sub: 'Real-time' },
-    highlight: true
-  },
-  {
-    icon: ShieldAlert,
-    label: "风险控制",
-    traditional: { text: '发现晚 / 掉头难', sub: 'High Risk' },
-    studio: { text: '极速试错 / 快速止损', sub: 'Agile' },
-    highlight: true
-  },
-  {
-    icon: Zap,
-    label: "交付目标",
-    traditional: { text: '完美代码 / 流程合规', sub: 'Process Driven' },
-    studio: { text: '验证假设 / 解决问题', sub: 'Outcome Driven' },
-    highlight: false
+  en: {
+    title: "Core Differences",
+    subtitle: "Why choose Mirror Studio over traditional outsourcing?",
+    efficiencyLabel: "EFFICIENCY GAIN",
+    efficiencyValue: "10x",
+    efficiencyNote: "Faster Iteration Cycles",
+    columns: { traditional: "Traditional", studio: "Mirror Studio" },
+    comparison: [
+      {
+        icon: Users,
+        label: "Core model",
+        traditional: { text: 'Large teams / communication overhead', sub: 'High Friction' },
+        studio: { text: 'AI-native individual loops', sub: 'Zero Latency' },
+        highlight: true
+      },
+      {
+        icon: Clock,
+        label: "Iteration pace",
+        traditional: { text: 'Weekly / monthly releases', sub: 'Slow Feedback' },
+        studio: { text: 'Daily / hourly releases', sub: 'Real-time' },
+        highlight: true
+      },
+      {
+        icon: ShieldAlert,
+        label: "Risk control",
+        traditional: { text: 'Late discovery / hard pivots', sub: 'High Risk' },
+        studio: { text: 'Fast experiments / quick stops', sub: 'Agile' },
+        highlight: true
+      },
+      {
+        icon: Zap,
+        label: "Delivery goal",
+        traditional: { text: 'Perfect code / process compliance', sub: 'Process Driven' },
+        studio: { text: 'Validate hypotheses / solve problems', sub: 'Outcome Driven' },
+        highlight: false
+      }
+    ]
   }
-];
+};
 
-export function Differentiation() {
+export function Differentiation({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="differentiation" className="relative py-32 px-6 bg-transparent border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -41,16 +91,16 @@ export function Differentiation() {
           <div className="lg:col-span-4">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:sticky lg:top-32"
-            >
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
-                本质区别
-              </h2>
-              <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-8">
-                为什么选择 Mirror Studio 而不是传统外包？
-              </p>
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:sticky lg:top-32"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
+              {t.title}
+            </h2>
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-8">
+              {t.subtitle}
+            </p>
               
               <div className="hidden lg:block p-6 rounded-2xl bg-slate-50 border border-black/10 relative overflow-hidden">
                 <motion.div
@@ -58,9 +108,9 @@ export function Differentiation() {
                   transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
                   className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-black/5 to-transparent skew-x-12"
                 />
-                <div className="text-sm font-mono text-slate-500 mb-4">EFFICIENCY GAIN</div>
-                <div className="text-5xl font-bold text-black mb-2">10x</div>
-                <div className="text-sm text-slate-400">Faster Iteration Cycles</div>
+                <div className="text-sm font-mono text-slate-500 mb-4">{t.efficiencyLabel}</div>
+                <div className="text-5xl font-bold text-black mb-2">{t.efficiencyValue}</div>
+                <div className="text-sm text-slate-400">{t.efficiencyNote}</div>
               </div>
             </motion.div>
           </div>
@@ -69,11 +119,11 @@ export function Differentiation() {
           <div className="lg:col-span-8 space-y-4">
             {/* Header Row */}
             <div className="grid grid-cols-2 gap-4 px-6 pb-2 text-xs font-mono text-slate-400 uppercase tracking-wider">
-              <div>Traditional</div>
-              <div className="text-black">Mirror Studio</div>
+              <div>{t.columns.traditional}</div>
+              <div className="text-black">{t.columns.studio}</div>
             </div>
 
-            {comparison.map((row, index) => (
+            {t.comparison.map((row, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

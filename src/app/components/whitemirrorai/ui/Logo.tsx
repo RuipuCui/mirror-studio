@@ -3,6 +3,7 @@ import { useCallback, useEffect, type KeyboardEvent, type MouseEvent } from "rea
 
 import logoImg from "@/assets/d8ccf2882154af147033fb89190f48a94362c766.png";
 import type { Language } from "@/app/types/whitemirrorai";
+import { LanguageSwitcher } from "../../ui/LanguageSwitcher";
 
 interface LogoProps {
   language: Language;
@@ -142,6 +143,17 @@ export function Logo({ language, onToggleLanguage, onNavigate, activeTab = 'home
             )}
           </a>
         ))}
+        
+        {/* Language Switcher */}
+        <div className={`hidden md:block w-px h-4 mx-2 ${isHome ? 'bg-white/20' : 'bg-black/10'}`} />
+        <LanguageSwitcher 
+          language={language} 
+          onToggle={onToggleLanguage}
+          className={isHome 
+            ? "bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/40 [&_svg]:text-white [&_span]:text-white shadow-none" 
+            : "shadow-none"
+          }
+        />
       </nav>
     </motion.header>
   );

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Building2, FlaskConical, Lightbulb, Package, Rocket } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 const orgs = [
   {
@@ -36,7 +37,55 @@ const MovingIcon = ({ icon: Icon, delay }: { icon: any, delay: number }) => (
   </div>
 );
 
-export function Team() {
+const content = {
+  zh: {
+    title: "生态定位",
+    subtitle: (
+      <>
+        WhiteMirror 不是一个“单点产品”，而是一个完整链路。
+        <br />
+        <span className="text-slate-400">想法与问题 (0-1) → 系统实现 (1-100) → 放大、教学、传播</span>
+      </>
+    ),
+    ideaLabel: "IDEA",
+    productLabel: "PRODUCT",
+    labs: {
+      title: "MirrorLabs",
+      role: "0 到 1 (MVP 验证)",
+      points: ["• 收集真实问题与探索方向", "• 快速做 MVP 验证", "• 判断「值不值得做」"]
+    },
+    studio: {
+      title: "MirrorStudio",
+      role: "1 到 100 (系统交付)",
+      points: ["• 接手已经被验证的方向", "• 用 AI 变成网站/系统/工具", "• 快速上线、快速迭代"]
+    }
+  },
+  en: {
+    title: "Ecosystem Positioning",
+    subtitle: (
+      <>
+        WhiteMirror is not a single product, but a full pipeline.
+        <br />
+        <span className="text-slate-400">Ideas & problems (0-1) → system delivery (1-100) → scale, teach, communicate</span>
+      </>
+    ),
+    ideaLabel: "IDEA",
+    productLabel: "PRODUCT",
+    labs: {
+      title: "MirrorLabs",
+      role: "0 to 1 (MVP validation)",
+      points: ["• Collect real problems and explore directions", "• Rapidly build MVPs", "• Decide whether it's worth doing"]
+    },
+    studio: {
+      title: "MirrorStudio",
+      role: "1 to 100 (system delivery)",
+      points: ["• Take on validated directions", "• Use AI to build websites/systems/tools", "• Launch fast and iterate fast"]
+    }
+  }
+};
+
+export function Team({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="team" className="relative flex flex-col justify-center py-24 px-6 bg-transparent border-t border-black/5">
       <div className="max-w-[1400px] mx-auto w-full">
@@ -47,11 +96,9 @@ export function Team() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">生态定位</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">{t.title}</h2>
           <p className="text-slate-600 text-lg max-w-3xl mx-auto mb-8">
-            WhiteMirror 不是一个“单点产品”，而是一个完整链路。
-            <br />
-            <span className="text-slate-400">想法与问题 (0-1) → 系统实现 (1-100) → 放大、教学、传播</span>
+            {t.subtitle}
           </p>
         </motion.div>
 
@@ -61,7 +108,7 @@ export function Team() {
           {/* Start Node */}
           <div className="hidden lg:flex flex-col items-center justify-center w-24 shrink-0">
             <div className="w-4 h-4 rounded-full bg-slate-300 border border-slate-400" />
-            <div className="mt-3 text-xs font-mono text-slate-400">IDEA</div>
+            <div className="mt-3 text-xs font-mono text-slate-400">{t.ideaLabel}</div>
           </div>
 
           {/* Path 1: Idea -> Labs */}
@@ -82,14 +129,14 @@ export function Team() {
               <FlaskConical className="w-10 h-10 text-slate-600 group-hover:text-black transition-colors" />
             </div>
             <div className="relative">
-              <h3 className="text-2xl font-bold mb-2 text-black">MirrorLabs</h3>
+              <h3 className="text-2xl font-bold mb-2 text-black">{t.labs.title}</h3>
               <div className="text-sm font-bold mb-4 px-3 py-1 rounded-full inline-block border bg-black/5 border-black/10 text-black">
-                0 到 1 (MVP 验证)
+                {t.labs.role}
               </div>
               <div className="text-slate-600 text-sm leading-relaxed group-hover:text-slate-800 transition-colors space-y-2 text-left pl-4 border-l border-black/10">
-                <p>• 收集真实问题与探索方向</p>
-                <p>• 快速做 MVP 验证</p>
-                <p>• 判断「值不值得做」</p>
+                {t.labs.points.map((point) => (
+                  <p key={point}>{point}</p>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -116,14 +163,14 @@ export function Team() {
               <Building2 className="w-10 h-10" />
             </div>
             <div className="relative">
-              <h3 className="text-2xl font-bold mb-2">MirrorStudio</h3>
+              <h3 className="text-2xl font-bold mb-2">{t.studio.title}</h3>
               <div className="text-sm font-bold mb-4 px-3 py-1 rounded-full inline-block bg-white text-black">
-                1 到 100 (系统交付)
+                {t.studio.role}
               </div>
               <div className="text-slate-300 text-sm leading-relaxed space-y-2 text-left pl-4 border-l border-white/20">
-                <p>• 接手已经被验证的方向</p>
-                <p>• 用 AI 变成网站/系统/工具</p>
-                <p>• 快速上线、快速迭代</p>
+                {t.studio.points.map((point) => (
+                  <p key={point}>{point}</p>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -137,7 +184,7 @@ export function Team() {
           {/* End Node */}
           <div className="hidden lg:flex flex-col items-center justify-center w-24 shrink-0">
             <div className="w-4 h-4 rounded-full bg-black border border-black shadow-[0_0_15px_rgba(0,0,0,0.2)]" />
-            <div className="mt-3 text-xs font-mono text-black">PRODUCT</div>
+            <div className="mt-3 text-xs font-mono text-black">{t.productLabel}</div>
           </div>
 
         </div>

@@ -1,11 +1,42 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 const logo = new URL('../../../assets/logo.png', import.meta.url).href;
 
-export function ResearchHero() {
+const content = {
+  zh: {
+    badge: "Cognitive Engine",
+    title: "Mirror Research",
+    desc: (
+      <>
+        WhiteMirror 的认知引擎<br/>
+        <span className="text-black font-medium">它解决的不是“做什么”，而是“值不值得做”</span>
+      </>
+    ),
+    tags: ["Not Academic Papers", "Not Vague Ideas", "Not Just Reports"],
+    primaryCta: "核心命题",
+    secondaryCta: "研究成果",
+  },
+  en: {
+    badge: "Cognitive Engine",
+    title: "Mirror Research",
+    desc: (
+      <>
+        WhiteMirror's cognition engine<br/>
+        <span className="text-black font-medium">It doesn't answer “what to build,” but “is it worth building?”</span>
+      </>
+    ),
+    tags: ["Not Academic Papers", "Not Vague Ideas", "Not Just Reports"],
+    primaryCta: "Core Questions",
+    secondaryCta: "Outputs",
+  }
+};
+
+export function ResearchHero({ language }: { language: Language }) {
   const { scrollY } = useScroll();
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+  const t = content[language];
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -36,37 +67,36 @@ export function ResearchHero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
               </span>
-              Cognitive Engine
+              {t.badge}
             </div>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold text-black tracking-tight mb-8">
-            Mirror Research
+            {t.title}
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-8">
-            WhiteMirror 的认知引擎<br/>
-            <span className="text-black font-medium">它解决的不是“做什么”，而是“值不值得做”</span>
+            {t.desc}
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Academic Papers</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Vague Ideas</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Just Reports</span>
+            {t.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 border border-black/10 rounded-md">{tag}</span>
+            ))}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-             <button 
+            <button 
               onClick={() => scrollTo('core-questions')}
               className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
             >
-              核心命题
+              {t.primaryCta}
             </button>
             <button 
               onClick={() => scrollTo('outputs')}
               className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
             >
-              研究成果
+              {t.secondaryCta}
             </button>
           </div>
         </motion.div>

@@ -1,18 +1,32 @@
 import { useEffect, useState } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const sections = [
-  { id: 'hero', label: 'Home' },
-  { id: 'team', label: 'Team' },
-  { id: 'philosophy', label: 'Philosophy' },
-  { id: 'what-we-do', label: 'What We Do' },
-  { id: 'metrics', label: 'Metrics' },
-  { id: 'how-we-build', label: 'Process' },
-  { id: 'capabilities', label: 'Capabilities' },
-  { id: 'differentiation', label: 'Why Us' },
-];
+const content = {
+  zh: [
+    { id: 'hero', label: '首页' },
+    { id: 'team', label: '生态定位' },
+    { id: 'philosophy', label: '理念' },
+    { id: 'what-we-do', label: '我们做什么' },
+    { id: 'metrics', label: '指标' },
+    { id: 'how-we-build', label: '流程' },
+    { id: 'capabilities', label: '能力' },
+    { id: 'differentiation', label: '优势' },
+  ],
+  en: [
+    { id: 'hero', label: 'Home' },
+    { id: 'team', label: 'Team' },
+    { id: 'philosophy', label: 'Philosophy' },
+    { id: 'what-we-do', label: 'What We Do' },
+    { id: 'metrics', label: 'Metrics' },
+    { id: 'how-we-build', label: 'Process' },
+    { id: 'capabilities', label: 'Capabilities' },
+    { id: 'differentiation', label: 'Why Us' },
+  ],
+};
 
-export function ProgressBar() {
+export function ProgressBar({ language }: { language: Language }) {
   const [activeSection, setActiveSection] = useState('hero');
+  const sections = content[language];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

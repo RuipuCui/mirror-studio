@@ -1,7 +1,32 @@
 import { motion } from 'motion/react';
 import { TrendingUp, Target, AlertTriangle, Zap, Atom } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-export function ResearchFuture() {
+const content = {
+  zh: {
+    title: "研究的意义",
+    cardTitle: "Studio 的“大脑”",
+    cardDesc: "没有研究，我们只是在盲目编码。Research 为整个生态系统提供了“地图”。",
+    goals: [
+      { title: "预测趋势", desc: "在成为主流之前识别下一个风口。", icon: TrendingUp },
+      { title: "定义标准", desc: "为所有 Studio 项目设定技术标杆。", icon: Target },
+      { title: "风险规避", desc: "测试危险的想法，让 Studio 免于试错成本。", icon: AlertTriangle }
+    ]
+  },
+  en: {
+    title: "Why Research Matters",
+    cardTitle: "Studio's Brain",
+    cardDesc: "Without research, we would just be coding blindly. Research gives the ecosystem a map.",
+    goals: [
+      { title: "Predict trends", desc: "Spot the next wave before it becomes mainstream.", icon: TrendingUp },
+      { title: "Define standards", desc: "Set technical benchmarks for all Studio projects.", icon: Target },
+      { title: "Avoid risk", desc: "Test risky ideas so Studio avoids costly trial-and-error.", icon: AlertTriangle }
+    ]
+  }
+};
+
+export function ResearchFuture({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section className="py-20 px-6 relative bg-transparent border-t border-black/5 min-h-[80vh] flex flex-col justify-center">
       <div className="max-w-7xl mx-auto">
@@ -13,7 +38,7 @@ export function ResearchFuture() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 tracking-tight">研究的意义</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8 tracking-tight">{t.title}</h2>
             <div className="p-8 rounded-[2rem] bg-black text-white relative overflow-hidden group">
               {/* Background Animation */}
               <motion.div 
@@ -26,9 +51,9 @@ export function ResearchFuture() {
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
                   <Atom className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Studio 的“大脑”</h3>
+                <h3 className="text-2xl font-bold mb-4">{t.cardTitle}</h3>
                 <p className="text-white/70 leading-relaxed mb-8">
-                  没有研究，我们只是在盲目编码。Research 为整个生态系统提供了“地图”。
+                  {t.cardDesc}
                 </p>
 
                 {/* Orbit Animation */}
@@ -62,11 +87,7 @@ export function ResearchFuture() {
 
           {/* Future Goals */}
           <div className="space-y-6">
-            {[
-              { title: "预测趋势", desc: "在成为主流之前识别下一个风口。", icon: TrendingUp },
-              { title: "定义标准", desc: "为所有 Studio 项目设定技术标杆。", icon: Target },
-              { title: "风险规避", desc: "测试危险的想法，让 Studio 免于试错成本。", icon: AlertTriangle }
-            ].map((item, i) => (
+            {t.goals.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}

@@ -1,28 +1,60 @@
 import { motion } from 'motion/react';
 import { HelpCircle, Scale, GitMerge } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const questions = [
-  {
-    icon: HelpCircle,
-    question: "这个问题真实吗？",
-    sub: "真伪辨别",
-    desc: "不仅仅是“痛点”，而是结构性的阻碍。"
+const content = {
+  zh: {
+    title: "核心定位",
+    subtitle: "在 AI 时代，系统性地回答三个问题",
+    questions: [
+      {
+        icon: HelpCircle,
+        question: "这个问题真实吗？",
+        sub: "真伪辨别",
+        desc: "不仅仅是“痛点”，而是结构性的阻碍。"
+      },
+      {
+        icon: Scale,
+        question: "值得被解决吗？",
+        sub: "价值评估",
+        desc: "评估投入产出比与战略价值。"
+      },
+      {
+        icon: GitMerge,
+        question: "哪条路径最有性价比？",
+        sub: "路径优选",
+        desc: "在多种技术方案中找到最优解。"
+      }
+    ]
   },
-  {
-    icon: Scale,
-    question: "值得被解决吗？",
-    sub: "价值评估",
-    desc: "评估投入产出比与战略价值。"
-  },
-  {
-    icon: GitMerge,
-    question: "哪条路径最有性价比？",
-    sub: "路径优选",
-    desc: "在多种技术方案中找到最优解。"
+  en: {
+    title: "Core Positioning",
+    subtitle: "In the AI era, we systemically answer three questions",
+    questions: [
+      {
+        icon: HelpCircle,
+        question: "Is the problem real?",
+        sub: "Authenticity",
+        desc: "Not just a pain point, but a structural blocker."
+      },
+      {
+        icon: Scale,
+        question: "Is it worth solving?",
+        sub: "Value Assessment",
+        desc: "Evaluate ROI and strategic value."
+      },
+      {
+        icon: GitMerge,
+        question: "Which path is most cost-effective?",
+        sub: "Path Selection",
+        desc: "Find the best route among multiple technical options."
+      }
+    ]
   }
-];
+};
 
-export function CoreQuestions() {
+export function CoreQuestions({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -32,8 +64,8 @@ export function CoreQuestions() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">核心定位</h2>
-          <p className="text-black/50 text-lg font-light">在 AI 时代，系统性地回答三个问题</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">{t.title}</h2>
+          <p className="text-black/50 text-lg font-light">{t.subtitle}</p>
         </motion.div>
 
         <motion.div 
@@ -50,7 +82,7 @@ export function CoreQuestions() {
             }
           }}
         >
-          {questions.map((item, index) => (
+          {t.questions.map((item, index) => (
             <motion.div
               key={index}
               variants={{

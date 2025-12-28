@@ -1,73 +1,134 @@
 import { motion } from 'motion/react';
 import { Layers, PenTool, Image, Share, RefreshCw, ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const modules = [
-  {
-    id: 1,
-    icon: Layers,
-    title: "内容资产",
-    subtitle: "Content Layer",
-    desc: "项目解读、方法论文章、Showcase 拆解、团队成员视角输出。",
-    tag: "真实、长期、可回看",
-    color: "bg-blue-50 text-blue-600"
+const content = {
+  zh: {
+    title: "工作模块",
+    subtitle: "MirrorPost 的具体落地层",
+    label: "5 KEY MODULES",
+    modules: [
+      {
+        id: 1,
+        icon: Layers,
+        title: "内容资产",
+        subtitle: "Content Layer",
+        desc: "项目解读、方法论文章、Showcase 拆解、团队成员视角输出。",
+        tag: "真实、长期、可回看",
+        color: "bg-blue-50 text-blue-600"
+      },
+      {
+        id: 2,
+        icon: PenTool,
+        title: "叙事结构",
+        subtitle: "Narrative Layer",
+        desc: "我们在解决什么问题？为什么这样做？如何一步步推进？",
+        tag: "CMO + CSO 级工作",
+        color: "bg-purple-50 text-purple-600"
+      },
+      {
+        id: 3,
+        icon: Image,
+        title: "视觉与统一表达",
+        subtitle: "Visual Layer",
+        desc: "海报、网站、PPT、Landing Page。一眼看上去，就知道这是同一个组织。",
+        tag: "统一识别度",
+        color: "bg-pink-50 text-pink-600"
+      },
+      {
+        id: 4,
+        icon: Share,
+        title: "渠道分发",
+        subtitle: "Distribution Layer",
+        desc: "Website, Notion, 小红书, Twitter, LinkedIn。内容没立住，发哪里都没用。",
+        tag: "触达窗口",
+        color: "bg-orange-50 text-orange-600"
+      },
+      {
+        id: 5,
+        icon: RefreshCw,
+        title: "内部协同接口",
+        subtitle: "Internal Sync",
+        desc: "紧贴 Labs, Studio, Research, LearningOS。不是外宣部门，是组织的对外接口层。",
+        tag: "关键核心",
+        color: "bg-green-50 text-green-600"
+      }
+    ]
   },
-  {
-    id: 2,
-    icon: PenTool,
-    title: "叙事结构",
-    subtitle: "Narrative Layer",
-    desc: "我们在解决什么问题？为什么这样做？如何一步步推进？",
-    tag: "CMO + CSO 级工作",
-    color: "bg-purple-50 text-purple-600"
-  },
-  {
-    id: 3,
-    icon: Image,
-    title: "视觉与统一表达",
-    subtitle: "Visual Layer",
-    desc: "海报、网站、PPT、Landing Page。一眼看上去，就知道这是同一个组织。",
-    tag: "统一识别度",
-    color: "bg-pink-50 text-pink-600"
-  },
-  {
-    id: 4,
-    icon: Share,
-    title: "渠道分发",
-    subtitle: "Distribution Layer",
-    desc: "Website, Notion, 小红书, Twitter, LinkedIn。内容没立住，发哪里都没用。",
-    tag: "触达窗口",
-    color: "bg-orange-50 text-orange-600"
-  },
-  {
-    id: 5,
-    icon: RefreshCw,
-    title: "内部协同接口",
-    subtitle: "Internal Sync",
-    desc: "紧贴 Labs, Studio, Research, LearningOS。不是外宣部门，是组织的对外接口层。",
-    tag: "关键核心",
-    color: "bg-green-50 text-green-600"
+  en: {
+    title: "Modules",
+    subtitle: "How MirrorPost is implemented in practice",
+    label: "5 KEY MODULES",
+    modules: [
+      {
+        id: 1,
+        icon: Layers,
+        title: "Content Assets",
+        subtitle: "Content Layer",
+        desc: "Project breakdowns, methodology articles, showcase analyses, and member perspectives.",
+        tag: "Real, durable, reusable",
+        color: "bg-blue-50 text-blue-600"
+      },
+      {
+        id: 2,
+        icon: PenTool,
+        title: "Narrative Structure",
+        subtitle: "Narrative Layer",
+        desc: "What problem are we solving? Why this path? How do we move step by step?",
+        tag: "CMO + CSO level work",
+        color: "bg-purple-50 text-purple-600"
+      },
+      {
+        id: 3,
+        icon: Image,
+        title: "Visual Identity",
+        subtitle: "Visual Layer",
+        desc: "Posters, websites, decks, landing pages. One look and you know it's the same organization.",
+        tag: "Unified recognition",
+        color: "bg-pink-50 text-pink-600"
+      },
+      {
+        id: 4,
+        icon: Share,
+        title: "Distribution",
+        subtitle: "Distribution Layer",
+        desc: "Website, Notion, Xiaohongshu, Twitter, LinkedIn. If the story isn't solid, channels won't help.",
+        tag: "Reach windows",
+        color: "bg-orange-50 text-orange-600"
+      },
+      {
+        id: 5,
+        icon: RefreshCw,
+        title: "Internal Sync Interface",
+        subtitle: "Internal Sync",
+        desc: "Stay tight with Labs, Studio, Research, LearningOS. Not PR, but the external interface layer.",
+        tag: "Critical core",
+        color: "bg-green-50 text-green-600"
+      }
+    ]
   }
-];
+};
 
-export function PostModules() {
+export function PostModules({ language }: { language: Language }) {
   const [activeId, setActiveId] = useState<number | null>(null);
+  const t = content[language];
 
   return (
     <section className="py-32 px-6 relative bg-transparent border-t border-black/5">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div>
-            <h2 className="text-4xl md:text-6xl font-bold text-black mb-4 tracking-tight">工作模块</h2>
-            <p className="text-slate-500 text-lg">MirrorPost 的具体落地层</p>
+            <h2 className="text-4xl md:text-6xl font-bold text-black mb-4 tracking-tight">{t.title}</h2>
+            <p className="text-slate-500 text-lg">{t.subtitle}</p>
           </div>
           <div className="text-right hidden md:block">
-            <p className="text-sm font-mono text-slate-400">5 KEY MODULES</p>
+            <p className="text-sm font-mono text-slate-400">{t.label}</p>
           </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[380px]">
-          {modules.map((mod) => {
+          {t.modules.map((mod) => {
             const isActive = activeId === mod.id;
             return (
               <motion.div

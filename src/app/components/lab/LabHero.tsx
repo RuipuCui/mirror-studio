@@ -1,15 +1,37 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 const logo = new URL('../../../assets/logo.png', import.meta.url).href;
 
-export function LabHero() {
+export function LabHero({ language }: { language: Language }) {
   const { scrollY } = useScroll();
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const content = {
+    zh: {
+      badge: "Validation Engine",
+      title: "Mirror Lab",
+      desc: <>想法—验证—孵化引擎<br/><span className="text-black font-medium">Mirror Lab 不负责成功，它负责“尽快知道什么不值得继续做”。</span></>,
+      tags: ["Not Success Guarantee", "Not Just Demos", "Not Slow Research"],
+      btnMission: "了解机制",
+      btnProcess: "孵化流程"
+    },
+    en: {
+      badge: "Validation Engine",
+      title: "Mirror Lab",
+      desc: <>Idea-Validation-Incubation Engine<br/><span className="text-black font-medium">Mirror Lab is not responsible for success, it is responsible for "knowing as soon as possible what is not worth continuing".</span></>,
+      tags: ["Not Success Guarantee", "Not Just Demos", "Not Slow Research"],
+      btnMission: "Understand Mechanism",
+      btnProcess: "Incubation Process"
+    }
+  };
+
+  const t = content[language];
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
@@ -36,23 +58,22 @@ export function LabHero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
               </span>
-              Validation Engine
+              {t.badge}
             </div>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold text-black tracking-tight mb-8">
-            Mirror Lab
+            {t.title}
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-8">
-            想法—验证—孵化引擎<br/>
-            <span className="text-black font-medium">Mirror Lab 不负责成功，它负责“尽快知道什么不值得继续做”。</span>
+            {t.desc}
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Success Guarantee</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Just Demos</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Slow Research</span>
+            {t.tags.map((tag, i) => (
+              <span key={i} className="px-3 py-1 border border-black/10 rounded-md">{tag}</span>
+            ))}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -60,13 +81,13 @@ export function LabHero() {
               onClick={() => scrollTo('mission')}
               className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
             >
-              了解机制
+              {t.btnMission}
             </button>
             <button 
               onClick={() => scrollTo('process')}
               className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
             >
-              孵化流程
+              {t.btnProcess}
             </button>
           </div>
         </motion.div>

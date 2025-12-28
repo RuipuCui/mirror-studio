@@ -1,17 +1,47 @@
 import { motion } from 'motion/react';
 import { Terminal, Cpu, GitCommit, Clock } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const logs = [
-  { time: "09:41:22", type: "INFO", msg: "正在初始化环境..." },
-  { time: "09:41:24", type: "SUCCESS", msg: "已连接至 MirrorNet" },
-  { time: "09:41:25", type: "WARN", msg: "检测到节点-04 高延迟" },
-  { time: "09:41:28", type: "INFO", msg: "正在拉取最新模型 (v2.4.0)..." },
-  { time: "09:41:32", type: "SUCCESS", msg: "模型权重已加载" },
-  { time: "09:41:35", type: "INFO", msg: "开始训练序列..." },
-  { time: "09:41:45", type: "INFO", msg: "正在优化超参数..." },
-];
+export function LabStatus({ language }: { language: Language }) {
+  const content = {
+    zh: {
+      systemStatus: "系统状态",
+      title: "持续构建",
+      desc: "实验室从不停歇。我们不断启动新环境，测试新模型，在追求可行的道路上不断试错。",
+      activeSprints: "活跃冲刺",
+      deployFreq: "部署频率",
+      deployFreqValue: "每日",
+      logs: [
+        { time: "09:41:22", type: "INFO", msg: "正在初始化环境..." },
+        { time: "09:41:24", type: "SUCCESS", msg: "已连接至 MirrorNet" },
+        { time: "09:41:25", type: "WARN", msg: "检测到节点-04 高延迟" },
+        { time: "09:41:28", type: "INFO", msg: "正在拉取最新模型 (v2.4.0)..." },
+        { time: "09:41:32", type: "SUCCESS", msg: "模型权重已加载" },
+        { time: "09:41:35", type: "INFO", msg: "开始训练序列..." },
+        { time: "09:41:45", type: "INFO", msg: "正在优化超参数..." },
+      ]
+    },
+    en: {
+      systemStatus: "System Status",
+      title: "Continuous Build",
+      desc: "The lab never sleeps. We constantly spin up new environments, test new models, and iterate on the path to viability.",
+      activeSprints: "Active Sprints",
+      deployFreq: "Deploy Frequency",
+      deployFreqValue: "Daily",
+      logs: [
+        { time: "09:41:22", type: "INFO", msg: "Initializing environment..." },
+        { time: "09:41:24", type: "SUCCESS", msg: "Connected to MirrorNet" },
+        { time: "09:41:25", type: "WARN", msg: "High latency detected on Node-04" },
+        { time: "09:41:28", type: "INFO", msg: "Pulling latest model (v2.4.0)..." },
+        { time: "09:41:32", type: "SUCCESS", msg: "Model weights loaded" },
+        { time: "09:41:35", type: "INFO", msg: "Starting training sequence..." },
+        { time: "09:41:45", type: "INFO", msg: "Optimizing hyperparameters..." },
+      ]
+    }
+  };
 
-export function LabStatus() {
+  const t = content[language];
+
   return (
     <section className="py-24 px-6 relative border-y border-black/5 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -39,7 +69,7 @@ export function LabStatus() {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 pointer-events-none z-10" />
               
               <div className="space-y-2">
-                {logs.map((log, i) => (
+                {t.logs.map((log, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
@@ -75,23 +105,23 @@ export function LabStatus() {
         >
           <div className="flex items-center gap-2 text-slate-600 mb-6">
             <Terminal className="w-5 h-5" />
-            <span className="font-mono text-xs uppercase tracking-wider">系统状态</span>
+            <span className="font-mono text-xs uppercase tracking-wider">{t.systemStatus}</span>
           </div>
-          <h2 className="text-4xl font-bold text-black mb-6">持续构建</h2>
+          <h2 className="text-4xl font-bold text-black mb-6">{t.title}</h2>
           <p className="text-slate-600 text-lg leading-relaxed mb-8">
-            实验室从不停歇。我们不断启动新环境，测试新模型，在追求可行的道路上不断试错。
+            {t.desc}
           </p>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 rounded-xl bg-white border border-black/5">
-              <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">活跃冲刺</div>
+              <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">{t.activeSprints}</div>
               <div className="text-2xl font-bold text-black flex items-center gap-2">
                 3 <span className="flex h-2 w-2 rounded-full bg-black animate-pulse" />
               </div>
             </div>
             <div className="p-4 rounded-xl bg-white border border-black/5">
-              <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">部署频率</div>
-              <div className="text-2xl font-bold text-black">每日</div>
+              <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">{t.deployFreq}</div>
+              <div className="text-2xl font-bold text-black">{t.deployFreqValue}</div>
             </div>
           </div>
         </motion.div>

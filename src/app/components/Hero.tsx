@@ -1,16 +1,48 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { useEffect } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 const logo = new URL('../../assets/logo.png', import.meta.url).href;
 
 interface HeroProps {
   showIntro: boolean;
   setShowIntro: (show: boolean) => void;
+  language: Language;
 }
 
-export function Hero({ showIntro, setShowIntro }: HeroProps) {
+const content = {
+  zh: {
+    badge: "AI-Native System Engine",
+    title: "Mirror Studio",
+    desc: (
+      <>
+        AI-native 的产品与系统实现引擎<br/>
+        <span className="text-black font-medium">专门把“已经被验证的想法”，在极短时间内变成“真实可运行的系统”。</span>
+      </>
+    ),
+    tags: ["Not Idea Factory", "Not Outsourcing", "Not Traditional Studio"],
+    primaryCta: "查看能力",
+    secondaryCta: "了解理念",
+  },
+  en: {
+    badge: "AI-Native System Engine",
+    title: "Mirror Studio",
+    desc: (
+      <>
+        An AI-native engine for products and systems<br/>
+        <span className="text-black font-medium">We turn validated ideas into real, runnable systems in days.</span>
+      </>
+    ),
+    tags: ["Not Idea Factory", "Not Outsourcing", "Not Traditional Studio"],
+    primaryCta: "View Capabilities",
+    secondaryCta: "See Philosophy",
+  }
+};
+
+export function Hero({ showIntro, setShowIntro, language }: HeroProps) {
   const { scrollY } = useScroll();
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+  const t = content[language];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -61,23 +93,22 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
               </span>
-              AI-Native System Engine
+              {t.badge}
             </div>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold text-black tracking-tight mb-8">
-            Mirror Studio
+            {t.title}
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-12">
-            AI-native 的产品与系统实现引擎<br/>
-            <span className="text-black font-medium">专门把“已经被验证的想法”，在极短时间内变成“真实可运行的系统”。</span>
+            {t.desc}
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Idea Factory</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Outsourcing</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Traditional Studio</span>
+            {t.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 border border-black/10 rounded-md">{tag}</span>
+            ))}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -85,13 +116,13 @@ export function Hero({ showIntro, setShowIntro }: HeroProps) {
               onClick={() => scrollTo('capabilities')}
               className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
             >
-              查看能力
+              {t.primaryCta}
             </button>
             <button 
               onClick={() => scrollTo('philosophy')}
               className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
             >
-              了解理念
+              {t.secondaryCta}
             </button>
           </div>
         </motion.div>

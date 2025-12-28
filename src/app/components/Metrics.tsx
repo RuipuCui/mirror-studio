@@ -1,41 +1,28 @@
 import { motion, useInView, useSpring, useTransform } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Clock, Zap, Layers, Code2, Activity } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const metrics = [
-  { 
-    value: 7, 
-    suffix: 'Days', 
-    label: '构建周期', 
-    sub: 'From 0 to 1',
-    icon: Clock,
-    trend: '+120% Speed'
+const content = {
+  zh: {
+    badge: "System Metrics",
+    metrics: [
+      { value: 7, suffix: '天', label: '构建周期', sub: 'From 0 to 1', icon: Clock, trend: '+120% Speed' },
+      { value: 24, suffix: '小时', label: '迭代频率', sub: 'Rapid Response', icon: Zap, trend: 'Real-time' },
+      { value: 100, suffix: '%', label: '交付质量', sub: 'Production Ready', icon: Layers, trend: '0 Critical Bugs' },
+      { value: 1, suffix: '人', label: '全栈闭环', sub: 'AI Empowered', icon: Code2, trend: '10x Efficiency' }
+    ]
   },
-  { 
-    value: 24, 
-    suffix: 'Hours', 
-    label: '迭代频率', 
-    sub: 'Rapid Response',
-    icon: Zap,
-    trend: 'Real-time'
-  },
-  { 
-    value: 100, 
-    suffix: '%', 
-    label: '交付质量', 
-    sub: 'Production Ready',
-    icon: Layers,
-    trend: '0 Critical Bugs'
-  },
-  { 
-    value: 1, 
-    suffix: 'Man', 
-    label: '全栈闭环', 
-    sub: 'AI Empowered',
-    icon: Code2,
-    trend: '10x Efficiency'
+  en: {
+    badge: "System Metrics",
+    metrics: [
+      { value: 7, suffix: 'Days', label: 'Build Cycle', sub: 'From 0 to 1', icon: Clock, trend: '+120% Speed' },
+      { value: 24, suffix: 'Hours', label: 'Iteration Cadence', sub: 'Rapid Response', icon: Zap, trend: 'Real-time' },
+      { value: 100, suffix: '%', label: 'Delivery Quality', sub: 'Production Ready', icon: Layers, trend: '0 Critical Bugs' },
+      { value: 1, suffix: 'Person', label: 'Full-stack Loop', sub: 'AI Empowered', icon: Code2, trend: '10x Efficiency' }
+    ]
   }
-];
+};
 
 function Counter({ value, suffix }: { value: number, suffix: string }) {
   const ref = useRef(null);
@@ -61,7 +48,8 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
   );
 }
 
-export function Metrics() {
+export function Metrics({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="metrics" className="relative py-20 px-6 bg-transparent border-y border-black/5 overflow-hidden">
       {/* Background Grid Removed */}
@@ -74,12 +62,12 @@ export function Metrics() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            System Metrics
+            {t.badge}
           </div>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10 rounded-2xl overflow-hidden">
-          {metrics.map((metric, index) => (
+          {t.metrics.map((metric, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

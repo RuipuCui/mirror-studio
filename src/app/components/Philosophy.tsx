@@ -1,7 +1,42 @@
 import { motion } from 'motion/react';
 import { Users, Network, Sparkles, Zap, Layers } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-export function Philosophy() {
+const content = {
+  zh: {
+    title: "生产范式的变革",
+    subtitle: "AI 让生产的最小单位从“团队”回归到“人”",
+    oldWayLabel: "The Old Way",
+    oldWayTitle: "Organization",
+    oldWayDesc: "依赖分工、流程与管理",
+    newWayLabel: "The New Way",
+    newWayTitle: "Individual + AI",
+    newWayDesc: "个体闭环，极速交付",
+    cards: [
+      { icon: Network, title: "最小商业单元", desc: "人不是螺丝钉，而是闭环单元。" },
+      { icon: Users, title: "超级个体联盟", desc: "共享知识、工具和最佳实践的网络。" },
+      { icon: Sparkles, title: "AI Native", desc: "工作流、工具链基于 AI 重构。" }
+    ]
+  },
+  en: {
+    title: "A Shift in Production Paradigm",
+    subtitle: "AI brings the smallest production unit back from “teams” to “individuals.”",
+    oldWayLabel: "The Old Way",
+    oldWayTitle: "Organization",
+    oldWayDesc: "Dependent on division, processes, and management.",
+    newWayLabel: "The New Way",
+    newWayTitle: "Individual + AI",
+    newWayDesc: "Closed-loop individuals, rapid delivery.",
+    cards: [
+      { icon: Network, title: "Minimum business unit", desc: "People aren't screws; they're closed loops." },
+      { icon: Users, title: "Alliance of super individuals", desc: "A network sharing knowledge, tools, and best practices." },
+      { icon: Sparkles, title: "AI Native", desc: "Workflows and toolchains rebuilt on AI." }
+    ]
+  }
+};
+
+export function Philosophy({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="philosophy" className="relative flex flex-col justify-center py-24 px-6 bg-transparent border-t border-black/5 overflow-hidden">
       {/* Background decoration */}
@@ -20,11 +55,11 @@ export function Philosophy() {
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-black to-slate-500">
-              生产范式的变革
+              {t.title}
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            AI 让生产的最小单位从“团队”回归到“人”
+            {t.subtitle}
           </p>
         </motion.div>
 
@@ -42,10 +77,10 @@ export function Philosophy() {
             <div className="relative z-10 mb-auto">
               <div className="flex items-center gap-3 mb-4 opacity-50">
                 <Layers className="w-6 h-6 text-black" />
-                <span className="text-sm font-mono uppercase tracking-wider text-black">The Old Way</span>
+                <span className="text-sm font-mono uppercase tracking-wider text-black">{t.oldWayLabel}</span>
               </div>
-              <h3 className="text-3xl font-bold text-black mb-2">Organization</h3>
-              <p className="text-slate-500">依赖分工、流程与管理</p>
+              <h3 className="text-3xl font-bold text-black mb-2">{t.oldWayTitle}</h3>
+              <p className="text-slate-500">{t.oldWayDesc}</p>
             </div>
 
             {/* Visual: Pyramid / Hierarchy */}
@@ -87,10 +122,10 @@ export function Philosophy() {
             <div className="relative z-10 mb-auto">
               <div className="flex items-center gap-3 mb-4 text-white">
                 <Sparkles className="w-6 h-6" />
-                <span className="text-sm font-mono uppercase tracking-wider">The New Way</span>
+                <span className="text-sm font-mono uppercase tracking-wider">{t.newWayLabel}</span>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">Individual + AI</h3>
-              <p className="text-slate-400">个体闭环，极速交付</p>
+              <h3 className="text-3xl font-bold text-white mb-2">{t.newWayTitle}</h3>
+              <p className="text-slate-400">{t.newWayDesc}</p>
             </div>
 
             {/* Visual: Central Core */}
@@ -134,23 +169,7 @@ export function Philosophy() {
 
         {/* Bottom Cards - Simplified */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: Network,
-              title: "最小商业单元",
-              desc: "人不是螺丝钉，而是闭环单元。"
-            },
-            {
-              icon: Users,
-              title: "超级个体联盟",
-              desc: "共享知识、工具和最佳实践的网络。"
-            },
-            {
-              icon: Sparkles,
-              title: "AI Native",
-              desc: "工作流、工具链基于 AI 重构。"
-            }
-          ].map((item, index) => (
+          {t.cards.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

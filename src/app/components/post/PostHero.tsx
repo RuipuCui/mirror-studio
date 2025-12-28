@@ -1,11 +1,42 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useEffect } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 const logo = new URL('../../../assets/logo.png', import.meta.url).href;
 
-export function PostHero() {
+const content = {
+  zh: {
+    badge: "Content & Narrative Engine",
+    title: "Mirror Post",
+    desc: (
+      <>
+        WhiteMirror 的内容与传播引擎<br/>
+        <span className="text-black font-medium">把内部真实发生的事，转化为对外可理解、可传播、可建立信任的叙事。</span>
+      </>
+    ),
+    tags: ["Not Marketing Agency", "Not Just Copywriting", "Not Traffic Driven"],
+    primaryCta: "核心任务",
+    secondaryCta: "工作模块",
+  },
+  en: {
+    badge: "Content & Narrative Engine",
+    title: "Mirror Post",
+    desc: (
+      <>
+        WhiteMirror's content and narrative engine<br/>
+        <span className="text-black font-medium">We turn what truly happens inside into stories the world can understand, trust, and share.</span>
+      </>
+    ),
+    tags: ["Not Marketing Agency", "Not Just Copywriting", "Not Traffic Driven"],
+    primaryCta: "Core Tasks",
+    secondaryCta: "Modules",
+  }
+};
+
+export function PostHero({ language }: { language: Language }) {
   const { scrollY } = useScroll();
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+  const t = content[language];
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -36,23 +67,22 @@ export function PostHero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
               </span>
-              Content & Narrative Engine
+              {t.badge}
             </div>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold text-black tracking-tight mb-8">
-            Mirror Post
+            {t.title}
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-12">
-            WhiteMirror 的内容与传播引擎<br/>
-            <span className="text-black font-medium">把内部真实发生的事，转化为对外可理解、可传播、可建立信任的叙事。</span>
+            {t.desc}
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Marketing Agency</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Just Copywriting</span>
-            <span className="px-3 py-1 border border-black/10 rounded-md">Not Traffic Driven</span>
+            {t.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 border border-black/10 rounded-md">{tag}</span>
+            ))}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -60,13 +90,13 @@ export function PostHero() {
               onClick={() => scrollTo('core')}
               className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
             >
-              核心任务
+              {t.primaryCta}
             </button>
             <button 
               onClick={() => scrollTo('modules')}
               className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
             >
-              工作模块
+              {t.secondaryCta}
             </button>
           </div>
         </motion.div>

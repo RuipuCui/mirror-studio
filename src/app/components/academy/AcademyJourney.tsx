@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Terminal, GitCommit, Cpu, Rocket } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 // --- Visual Components ---
 
@@ -92,46 +93,14 @@ function LaunchVisual() {
   );
 }
 
-const steps = [
-  {
-    id: "01",
-    title: "Initialization",
-    subtitle: "Profile & Assessment",
-    icon: Terminal,
-    desc: "学员进入系统，进行能力扫描与思维模式评估。建立初始「能力镜像」。",
-    details: ["Cognitive Pattern Scan", "Tech Stack Audit", "Goal Alignment"],
-    visual: ScanVisual
-  },
-  {
-    id: "02",
-    title: "Calibration",
-    subtitle: "AI-Native Workflow",
-    icon: Cpu,
-    desc: "重塑工作流。从「手写代码」切换到「指挥 AI」。掌握 Prompt Engineering 与 Context Management。",
-    details: ["Cursor / Copilot Mastery", "Agent Orchestration", "System Thinking"],
-    visual: WorkflowVisual
-  },
-  {
-    id: "03",
-    title: "Simulation",
-    subtitle: "Real-World Execution",
-    icon: GitCommit,
-    desc: "进入实战模拟。领取真实需求，在导师（Tech Lead）的 Code Review 下完成交付。",
-    details: ["MVP Development", "Production Deployment", "Iterative Feedback"],
-    visual: CodeVisual
-  },
-  {
-    id: "04",
-    title: "Deployment",
-    subtitle: "Ecosystem Integration",
-    icon: Rocket,
-    desc: "能力固化。带着真实的项目交付记录，被输送到 Mirror Lab 或 Studio 成为核心贡献者。",
-    details: ["Portfolio Verification", "Network Access", "Full-Time Offer"],
-    visual: LaunchVisual
-  }
+const stepMeta = [
+  { icon: Terminal, visual: ScanVisual },
+  { icon: Cpu, visual: WorkflowVisual },
+  { icon: GitCommit, visual: CodeVisual },
+  { icon: Rocket, visual: LaunchVisual }
 ];
 
-export function AcademyJourney() {
+export function AcademyJourney({ language }: { language: Language }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -140,12 +109,86 @@ export function AcademyJourney() {
 
   const pathLength = useTransform(scrollYProgress, [0.1, 0.8], [0, 1]);
 
+  const content = {
+    zh: {
+      mainTitle: "The Simulation Path",
+      mainSubtitle: "从「学员」到「构建者」的进化路径",
+      steps: [
+        {
+          id: "01",
+          title: "Initialization",
+          subtitle: "Profile & Assessment",
+          desc: "学员进入系统，进行能力扫描与思维模式评估。建立初始「能力镜像」。",
+          details: ["Cognitive Pattern Scan", "Tech Stack Audit", "Goal Alignment"]
+        },
+        {
+          id: "02",
+          title: "Calibration",
+          subtitle: "AI-Native Workflow",
+          desc: "重塑工作流。从「手写代码」切换到「指挥 AI」。掌握 Prompt Engineering 与 Context Management。",
+          details: ["Cursor / Copilot Mastery", "Agent Orchestration", "System Thinking"]
+        },
+        {
+          id: "03",
+          title: "Simulation",
+          subtitle: "Real-World Execution",
+          desc: "进入实战模拟。领取真实需求，在导师（Tech Lead）的 Code Review 下完成交付。",
+          details: ["MVP Development", "Production Deployment", "Iterative Feedback"]
+        },
+        {
+          id: "04",
+          title: "Deployment",
+          subtitle: "Ecosystem Integration",
+          desc: "能力固化。带着真实的项目交付记录，被输送到 Mirror Lab 或 Studio 成为核心贡献者。",
+          details: ["Portfolio Verification", "Network Access", "Full-Time Offer"]
+        }
+      ]
+    },
+    en: {
+      mainTitle: "The Simulation Path",
+      mainSubtitle: "Evolution from 'Student' to 'Builder'",
+      steps: [
+        {
+          id: "01",
+          title: "Initialization",
+          subtitle: "Profile & Assessment",
+          desc: "Students enter the system for capability scanning and mindset assessment. Establish initial 'Capability Mirror'.",
+          details: ["Cognitive Pattern Scan", "Tech Stack Audit", "Goal Alignment"]
+        },
+        {
+          id: "02",
+          title: "Calibration",
+          subtitle: "AI-Native Workflow",
+          desc: "Reshape workflow. Switch from 'hand-coding' to 'directing AI'. Master Prompt Engineering and Context Management.",
+          details: ["Cursor / Copilot Mastery", "Agent Orchestration", "System Thinking"]
+        },
+        {
+          id: "03",
+          title: "Simulation",
+          subtitle: "Real-World Execution",
+          desc: "Enter combat simulation. Take real requirements, deliver under Mentor (Tech Lead) Code Review.",
+          details: ["MVP Development", "Production Deployment", "Iterative Feedback"]
+        },
+        {
+          id: "04",
+          title: "Deployment",
+          subtitle: "Ecosystem Integration",
+          desc: "Capability solidification. With real project delivery records, transported to Mirror Lab or Studio as core contributors.",
+          details: ["Portfolio Verification", "Network Access", "Full-Time Offer"]
+        }
+      ]
+    }
+  };
+
+  const t = content[language];
+  const steps = t.steps.map((step, i) => ({ ...step, ...stepMeta[i] }));
+
   return (
     <section ref={containerRef} className="py-32 px-6 relative border-t border-black/5 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">The Simulation Path</h2>
-          <p className="text-slate-500 text-lg">从「学员」到「构建者」的进化路径</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">{t.mainTitle}</h2>
+          <p className="text-slate-500 text-lg">{t.mainSubtitle}</p>
         </div>
 
         <div className="relative">

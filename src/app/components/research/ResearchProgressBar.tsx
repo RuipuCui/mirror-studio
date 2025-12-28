@@ -1,17 +1,30 @@
 import { useEffect, useState } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const sections = [
-  { id: 'hero', label: 'Home' },
-  { id: 'radar', label: 'Radar' },
-  { id: 'core-questions', label: 'Questions' },
-  { id: 'focus', label: 'Focus' },
-  { id: 'outputs', label: 'Outputs' },
-  { id: 'relations', label: 'Relations' },
-  { id: 'future', label: 'Future' },
-];
+const content = {
+  zh: [
+    { id: 'hero', label: '首页' },
+    { id: 'radar', label: '雷达' },
+    { id: 'core-questions', label: '命题' },
+    { id: 'focus', label: '研究范畴' },
+    { id: 'outputs', label: '产出' },
+    { id: 'relations', label: '协同' },
+    { id: 'future', label: '意义' },
+  ],
+  en: [
+    { id: 'hero', label: 'Home' },
+    { id: 'radar', label: 'Radar' },
+    { id: 'core-questions', label: 'Questions' },
+    { id: 'focus', label: 'Focus' },
+    { id: 'outputs', label: 'Outputs' },
+    { id: 'relations', label: 'Relations' },
+    { id: 'future', label: 'Future' },
+  ],
+};
 
-export function ResearchProgressBar() {
+export function ResearchProgressBar({ language }: { language: Language }) {
   const [activeSection, setActiveSection] = useState('hero');
+  const sections = content[language];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

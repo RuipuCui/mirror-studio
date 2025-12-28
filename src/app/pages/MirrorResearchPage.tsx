@@ -8,35 +8,36 @@ import { ResearchFuture } from '../components/research/ResearchFuture';
 import { ResearchRadar } from '../components/research/ResearchRadar';
 import { ResearchProgressBar } from '../components/research/ResearchProgressBar';
 import { PageBackground } from '../components/PageBackground';
+import type { Language } from '../types/whitemirrorai';
 
-export function MirrorResearchPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
+export function MirrorResearchPage({ onNavigate, language }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void, language: Language }) {
 
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent text-black selection:bg-black selection:text-white [&::-webkit-scrollbar]:hidden">
-      <ResearchProgressBar />
+      <ResearchProgressBar language={language} />
       <PageBackground />
       
       <div className="relative z-10 flex flex-col gap-0">
         <div id="hero" className="scroll-mt-24">
-          <ResearchHero />
+          <ResearchHero language={language} />
         </div>
         <div id="radar" className="scroll-mt-24">
-          <ResearchRadar />
+          <ResearchRadar language={language} />
         </div>
         <div id="core-questions" className="scroll-mt-24">
-          <CoreQuestions />
+          <CoreQuestions language={language} />
         </div>
         <div id="focus" className="scroll-mt-24">
-          <ResearchFocus />
+          <ResearchFocus language={language} />
         </div>
         <div id="outputs" className="scroll-mt-24">
-          <ResearchOutputs />
+          <ResearchOutputs language={language} />
         </div>
         <div id="relations" className="scroll-mt-24">
-          <ResearchRelations />
+          <ResearchRelations language={language} />
         </div>
         <div id="future" className="scroll-mt-24">
-          <ResearchFuture />
+          <ResearchFuture language={language} />
         </div>
       </div>
 

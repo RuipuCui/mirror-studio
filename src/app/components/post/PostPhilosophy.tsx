@@ -1,9 +1,54 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Quote, CheckCircle2, Sparkles } from 'lucide-react';
 import { useRef } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-export function PostPhilosophy() {
+const content = {
+  zh: {
+    label: "Talent Requirements",
+    title: "为什么 MirrorPost 不是谁都能做？",
+    requirements: [
+      { text: "能理解技术 / 教育 / 产品，而不只是写字", sub: "Deep Understanding" },
+      { text: "能听懂创始团队在想什么", sub: "Strategic Alignment" },
+      { text: "能把复杂东西讲清楚而不降级", sub: "Clarity without Simplification" },
+      { text: "有长期耐心，不急着要爆款", sub: "Long-term Mindset" }
+    ],
+    quote: (
+      <>
+        <span className="text-black/40">"</span>
+        MirrorPost 不负责制造声量，<br/>
+        它负责让 <span className="text-black border-b-2 border-black">WhiteMirror 的真实价值</span>，<br/>
+        被世界正确看见。
+        <span className="text-black/40">"</span>
+      </>
+    ),
+    quoteLabel: "Manifesto"
+  },
+  en: {
+    label: "Talent Requirements",
+    title: "Why MirrorPost isn't for everyone",
+    requirements: [
+      { text: "Understand tech, education, and products—not just writing", sub: "Deep Understanding" },
+      { text: "Hear what the founding team is really thinking", sub: "Strategic Alignment" },
+      { text: "Explain complexity without dumbing it down", sub: "Clarity without Simplification" },
+      { text: "Be patient long-term, not chasing quick virality", sub: "Long-term Mindset" }
+    ],
+    quote: (
+      <>
+        <span className="text-black/40">"</span>
+        MirrorPost doesn't manufacture noise.<br/>
+        It ensures <span className="text-black border-b-2 border-black">WhiteMirror's real value</span><br/>
+        is seen correctly by the world.
+        <span className="text-black/40">"</span>
+      </>
+    ),
+    quoteLabel: "Manifesto"
+  }
+};
+
+export function PostPhilosophy({ language }: { language: Language }) {
   const containerRef = useRef(null);
+  const t = content[language];
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -23,17 +68,12 @@ export function PostPhilosophy() {
           {/* Requirements List */}
           <div className="order-2 lg:order-1">
             <div className="flex items-center gap-3 mb-8">
-              <h2 className="text-sm font-mono uppercase tracking-widest text-black/60">Talent Requirements</h2>
+              <h2 className="text-sm font-mono uppercase tracking-widest text-black/60">{t.label}</h2>
             </div>
-            <h3 className="text-4xl font-bold mb-10">为什么 MirrorPost 不是谁都能做？</h3>
+            <h3 className="text-4xl font-bold mb-10">{t.title}</h3>
             
             <div className="space-y-6">
-              {[
-                { text: "能理解技术 / 教育 / 产品，而不只是写字", sub: "Deep Understanding" },
-                { text: "能听懂创始团队在想什么", sub: "Strategic Alignment" },
-                { text: "能把复杂东西讲清楚而不降级", sub: "Clarity without Simplification" },
-                { text: "有长期耐心，不急着要爆款", sub: "Long-term Mindset" }
-              ].map((req, i) => (
+              {t.requirements.map((req, i) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
@@ -61,16 +101,12 @@ export function PostPhilosophy() {
             
             <div className="relative z-10">
               <blockquote className="text-3xl md:text-5xl font-serif leading-tight text-black/90">
-                <span className="text-black/40">"</span>
-                MirrorPost 不负责制造声量，<br/>
-                它负责让 <span className="text-black border-b-2 border-black">WhiteMirror 的真实价值</span>，<br/>
-                被世界正确看见。
-                <span className="text-black/40">"</span>
+                {t.quote}
               </blockquote>
               
               <div className="mt-12 flex items-center gap-4">
                 <div className="h-px w-12 bg-black/30" />
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/50">Manifesto</span>
+                <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/50">{t.quoteLabel}</span>
               </div>
             </div>
           </div>

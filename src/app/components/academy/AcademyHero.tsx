@@ -1,11 +1,16 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { GraduationCap, Cpu, Hammer } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
 const logo = new URL('../../../assets/logo.png', import.meta.url).href;
 
-export function AcademyHero() {
+export function AcademyHero({ language }: { language: Language }) {
   const { scrollY } = useScroll();
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+  const cta = {
+    zh: { primary: "探索体系", secondary: "阅读宣言" },
+    en: { primary: "Explore Structure", secondary: "Read Manifesto" },
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
@@ -41,8 +46,17 @@ export function AcademyHero() {
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-light mb-8">
-            不是“课程平台”，而是 WhiteMirror 的<br/>
-            <span className="text-black font-medium">「人才生成与能力放大系统」</span>
+            {language === 'zh' ? (
+              <>
+                不是“课程平台”，而是 WhiteMirror 的<br/>
+                <span className="text-black font-medium">「人才生成与能力放大系统」</span>
+              </>
+            ) : (
+              <>
+                Not a "Course Platform", but WhiteMirror's<br/>
+                <span className="text-black font-medium">"Talent Generation & Capability Amplification System"</span>
+              </>
+            )}
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10 text-sm text-slate-500 font-mono">
@@ -56,13 +70,13 @@ export function AcademyHero() {
               onClick={() => document.getElementById('structure')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 rounded-full bg-black text-white font-bold hover:bg-slate-800 transition-all duration-300"
             >
-              探索体系
+              {cta[language].primary}
             </button>
             <button 
               onClick={() => document.getElementById('manifesto')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 rounded-full border border-black/20 hover:border-black/40 hover:bg-black/5 transition-all duration-300 text-black"
             >
-              阅读宣言
+              {cta[language].secondary}
             </button>
           </div>
         </motion.div>

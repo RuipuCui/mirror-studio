@@ -1,46 +1,98 @@
 import { motion } from 'motion/react';
 import { Search, Cpu, Network } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const areas = [
-  {
-    title: "真实世界的问题",
-    subtitle: "Problem Research",
-    icon: Search,
-    desc: "不是“我们能不能做 X”，而是“用户到底卡在哪里？”",
-    points: [
-      "对真实用户行为的拆解",
-      "对学习路径失败原因的归因",
-      "对“为什么学不会”的系统性分析"
-    ],
-    output: "输出不是功能，而是 问题定义本身"
+const content = {
+  zh: {
+    title: "研究范畴",
+    subtitle: "MirrorResearch ≠ 写论文，我们只研究三类问题",
+    label: "Focus Areas",
+    areas: [
+      {
+        title: "真实世界的问题",
+        subtitle: "Problem Research",
+        icon: Search,
+        desc: "不是“我们能不能做 X”，而是“用户到底卡在哪里？”",
+        points: [
+          "对真实用户行为的拆解",
+          "对学习路径失败原因的归因",
+          "对“为什么学不会”的系统性分析"
+        ],
+        output: "输出不是功能，而是 问题定义本身"
+      },
+      {
+        title: "AI 能力边界与可行性",
+        subtitle: "Capability Research",
+        icon: Cpu,
+        desc: "回答现实问题：“AI 到底能替代哪一段？哪一段还必须是人？”",
+        points: [
+          "AI 能不能承担完整学习闭环？",
+          "哪些决策必须由人来做？",
+          "AI 在学习场景中的失败模式是什么？"
+        ],
+        output: "LearningOS 的核心输入层"
+      },
+      {
+        title: "路径与范式验证",
+        subtitle: "Paradigm Research",
+        icon: Network,
+        desc: "不是做功能，而是验证 “模式”。",
+        points: [
+          "课程驱动 vs 任务驱动？",
+          "教学是否应拆解成 Agent？",
+          "反馈即时性 vs 延迟性？"
+        ],
+        output: "避免 Studio 的方向性浪费"
+      }
+    ]
   },
-  {
-    title: "AI 能力边界与可行性",
-    subtitle: "Capability Research",
-    icon: Cpu,
-    desc: "回答现实问题：“AI 到底能替代哪一段？哪一段还必须是人？”",
-    points: [
-      "AI 能不能承担完整学习闭环？",
-      "哪些决策必须由人来做？",
-      "AI 在学习场景中的失败模式是什么？"
-    ],
-    output: "LearningOS 的核心输入层"
-  },
-  {
-    title: "路径与范式验证",
-    subtitle: "Paradigm Research",
-    icon: Network,
-    desc: "不是做功能，而是验证 “模式”。",
-    points: [
-      "课程驱动 vs 任务驱动？",
-      "教学是否应拆解成 Agent？",
-      "反馈即时性 vs 延迟性？"
-    ],
-    output: "避免 Studio 的方向性浪费"
+  en: {
+    title: "Research Focus",
+    subtitle: "MirrorResearch isn't about papers. We study three types of problems.",
+    label: "Focus Areas",
+    areas: [
+      {
+        title: "Real-world problems",
+        subtitle: "Problem Research",
+        icon: Search,
+        desc: "Not “can we build X,” but “where exactly are users stuck?”",
+        points: [
+          "Break down real user behavior",
+          "Explain why learning paths fail",
+          "Systematic analysis of why people can't learn"
+        ],
+        output: "The output isn't features, but the problem definition itself"
+      },
+      {
+        title: "AI capability boundaries",
+        subtitle: "Capability Research",
+        icon: Cpu,
+        desc: "Answer practical questions: Which parts can AI replace, and which still require humans?",
+        points: [
+          "Can AI handle a full learning loop?",
+          "Which decisions must be made by humans?",
+          "What are AI failure modes in learning contexts?"
+        ],
+        output: "A core input layer for LearningOS"
+      },
+      {
+        title: "Path & paradigm validation",
+        subtitle: "Paradigm Research",
+        icon: Network,
+        desc: "Not building features, but validating patterns.",
+        points: [
+          "Course-driven vs task-driven?",
+          "Should teaching be decomposed into agents?",
+          "Instant feedback vs delayed feedback?"
+        ],
+        output: "Avoid directional waste in Studio"
+      }
+    ]
   }
-];
+};
 
-export function ResearchFocus() {
+export function ResearchFocus({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -51,16 +103,16 @@ export function ResearchFocus() {
           className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/10 pb-8"
         >
           <div>
-            <h2 className="text-4xl md:text-6xl font-bold text-black mb-4 tracking-tighter">研究范畴</h2>
-            <p className="text-black/50 text-xl font-light">MirrorResearch ≠ 写论文，我们只研究三类问题</p>
+            <h2 className="text-4xl md:text-6xl font-bold text-black mb-4 tracking-tighter">{t.title}</h2>
+            <p className="text-black/50 text-xl font-light">{t.subtitle}</p>
           </div>
           <div className="text-right hidden md:block">
-             <span className="text-xs font-mono uppercase tracking-widest text-black/30">Focus Areas</span>
+             <span className="text-xs font-mono uppercase tracking-widest text-black/30">{t.label}</span>
           </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {areas.map((area, index) => (
+          {t.areas.map((area, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}

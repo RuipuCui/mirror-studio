@@ -1,42 +1,88 @@
 import { motion } from 'motion/react';
 import { FlaskConical, Bot, Code2, Cpu, Sparkles, ArrowRight } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const experiments = [
-  {
-    id: "EXP-001",
-    title: "生成式 UI 引擎",
-    status: "原型",
-    tech: ["React", "GPT-4", "Tailwind"],
-    desc: "能否通过单个提示词生成生产级 UI 组件？",
-    icon: Code2
+const content = {
+  zh: {
+    badge: "进行中的实验",
+    title: "正在进行的实验",
+    experiments: [
+      {
+        id: "EXP-001",
+        title: "生成式 UI 引擎",
+        status: "原型",
+        tech: ["React", "GPT-4", "Tailwind"],
+        desc: "能否通过单个提示词生成生产级 UI 组件？",
+        icon: Code2
+      },
+      {
+        id: "EXP-002",
+        title: "自主研究 Agent",
+        status: "测试中",
+        tech: ["LangChain", "Pinecone"],
+        desc: "自动阅读论文并总结关键发现的智能体。",
+        icon: Bot
+      },
+      {
+        id: "EXP-003",
+        title: "语音转代码接口",
+        status: "概念",
+        tech: ["Whisper", "Codex"],
+        desc: "无需键盘编程。纯语音控制实现快速原型开发。",
+        icon: Cpu
+      },
+      {
+        id: "EXP-004",
+        title: "动态知识图谱",
+        status: "已上线",
+        tech: ["Neo4j", "LLM"],
+        desc: "可视化数千篇研究论文之间的关联。",
+        icon: FlaskConical
+      }
+    ]
   },
-  {
-    id: "EXP-002",
-    title: "自主研究 Agent",
-    status: "测试中",
-    tech: ["LangChain", "Pinecone"],
-    desc: "自动阅读论文并总结关键发现的智能体。",
-    icon: Bot
-  },
-  {
-    id: "EXP-003",
-    title: "语音转代码接口",
-    status: "概念",
-    tech: ["Whisper", "Codex"],
-    desc: "无需键盘编程。纯语音控制实现快速原型开发。",
-    icon: Cpu
-  },
-  {
-    id: "EXP-004",
-    title: "动态知识图谱",
-    status: "已上线",
-    tech: ["Neo4j", "LLM"],
-    desc: "可视化数千篇研究论文之间的关联。",
-    icon: FlaskConical
+  en: {
+    badge: "Active Experiments",
+    title: "Experiments In Progress",
+    experiments: [
+      {
+        id: "EXP-001",
+        title: "Generative UI Engine",
+        status: "Prototype",
+        tech: ["React", "GPT-4", "Tailwind"],
+        desc: "Can a single prompt generate production-ready UI components?",
+        icon: Code2
+      },
+      {
+        id: "EXP-002",
+        title: "Autonomous Research Agent",
+        status: "In testing",
+        tech: ["LangChain", "Pinecone"],
+        desc: "An agent that reads papers and summarizes key findings.",
+        icon: Bot
+      },
+      {
+        id: "EXP-003",
+        title: "Voice-to-Code Interface",
+        status: "Concept",
+        tech: ["Whisper", "Codex"],
+        desc: "Build rapid prototypes without a keyboard. Pure voice control.",
+        icon: Cpu
+      },
+      {
+        id: "EXP-004",
+        title: "Dynamic Knowledge Graph",
+        status: "Live",
+        tech: ["Neo4j", "LLM"],
+        desc: "Visualize relationships across thousands of research papers.",
+        icon: FlaskConical
+      }
+    ]
   }
-];
+};
 
-export function LabExperiments() {
+export function LabExperiments({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section className="py-24 px-6 relative border-t border-black/5 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -49,14 +95,14 @@ export function LabExperiments() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-slate-600 text-xs font-mono uppercase tracking-wider mb-4"
             >
               <Sparkles className="w-3 h-3" />
-              进行中的实验
+              {t.badge}
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">正在进行的实验</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">{t.title}</h2>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {experiments.map((exp, i) => (
+          {t.experiments.map((exp, i) => (
             <motion.div
               key={exp.id}
               initial={{ opacity: 0, y: 20 }}

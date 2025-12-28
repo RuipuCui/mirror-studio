@@ -1,15 +1,26 @@
 import { useEffect, useState } from 'react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const sections = [
-  { id: 'hero', label: 'Home' },
-  { id: 'role', label: 'Ecosystem' },
-  { id: 'core', label: 'Core Tasks' },
-  { id: 'modules', label: 'Modules' },
-  { id: 'philosophy', label: 'Philosophy' },
-];
+const content = {
+  zh: [
+    { id: 'hero', label: '首页' },
+    { id: 'role', label: '生态位' },
+    { id: 'core', label: '核心任务' },
+    { id: 'modules', label: '模块' },
+    { id: 'philosophy', label: '理念' },
+  ],
+  en: [
+    { id: 'hero', label: 'Home' },
+    { id: 'role', label: 'Ecosystem' },
+    { id: 'core', label: 'Core Tasks' },
+    { id: 'modules', label: 'Modules' },
+    { id: 'philosophy', label: 'Philosophy' },
+  ],
+};
 
-export function PostProgressBar() {
+export function PostProgressBar({ language }: { language: Language }) {
   const [activeSection, setActiveSection] = useState('hero');
+  const sections = content[language];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

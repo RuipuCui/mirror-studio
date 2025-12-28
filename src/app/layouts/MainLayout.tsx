@@ -1,5 +1,6 @@
 import type { MouseEvent, ReactNode } from 'react';
 import { Logo } from '../components/whitemirrorai/ui/Logo';
+import { LanguageSwitcher } from '../components/ui/LanguageSwitcher';
 import type { Language } from '../types/whitemirrorai';
 
 type MainLayoutProps = {

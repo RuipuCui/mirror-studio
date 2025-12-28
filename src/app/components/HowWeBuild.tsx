@@ -1,34 +1,80 @@
 import { motion } from 'motion/react';
 import { FileText, Sparkles, Zap, Rocket, ArrowRight, GitBranch, GitMerge } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const steps = [
-  {
-    icon: Sparkles,
-    title: 'Generate',
-    subtitle: '生成架构',
-    description: 'AI 快速生成 5–10 套方案 (UI + 架构)，不再依赖单一设计稿。',
+const content = {
+  zh: {
+    title: (
+      <>
+        AI-Native<br />Pipeline
+      </>
+    ),
+    desc: "核心不是“写代码快”，而是“生成 → 选择 → 微调 → 上线”的全新工作流。",
+    steps: [
+      {
+        icon: Sparkles,
+        title: 'Generate',
+        subtitle: '生成架构',
+        description: 'AI 快速生成 5–10 套方案 (UI + 架构)，不再依赖单一设计稿。',
+      },
+      {
+        icon: GitBranch,
+        title: 'Select',
+        subtitle: '选择最优',
+        description: '从多个版本中快速筛选，找到最符合直觉的实现路径。',
+      },
+      {
+        icon: GitMerge,
+        title: 'Refine',
+        subtitle: '人工精修',
+        description: '连接后端、数据库与 AI 模块，进行细节打磨与逻辑完善。',
+      },
+      {
+        icon: Rocket,
+        title: 'Deploy',
+        subtitle: '高频上线',
+        description: '一天多个版本，哪个行放大，哪个不行直接丢。',
+      },
+    ],
   },
-  {
-    icon: GitBranch,
-    title: 'Select',
-    subtitle: '选择最优',
-    description: '从多个版本中快速筛选，找到最符合直觉的实现路径。',
+  en: {
+    title: (
+      <>
+        AI-Native<br />Pipeline
+      </>
+    ),
+    desc: "The core isn't “writing code fast,” but a new workflow: Generate → Select → Refine → Deploy.",
+    steps: [
+      {
+        icon: Sparkles,
+        title: 'Generate',
+        subtitle: 'Generate Architecture',
+        description: 'AI generates 5–10 options (UI + architecture) instead of relying on a single design.',
+      },
+      {
+        icon: GitBranch,
+        title: 'Select',
+        subtitle: 'Pick the Best',
+        description: 'Quickly filter multiple versions to find the most intuitive path.',
+      },
+      {
+        icon: GitMerge,
+        title: 'Refine',
+        subtitle: 'Human Refinement',
+        description: 'Connect backend, database, and AI modules; polish details and logic.',
+      },
+      {
+        icon: Rocket,
+        title: 'Deploy',
+        subtitle: 'High-frequency Launch',
+        description: 'Ship multiple times a day; scale what works, drop what doesn’t.',
+      },
+    ],
   },
-  {
-    icon: GitMerge,
-    title: 'Refine',
-    subtitle: '人工精修',
-    description: '连接后端、数据库与 AI 模块，进行细节打磨与逻辑完善。',
-  },
-  {
-    icon: Rocket,
-    title: 'Deploy',
-    subtitle: '高频上线',
-    description: '一天多个版本，哪个行放大，哪个不行直接丢。',
-  },
-];
+};
 
-export function HowWeBuild() {
+export function HowWeBuild({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="how-we-build" className="relative py-32 px-6 bg-transparent border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -37,15 +83,15 @@ export function HowWeBuild() {
           <div className="lg:sticky lg:top-32">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
-                AI-Native<br />Pipeline
-              </h2>
-              <p className="text-slate-600 text-lg md:text-xl max-w-md leading-relaxed">
-                核心不是“写代码快”，而是“生成 → 选择 → 微调 → 上线”的全新工作流。
-              </p>
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
+                {t.title}
+            </h2>
+            <p className="text-slate-600 text-lg md:text-xl max-w-md leading-relaxed">
+                {t.desc}
+            </p>
               
               <div className="mt-12 hidden lg:block">
                 <div className="w-px h-32 bg-gradient-to-b from-black/20 to-transparent" />
@@ -69,7 +115,7 @@ export function HowWeBuild() {
               />
             </div>
 
-            {steps.map((step, index) => (
+            {t.steps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

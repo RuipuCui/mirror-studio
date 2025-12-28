@@ -6,28 +6,29 @@ import { PostModules } from '../components/post/PostModules';
 import { PostPhilosophy } from '../components/post/PostPhilosophy';
 import { PostProgressBar } from '../components/post/PostProgressBar';
 import { PageBackground } from '../components/PageBackground';
+import type { Language } from '../types/whitemirrorai';
 
-export function MirrorPostPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
+export function MirrorPostPage({ onNavigate, language }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void, language: Language }) {
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent [&::-webkit-scrollbar]:hidden">
-      <PostProgressBar />
+      <PostProgressBar language={language} />
       <PageBackground />
       
       <div className="relative z-10">
         <div id="hero" className="scroll-mt-24">
-          <PostHero />
+          <PostHero language={language} />
         </div>
         <div id="role" className="scroll-mt-24">
-          <PostRole />
+          <PostRole language={language} />
         </div>
         <div id="core" className="scroll-mt-24">
-          <PostCore />
+          <PostCore language={language} />
         </div>
         <div id="modules" className="scroll-mt-24">
-          <PostModules />
+          <PostModules language={language} />
         </div>
         <div id="philosophy" className="scroll-mt-24">
-          <PostPhilosophy />
+          <PostPhilosophy language={language} />
         </div>
       </div>
 

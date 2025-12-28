@@ -8,8 +8,9 @@ import { LabExperiments } from '../components/lab/LabExperiments';
 import { LabStatus } from '../components/lab/LabStatus';
 import { LabProgressBar } from '../components/lab/LabProgressBar';
 import { PageBackground } from '../components/PageBackground';
+import type { Language } from '../types/whitemirrorai';
 
-export function MirrorLabPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
+export function MirrorLabPage({ onNavigate, language }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void, language: Language }) {
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent [&::-webkit-scrollbar]:hidden">
       <LabProgressBar />
@@ -17,25 +18,25 @@ export function MirrorLabPage({ onNavigate }: { onNavigate: (event: MouseEvent<H
       
       <div className="relative z-10">
         <div id="hero" className="scroll-mt-24">
-          <LabHero />
+          <LabHero language={language} />
         </div>
         <div id="status" className="scroll-mt-24">
-          <LabStatus />
+          <LabStatus language={language} />
         </div>
         <div id="mission" className="scroll-mt-24">
-          <LabMission />
+          <LabMission language={language} />
         </div>
         <div id="experiments" className="scroll-mt-24">
-          <LabExperiments />
+          <LabExperiments language={language} />
         </div>
         <div id="process" className="scroll-mt-24">
-          <LabProcess />
+          <LabProcess language={language} />
         </div>
         <div id="relations" className="scroll-mt-24">
-          <LabRelations />
+          <LabRelations language={language} />
         </div>
         <div id="philosophy" className="scroll-mt-24">
-          <LabPhilosophy />
+          <LabPhilosophy language={language} />
         </div>
       </div>
 

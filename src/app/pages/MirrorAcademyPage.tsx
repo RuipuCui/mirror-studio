@@ -8,30 +8,32 @@ import { AcademyJourney } from '../components/academy/AcademyJourney';
 import { AcademyRole } from '../components/academy/AcademyRole';
 import { AcademyProgressBar } from '../components/academy/AcademyProgressBar';
 
-export function MirrorAcademyPage({ onNavigate }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void }) {
+import type { Language } from '../types/whitemirrorai';
+
+export function MirrorAcademyPage({ onNavigate, language }: { onNavigate: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>, to: string) => void, language: Language }) {
   return (
     <main className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-transparent text-black selection:bg-orange-500 selection:text-white [&::-webkit-scrollbar]:hidden">
-      <AcademyProgressBar />
+      <AcademyProgressBar language={language} />
       <PageBackground />
       
       <div className="relative z-10 flex flex-col gap-0">
         <div id="hero" className="scroll-mt-24">
-          <AcademyHero />
+          <AcademyHero language={language} />
         </div>
         <div id="manifesto" className="scroll-mt-24">
-          <AcademyManifesto />
+          <AcademyManifesto language={language} />
         </div>
         <div id="principles" className="scroll-mt-24">
-          <AcademyPrinciples />
+          <AcademyPrinciples language={language} />
         </div>
         <div id="structure" className="scroll-mt-24">
-          <AcademyStructure />
+          <AcademyStructure language={language} />
         </div>
         <div id="journey" className="scroll-mt-24">
-          <AcademyJourney />
+          <AcademyJourney language={language} />
         </div>
         <div id="role" className="scroll-mt-24">
-          <AcademyRole />
+          <AcademyRole language={language} />
         </div>
       </div>
 

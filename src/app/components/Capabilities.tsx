@@ -4,40 +4,95 @@ import {
   Bot, Search, Wand2, Cpu,
   Box, Layers, Terminal, Code2, Brain
 } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const techStack = [
-  {
-    category: "Delivery",
-    title: "全平台交付",
-    description: "构建完整的数字产品生态",
-    items: [
-      { icon: Layout, label: "Web App", sub: "Next.js / React" },
-      { icon: Smartphone, label: "Mobile", sub: "Responsive / PWA" },
-      { icon: Database, label: "Backend", sub: "Supabase / Postgres" },
-      { icon: Server, label: "Infra", sub: "Vercel / Edge" }
-    ]
+const content = {
+  zh: {
+    badge: "Tech Stack & Modules",
+    title: "全栈技术能力",
+    desc: (
+      <>
+        从底层架构到顶层交互，我们提供完整的技术积木，
+        <br className="hidden md:block" />
+        像搭乐高一样构建你的商业系统。
+      </>
+    ),
+    techStack: [
+      {
+        category: "Delivery",
+        title: "全平台交付",
+        description: "构建完整的数字产品生态",
+        items: [
+          { icon: Layout, label: "Web App", sub: "Next.js / React" },
+          { icon: Smartphone, label: "Mobile", sub: "Responsive / PWA" },
+          { icon: Database, label: "Backend", sub: "Supabase / Postgres" },
+          { icon: Server, label: "Infra", sub: "Vercel / Edge" }
+        ]
+      },
+      {
+        category: "Intelligence",
+        title: "AI 核心集成",
+        description: "赋予产品智能与推理能力",
+        items: [
+          { icon: Bot, label: "LLM", sub: "GPT-4 / Claude 3" },
+          { icon: Search, label: "RAG", sub: "Vector DB / Embeddings" },
+          { icon: Wand2, label: "GenUI", sub: "Generative Interface" },
+          { icon: Cpu, label: "Agents", sub: "LangChain / AutoGPT" }
+        ]
+      }
+    ],
+    modules: [
+      { label: "Auth & Security", icon: Terminal },
+      { label: "Payments", icon: Layers },
+      { label: "Analytics", icon: Box },
+      { label: "CMS", icon: Code2 },
+    ],
   },
-  {
-    category: "Intelligence",
-    title: "AI 核心集成",
-    description: "赋予产品智能与推理能力",
-    items: [
-      { icon: Bot, label: "LLM", sub: "GPT-4 / Claude 3" },
-      { icon: Search, label: "RAG", sub: "Vector DB / Embeddings" },
-      { icon: Wand2, label: "GenUI", sub: "Generative Interface" },
-      { icon: Cpu, label: "Agents", sub: "LangChain / AutoGPT" }
-    ]
+  en: {
+    badge: "Tech Stack & Modules",
+    title: "Full-stack Capabilities",
+    desc: (
+      <>
+        From foundation to interface, we provide a complete set of building blocks,
+        <br className="hidden md:block" />
+        so you can assemble a business system like LEGO.
+      </>
+    ),
+    techStack: [
+      {
+        category: "Delivery",
+        title: "Full-platform delivery",
+        description: "Build a complete digital product ecosystem",
+        items: [
+          { icon: Layout, label: "Web App", sub: "Next.js / React" },
+          { icon: Smartphone, label: "Mobile", sub: "Responsive / PWA" },
+          { icon: Database, label: "Backend", sub: "Supabase / Postgres" },
+          { icon: Server, label: "Infra", sub: "Vercel / Edge" }
+        ]
+      },
+      {
+        category: "Intelligence",
+        title: "AI core integration",
+        description: "Give products intelligence and reasoning",
+        items: [
+          { icon: Bot, label: "LLM", sub: "GPT-4 / Claude 3" },
+          { icon: Search, label: "RAG", sub: "Vector DB / Embeddings" },
+          { icon: Wand2, label: "GenUI", sub: "Generative Interface" },
+          { icon: Cpu, label: "Agents", sub: "LangChain / AutoGPT" }
+        ]
+      }
+    ],
+    modules: [
+      { label: "Auth & Security", icon: Terminal },
+      { label: "Payments", icon: Layers },
+      { label: "Analytics", icon: Box },
+      { label: "CMS", icon: Code2 },
+    ],
   }
-];
+};
 
-const modules = [
-  { label: "Auth & Security", icon: Terminal },
-  { label: "Payments", icon: Layers },
-  { label: "Analytics", icon: Box },
-  { label: "CMS", icon: Code2 },
-];
-
-export function Capabilities() {
+export function Capabilities({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="capabilities" className="relative py-32 px-6 bg-transparent overflow-hidden border-t border-black/5">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -50,7 +105,7 @@ export function Capabilities() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-sm text-slate-600 mb-6"
           >
             <Box className="w-4 h-4" />
-            <span>Tech Stack & Modules</span>
+            <span>{t.badge}</span>
           </motion.div>
           
           <motion.h2 
@@ -60,7 +115,7 @@ export function Capabilities() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold mb-6 text-black"
           >
-            全栈技术能力
+            {t.title}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -69,15 +124,13 @@ export function Capabilities() {
             transition={{ delay: 0.2 }}
             className="text-xl text-slate-600 max-w-2xl"
           >
-            从底层架构到顶层交互，我们提供完整的技术积木，
-            <br className="hidden md:block" />
-            像搭乐高一样构建你的商业系统。
+            {t.desc}
           </motion.p>
         </div>
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {techStack.map((stack, index) => (
+          {t.techStack.map((stack, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -131,7 +184,7 @@ export function Capabilities() {
           transition={{ delay: 0.4 }}
           className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {modules.map((mod, i) => (
+          {t.modules.map((mod, i) => (
             <div key={i} className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-slate-50 border border-black/5 text-slate-500 hover:text-black hover:bg-slate-100 transition-all duration-300">
               <mod.icon className="w-5 h-5" />
               <span className="font-medium">{mod.label}</span>

@@ -1,40 +1,78 @@
 import { motion } from 'motion/react';
 import { Lightbulb, Zap, Filter, ArrowRight } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const steps = [
-  {
-    icon: Lightbulb,
-    title: "1. 想法收集",
-    subtitle: "Idea Intake",
-    desc: "Lab 接收的不是“宏大愿景”，而是具体问题。",
-    details: ["真实痛点", "AI 场景", "模糊价值"],
-    color: "bg-blue-500"
+const content = {
+  zh: {
+    title: "核心职责",
+    subtitle: "从想法到验证的标准流水线",
+    steps: [
+      {
+        icon: Lightbulb,
+        title: "1. 想法收集",
+        subtitle: "Idea Intake",
+        desc: "Lab 接收的不是“宏大愿景”，而是具体问题。",
+        details: ["真实痛点", "AI 场景", "模糊价值"],
+        color: "bg-blue-500"
+      },
+      {
+        icon: Zap,
+        title: "2. 快速 MVP",
+        subtitle: "Rapid Prototyping",
+        desc: "Lab 的核心能力不是“想”，而是极快地把东西做出来。",
+        details: ["最小验证物", "Demo / 原型", "速度优先"],
+        color: "bg-yellow-500"
+      },
+      {
+        icon: Filter,
+        title: "3. 验证与筛选",
+        subtitle: "Kill or Promote",
+        desc: "这是 Mirror Lab 最重要、也最残酷的一步。",
+        details: ["Kill: 直接停", "Hold: 冻结", "Promote: 送往 Studio"],
+        color: "bg-red-500"
+      }
+    ]
   },
-  {
-    icon: Zap,
-    title: "2. 快速 MVP",
-    subtitle: "Rapid Prototyping",
-    desc: "Lab 的核心能力不是“想”，而是极快地把东西做出来。",
-    details: ["最小验证物", "Demo / 原型", "速度优先"],
-    color: "bg-yellow-500"
-  },
-  {
-    icon: Filter,
-    title: "3. 验证与筛选",
-    subtitle: "Kill or Promote",
-    desc: "这是 Mirror Lab 最重要、也最残酷的一步。",
-    details: ["Kill: 直接停", "Hold: 冻结", "Promote: 送往 Studio"],
-    color: "bg-red-500"
+  en: {
+    title: "Core Responsibilities",
+    subtitle: "A standard pipeline from idea to validation",
+    steps: [
+      {
+        icon: Lightbulb,
+        title: "1. Idea Intake",
+        subtitle: "Idea Intake",
+        desc: "Lab doesn't take grand visions; it takes concrete problems.",
+        details: ["Real pain points", "AI scenarios", "Fuzzy value"],
+        color: "bg-blue-500"
+      },
+      {
+        icon: Zap,
+        title: "2. Rapid MVP",
+        subtitle: "Rapid Prototyping",
+        desc: "Lab's core strength isn't thinking; it's building fast.",
+        details: ["Minimum validation", "Demo / Prototype", "Speed first"],
+        color: "bg-yellow-500"
+      },
+      {
+        icon: Filter,
+        title: "3. Validate & Filter",
+        subtitle: "Kill or Promote",
+        desc: "The most important, and most brutal, step in Mirror Lab.",
+        details: ["Kill: Stop now", "Hold: Freeze", "Promote: Send to Studio"],
+        color: "bg-red-500"
+      }
+    ]
   }
-];
+};
 
-export function LabProcess() {
+export function LabProcess({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section className="py-24 px-6 relative bg-transparent border-t border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">核心职责</h2>
-          <p className="text-slate-500">从想法到验证的标准流水线</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">{t.title}</h2>
+          <p className="text-slate-500">{t.subtitle}</p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 relative">
@@ -60,7 +98,7 @@ export function LabProcess() {
               </motion.div>
           </div>
 
-          {steps.map((step, i) => (
+          {t.steps.map((step, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}

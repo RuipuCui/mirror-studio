@@ -1,41 +1,86 @@
 import { motion } from 'motion/react';
 import { XCircle, FileText, Compass, Layers, ArrowRightCircle } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const donts = [
-  "不直接写产品代码",
-  "不负责 UI / 前端 / 工程交付",
-  "不为了发论文而研究",
-  "不做“看起来很深但无法落地”的研究"
-];
-
-const outputs = [
-  {
-    title: "问题白名单 / 黑名单",
-    desc: "哪些问题值得投入？哪些看起来高级但不值得做？",
-    target: "给 MirrorLabs 决定“选什么 idea”用的",
-    icon: FileText
+const content = {
+  zh: {
+    dontTitle: "明确「不做什么」",
+    donts: [
+      "不直接写产品代码",
+      "不负责 UI / 前端 / 工程交付",
+      "不为了发论文而研究",
+      "不做“看起来很深但无法落地”的研究"
+    ],
+    title: "核心产出",
+    subtitle: "不是 PPT，而是 “可被使用的判断”",
+    outputs: [
+      {
+        title: "问题白名单 / 黑名单",
+        desc: "哪些问题值得投入？哪些看起来高级但不值得做？",
+        target: "给 MirrorLabs 决定“选什么 idea”用的",
+        icon: FileText
+      },
+      {
+        title: "方向性结论 (Direction Memo)",
+        desc: "战略护栏，例如“早期不要追求完美自动化”。",
+        target: "战略决策依据",
+        icon: Compass
+      },
+      {
+        title: "方法论 / 框架",
+        desc: "AI-native 学习系统的最小闭环模型、失败分类模型等。",
+        target: "被 Labs / Studio 反复复用",
+        icon: Layers
+      },
+      {
+        title: "Research → Product 转化建议",
+        desc: "如果要把结论变成产品，第一版应该验证什么？",
+        target: "最小形式验证方案",
+        icon: ArrowRightCircle
+      }
+    ]
   },
-  {
-    title: "方向性结论 (Direction Memo)",
-    desc: "战略护栏，例如“早期不要追求完美自动化”。",
-    target: "战略决策依据",
-    icon: Compass
-  },
-  {
-    title: "方法论 / 框架",
-    desc: "AI-native 学习系统的最小闭环模型、失败分类模型等。",
-    target: "被 Labs / Studio 反复复用",
-    icon: Layers
-  },
-  {
-    title: "Research → Product 转化建议",
-    desc: "如果要把结论变成产品，第一版应该验证什么？",
-    target: "最小形式验证方案",
-    icon: ArrowRightCircle
+  en: {
+    dontTitle: "What We Explicitly Don't Do",
+    donts: [
+      "We don't write product code",
+      "We don't deliver UI/frontend/engineering",
+      "We don't research just to publish papers",
+      "We avoid research that looks deep but can't be applied"
+    ],
+    title: "Core Outputs",
+    subtitle: "Not PPTs, but usable judgments",
+    outputs: [
+      {
+        title: "Problem Whitelist / Blacklist",
+        desc: "Which problems are worth investment, and which look fancy but aren't?",
+        target: "Helps MirrorLabs choose which ideas to pursue",
+        icon: FileText
+      },
+      {
+        title: "Directional Conclusions (Direction Memo)",
+        desc: "Strategic guardrails, like “avoid premature full automation.”",
+        target: "Basis for strategic decisions",
+        icon: Compass
+      },
+      {
+        title: "Methodologies / Frameworks",
+        desc: "Minimum closed-loop models and failure taxonomies for AI-native learning systems.",
+        target: "Repeatedly reused by Labs / Studio",
+        icon: Layers
+      },
+      {
+        title: "Research → Product Translation",
+        desc: "If turning conclusions into product, what should v1 validate first?",
+        target: "Minimal validation plan",
+        icon: ArrowRightCircle
+      }
+    ]
   }
-];
+};
 
-export function ResearchOutputs() {
+export function ResearchOutputs({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -50,12 +95,12 @@ export function ResearchOutputs() {
           <div className="relative z-10 shrink-0">
             <h3 className="text-2xl font-bold flex items-center gap-3">
               <span className="w-1.5 h-6 bg-white" />
-              明确「不做什么」
+              {t.dontTitle}
             </h3>
           </div>
           
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 w-full md:w-auto">
-            {donts.map((item, index) => (
+            {t.donts.map((item, index) => (
               <div key={index} className="flex items-center gap-3 text-white/80 text-sm">
                 <span className="text-white/40 font-bold">✕</span>
                 <span>{item}</span>
@@ -76,14 +121,14 @@ export function ResearchOutputs() {
             className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
           >
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-2 tracking-tight">核心产出</h2>
-              <p className="text-black/50 text-lg font-light">不是 PPT，而是 “可被使用的判断”</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-2 tracking-tight">{t.title}</h2>
+              <p className="text-black/50 text-lg font-light">{t.subtitle}</p>
             </div>
             <div className="h-px flex-1 bg-black/5 mx-8 hidden md:block translate-y-[-1rem]" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {outputs.map((output, index) => (
+            {t.outputs.map((output, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}

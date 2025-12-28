@@ -1,49 +1,120 @@
 import { motion } from 'motion/react';
 import { Zap, Brain, Rocket, CheckCircle2, ArrowRight } from 'lucide-react';
+import type { Language } from '@/app/types/whitemirrorai';
 
-const capabilities = [
-  {
-    icon: Rocket,
-    title: '系统级交付',
-    subtitle: 'System Delivery',
-    description: '不是 Demo，而是可以给真实用户用的系统',
-    features: [
-      { label: '完整网站', sub: '前端 + 后端 + 数据库' },
-      { label: '用户系统', sub: '鉴权 / 权限 / 个人中心' },
-      { label: '运营工具', sub: 'CMS / 数据看板' },
-      { label: '部署运维', sub: 'CI/CD / 域名 / SSL' }
-    ],
-    gradient: "from-slate-100 to-slate-200"
+const content = {
+  zh: {
+    label: "Services",
+    title: (
+      <>
+        从 MVP 到<br/>
+        <span className="text-slate-600">真实系统</span>
+      </>
+    ),
+    desc: "Mirror Lab 负责将想法变成 MVP，我们负责将 MVP 转化为成熟的商业产品。三大核心能力，确保你的系统既快又稳。",
+    status: "System Status: Operational",
+    statusStart: "Idea",
+    statusEnd: "Product",
+    capabilities: [
+      {
+        icon: Rocket,
+        title: '系统级交付',
+        subtitle: 'System Delivery',
+        description: '不是 Demo，而是可以给真实用户用的系统',
+        features: [
+          { label: '完整网站', sub: '前端 + 后端 + 数据库' },
+          { label: '用户系统', sub: '鉴权 / 权限 / 个人中心' },
+          { label: '运营工具', sub: 'CMS / 数据看板' },
+          { label: '部署运维', sub: 'CI/CD / 域名 / SSL' }
+        ],
+        gradient: "from-slate-100 to-slate-200"
+      },
+      {
+        icon: Brain,
+        title: 'AI 功能模块',
+        subtitle: 'AI Integration',
+        description: '深度集成 AI 能力，构建智能化应用',
+        features: [
+          { label: 'RAG 引擎', sub: '文档 / 知识库问答' },
+          { label: 'Agent 工作流', sub: '多步推理 / 工具调用' },
+          { label: 'AI 辅助', sub: '生成 / 润色 / 分析' },
+          { label: '模型微调', sub: 'Prompt Engineering' }
+        ],
+        gradient: "from-slate-100 to-slate-200"
+      },
+      {
+        icon: Zap,
+        title: '高频迭代',
+        subtitle: 'Rapid Iteration',
+        description: '一天多个版本，快速试错与放大',
+        features: [
+          { label: '极速原型', sub: '24h 出首版' },
+          { label: 'A/B 测试', sub: '多方案并行' },
+          { label: '数据驱动', sub: '埋点 / 反馈循环' },
+          { label: '即时响应', sub: '小时级修 Bug' }
+        ],
+        gradient: "from-slate-100 to-slate-200"
+      }
+    ]
   },
-  {
-    icon: Brain,
-    title: 'AI 功能模块',
-    subtitle: 'AI Integration',
-    description: '深度集成 AI 能力，构建智能化应用',
-    features: [
-      { label: 'RAG 引擎', sub: '文档 / 知识库问答' },
-      { label: 'Agent 工作流', sub: '多步推理 / 工具调用' },
-      { label: 'AI 辅助', sub: '生成 / 润色 / 分析' },
-      { label: '模型微调', sub: 'Prompt Engineering' }
-    ],
-    gradient: "from-slate-100 to-slate-200"
-  },
-  {
-    icon: Zap,
-    title: '高频迭代',
-    subtitle: 'Rapid Iteration',
-    description: '一天多个版本，快速试错与放大',
-    features: [
-      { label: '极速原型', sub: '24h 出首版' },
-      { label: 'A/B 测试', sub: '多方案并行' },
-      { label: '数据驱动', sub: '埋点 / 反馈循环' },
-      { label: '即时响应', sub: '小时级修 Bug' }
-    ],
-    gradient: "from-slate-100 to-slate-200"
+  en: {
+    label: "Services",
+    title: (
+      <>
+        From MVP to<br/>
+        <span className="text-slate-600">real systems</span>
+      </>
+    ),
+    desc: "Mirror Lab turns ideas into MVPs. We turn MVPs into production-grade products. Three core strengths keep your system fast and stable.",
+    status: "System Status: Operational",
+    statusStart: "Idea",
+    statusEnd: "Product",
+    capabilities: [
+      {
+        icon: Rocket,
+        title: 'System Delivery',
+        subtitle: 'System Delivery',
+        description: 'Not a demo, but a system real users can run.',
+        features: [
+          { label: 'Full website', sub: 'Frontend + Backend + Database' },
+          { label: 'User system', sub: 'Auth / Permissions / Profiles' },
+          { label: 'Ops tools', sub: 'CMS / Dashboards' },
+          { label: 'Deployment', sub: 'CI/CD / Domain / SSL' }
+        ],
+        gradient: "from-slate-100 to-slate-200"
+      },
+      {
+        icon: Brain,
+        title: 'AI Modules',
+        subtitle: 'AI Integration',
+        description: 'Deep AI integration to build intelligent applications.',
+        features: [
+          { label: 'RAG engine', sub: 'Docs / Knowledge Q&A' },
+          { label: 'Agent workflows', sub: 'Multi-step reasoning / tools' },
+          { label: 'AI assist', sub: 'Generate / Rewrite / Analyze' },
+          { label: 'Model tuning', sub: 'Prompt Engineering' }
+        ],
+        gradient: "from-slate-100 to-slate-200"
+      },
+      {
+        icon: Zap,
+        title: 'Rapid Iteration',
+        subtitle: 'Rapid Iteration',
+        description: 'Multiple releases per day, fast experiments and scale.',
+        features: [
+          { label: 'Rapid prototypes', sub: 'First version in 24h' },
+          { label: 'A/B testing', sub: 'Parallel variants' },
+          { label: 'Data-driven', sub: 'Instrumentation / feedback loops' },
+          { label: 'Immediate response', sub: 'Fixes within hours' }
+        ],
+        gradient: "from-slate-100 to-slate-200"
+      }
+    ]
   }
-];
+};
 
-export function WhatWeDo() {
+export function WhatWeDo({ language }: { language: Language }) {
+  const t = content[language];
   return (
     <section id="what-we-do" className="relative flex flex-col justify-center py-24 px-6 bg-transparent border-t border-black/5">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
@@ -57,20 +128,19 @@ export function WhatWeDo() {
           >
             <div className="flex items-center gap-2 text-slate-500 mb-4">
               <span className="w-8 h-[1px] bg-slate-500"></span>
-              <span className="text-sm uppercase tracking-widest">Services</span>
+              <span className="text-sm uppercase tracking-widest">{t.label}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-black">
-              从 MVP 到<br/>
-              <span className="text-slate-600">真实系统</span>
+              {t.title}
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-8">
-              Mirror Lab 负责将想法变成 MVP，我们负责将 MVP 转化为成熟的商业产品。三大核心能力，确保你的系统既快又稳。
+              {t.desc}
             </p>
             
             <div className="hidden lg:block p-6 rounded-2xl bg-slate-50 border border-black/10 backdrop-blur-sm">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-3 h-3 rounded-full bg-black animate-pulse" />
-                <span className="text-sm font-mono text-slate-600">System Status: Operational</span>
+                <span className="text-sm font-mono text-slate-600">{t.status}</span>
               </div>
               <div className="space-y-2">
                 <div className="h-1 w-full bg-slate-200 rounded-full overflow-hidden">
@@ -82,8 +152,8 @@ export function WhatWeDo() {
                   />
                 </div>
                 <div className="flex justify-between text-xs text-slate-400 font-mono">
-                  <span>Idea</span>
-                  <span>Product</span>
+                  <span>{t.statusStart}</span>
+                  <span>{t.statusEnd}</span>
                 </div>
               </div>
             </div>
@@ -106,7 +176,7 @@ export function WhatWeDo() {
               }
             }}
           >
-            {capabilities.map((item, index) => (
+            {t.capabilities.map((item, index) => (
               <motion.div
                 key={index}
                 variants={{

@@ -42,15 +42,15 @@ export default function App() {
   return (
     <MainLayout currentPath={path} onNavigate={handleNavigate} language={language} onToggleLanguage={toggleLanguage}>
       {isMirrorResearch ? (
-        <MirrorResearchPage onNavigate={handleNavigate} />
+        <MirrorResearchPage onNavigate={handleNavigate} language={language} />
       ) : isMirrorStudio ? (
-        <MirrorStudioPage onNavigate={handleNavigate} />
+        <MirrorStudioPage onNavigate={handleNavigate} language={language} />
       ) : isMirrorLab ? (
-        <MirrorLabPage onNavigate={handleNavigate} />
+        <MirrorLabPage onNavigate={handleNavigate} language={language} />
       ) : isMirrorAcademy ? (
-        <MirrorAcademyPage onNavigate={handleNavigate} />
+        <MirrorAcademyPage onNavigate={handleNavigate} language={language} />
       ) : isMirrorPost ? (
-        <MirrorPostPage onNavigate={handleNavigate} />
+        <MirrorPostPage onNavigate={handleNavigate} language={language} />
       ) : (
         <HomePage onNavigate={handleNavigate} language={language} />
       )}
