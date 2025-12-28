@@ -29,7 +29,7 @@ export function Slide({ children, className, id, showBackground = true }: SlideP
       id={id}
       ref={ref}
       className={cn(
-        "min-h-screen w-full md:h-screen md:snap-start flex items-center justify-center relative bg-black text-white py-20 md:py-0 overflow-hidden",
+        "w-full flex items-center justify-center relative bg-black text-white py-24 md:py-28 overflow-hidden",
         className
       )}
     >

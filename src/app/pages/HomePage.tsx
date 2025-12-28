@@ -1031,7 +1031,7 @@ export function HomePage({ onNavigate, language }: { onNavigate: (event: MouseEv
     <main 
       ref={mainRef}
       onScroll={handleScroll}
-      className="relative h-screen w-full overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-black [&::-webkit-scrollbar]:hidden"
+      className="relative h-screen w-full overflow-y-scroll scroll-smooth bg-black [&::-webkit-scrollbar]:hidden"
     >
       <HeroSection language={language} />
       <ManifestoSection language={language} />
